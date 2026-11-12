@@ -79,7 +79,9 @@ img {
 .contenedor,
 .container {
     width: min(var(--ancho-contenido), 92%);
-    margin: 0 auto;
+    margin: 0 auto;/*"Calcula todo el espacio sobrante que quede a los
+     dos lados del contenedor y repártelo exactamente en partes iguales
+     entre la izquierda y la derecha"*/
 }
 
 h1,
@@ -138,7 +140,7 @@ h4 {
     dentro de Flexbox que sirve para evitar que un elemento se 
     encocha, incluso cuando el contenedor se queda sin espacio en la pantalla.*/
     color: var(--texto);
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     font-weight: 800;
     letter-spacing: -0.0625rem;
     text-decoration: none;
@@ -157,7 +159,7 @@ h4 {
 }
 
 .navegacion .enlaces>a:not(.boton) {
-    color: var(--texto);
+    color: var(--verde);
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
@@ -165,7 +167,7 @@ h4 {
 }
 
 .navegacion .enlaces>a:not(.boton):hover {
-    color: var(--verde);
+    color: var(--texto);
     text-decoration: underline;
     text-decoration-thickness: 0.125rem;
     text-underline-offset: var(--espacio-1);
@@ -201,7 +203,7 @@ h4 {
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s;
 }
 
 .boton:hover,
@@ -258,7 +260,7 @@ button:focus-visible {
     width: 2.75rem;
     height: 2.75rem;
     padding: 0.625rem;
-    border: 1px solid transparent;
+    border: 1px solid var(--verde);
     border-radius: var(--radio-medio);
     background-color: transparent;
     cursor: pointer;
@@ -324,6 +326,10 @@ button:focus-visible {
 
 html.menu-abierto {
     overflow: hidden;
+    /*.menu-abierto: Es una clase condicional. Significa que 
+    esta regla solo se activará cuando el elemento <html> tenga
+     añadida esa clase (lo cual normalmente se hace mediante
+      JavaScript al hacer clic en el botón de abrir el menú).*/
 }
 
 /* MENÚ LATERAL */
@@ -331,7 +337,7 @@ html.menu-abierto {
 .menu-lateral {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: min(17.5rem, 85vw);
     max-width: 85%;
     height: 100vh;
@@ -355,21 +361,32 @@ html.menu-abierto {
         visibility var(--duracion) var(--curva);
 }
 
+.logoMenuLateral {
+    flex-shrink: 0;/*es una herramienta muy útil 
+    dentro de Flexbox que sirve para evitar que un elemento se 
+    encocha, incluso cuando el contenedor se queda sin espacio en la pantalla.*/
+    color: var(--texto);
+    font-size: 1.7625rem;
+    font-weight: 800;
+    letter-spacing: -0.0625rem;
+    text-decoration: none;
+}
+
 .menu-lateral.activo {
     transform: translateX(0);
     visibility: visible;
 }
 
 .menu-lateral a:not(.boton) {
-    color: var(--texto-contraste);
+    color: var(--verde);
     text-decoration: none;
     font-size: 1.0625rem;
     transition: color var(--duracion) var(--curva);
 }
 
-.menu-lateral a:not(.boton):hover,
-.menu-lateral a:not(.boton):focus-visible {
-    color: var(--verde-oscuro);
+.menu-lateral a:not(.boton .logoMenuLateral):hover,
+.menu-lateral a:not(.boton .logoMenuLateral):focus-visible {
+    color: var(--texto);
     text-decoration: underline;
     text-decoration-thickness: 0.125rem;
     text-underline-offset: var(--espacio-1);

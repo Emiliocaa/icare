@@ -6,6 +6,7 @@
  */
 
 header('Content-Type: text/css; charset=UTF-8');
+header('Cache-Control: no-cache, no-store, must-revalidate');
 
 $rutaArticulos = __DIR__ . '/data/articulos.json';
 $articulos = [];
@@ -54,7 +55,7 @@ foreach ($clavesTematicas as $clave) {
         $pagina = intdiv($indice, 5);
 
         echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
-        echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex; }\n";
+        echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
         echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
         echo ".punto-carrusel[data-pagina=\"{$pagina}\"] {\n";
@@ -66,7 +67,7 @@ foreach ($clavesTematicas as $clave) {
 
     // Estado inicial: primera flecha y primer indicador activos.
     echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
-    echo ".estado-flechas[data-indice=\"0\"] { display: flex; }\n";
+    echo ".estado-flechas[data-indice=\"0\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
     echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
     echo ".punto-carrusel[data-pagina=\"0\"] {\n";

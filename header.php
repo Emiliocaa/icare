@@ -1,7 +1,7 @@
 <header class="cabecera">
     <nav class="contenedor navegacion" aria-label="Menú principal">
         <a href="index.php" class="logo">
-            icare coaching
+             icare coaching 
         </a>
 
         <div class="enlaces">
@@ -53,6 +53,10 @@
                 &times;
             </button>
 
+            <a href="index.php" class="logoMenuLateral" style="text-decoration: none;">
+             icare coaching 
+            </a>
+            
             <a href="index.php#enfoque">Mi enfoque</a>
             <a href="index.php#servicios">Servicios</a>
             <a href="index.php#experiencia">Trayectoria</a>

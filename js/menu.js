@@ -3,6 +3,10 @@ const cerrarMenu = document.getElementById("cerrarMenu");
 const menuLateral = document.getElementById("menuLateral");
 const fondoMenu = document.getElementById("fondoMenu");
 const escritorio = window.matchMedia("(min-width: 701px)");
+/*Es la forma que tiene JavaScript de comunicarse con los 
+puntos de quiebre (breakpoints) de tu diseño CSS para ejecutar 
+lógica específica solo cuando la pantalla supera o baja de un 
+ancho determinado.*/    
 
 let elementoApertura = null;
 
@@ -11,6 +15,15 @@ function obtenerElementosEnfocables() {
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
     )].filter(elemento => elemento.getClientRects().length > 0);
 }
+/*Qué hace: Esta función busca dentro del menú lateral todos los
+ elementos en los que un usuario pueda hacer clic o tabular 
+ (enlaces, botones activos, elementos con tabindex).
+
+El truco avanzado (getClientRects().length > 0): Utiliza un 
+filtro para comprobar que el elemento realmente sea visible en 
+la pantalla (es decir, que no tenga un display: none o esté 
+oculto). Si es visible, se incluye en la lista de elementos 
+"navegables".*/
 
 function mostrarMenu() {
     if (menuLateral.classList.contains("activo")) {

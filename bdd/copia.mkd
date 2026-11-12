@@ -139,6 +139,9 @@ $articulosPorPagina = 5;
 
     <link rel="stylesheet" href="assets/css/conocimiento.css">
 
+    <!-- Estados dinámicos de flechas e indicadores (CSS generado por PHP) -->
+    <link rel="stylesheet" href="estados-carrusel.php">
+
 </head>
 
 <body>
@@ -240,7 +243,31 @@ $articulosPorPagina = 5;
                                  CONTENEDOR DESPLAZABLE
                             ======================================= -->
 
-                            <div
+                            <div class="marco-carrusel">
+
+                                <!-- FLECHAS IZQUIERDAS: una por cada posición del carrusel -->
+                                <nav class="control-flecha control-flecha-izquierda"
+                                     aria-label="Retroceder artículos">
+
+                                    <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
+                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
+                                            <?php if ($indiceFlecha > 0): ?>
+                                                <a class="flecha-carrusel"
+                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha - 1 ?>"
+                                                   aria-label="Artículo anterior"
+                                                   title="Artículo anterior">
+                                                    &larr;
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="flecha-carrusel flecha-deshabilitada"
+                                                      aria-hidden="true">&larr;</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </nav>
+
+                                <div
                                 class="carrusel-articulos"
                                 id="carrusel-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>"
                                 tabindex="0"
@@ -369,10 +396,32 @@ $articulosPorPagina = 5;
 
                                 </div>
 
+                                </div>
+
+                                <!-- FLECHAS DERECHAS: una por cada posición del carrusel -->
+                                <nav class="control-flecha control-flecha-derecha"
+                                     aria-label="Avanzar artículos">
+
+                                    <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
+                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
+                                            <?php if ($indiceFlecha < count($listaArticulos) - 1): ?>
+                                                <a class="flecha-carrusel"
+                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha + 1 ?>"
+                                                   aria-label="Artículo siguiente"
+                                                   title="Artículo siguiente">
+                                                    &rarr;
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="flecha-carrusel flecha-deshabilitada"
+                                                      aria-hidden="true">&rarr;</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </nav>
+
                             </div>
-
-
-                            <!-- ======================================
+<!-- ======================================
                                  INDICADORES DE NAVEGACIÓN
                             ======================================= -->
 
@@ -398,6 +447,7 @@ $articulosPorPagina = 5;
 
                                         <a
                                             class="punto-carrusel"
+                                            data-pagina="<?= $numeroPagina ?>"
                                             href="#<?= htmlspecialchars($idDestino, ENT_QUOTES, 'UTF-8') ?>"
                                             aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
                                             title="Grupo <?= $numeroPagina + 1 ?>"
@@ -426,4 +476,436 @@ $articulosPorPagina = 5;
 </html>
 
 
-index.php  arriba
+conocimiento/index.php
+
+/* ==========================================
+   REVISTA ICARE - CONTENIDO DE ARTÍCULOS
+========================================== */
+
+.seccion-articulos {    
+    padding: 2.4375rem 0 4.375rem;
+    background: var(--verde-suave);
+}
+
+.contenedor-articulos {
+    width: min(90rem, 94%);
+    margin: 0 auto;
+}
+
+
+/* ==========================================
+   INTRODUCCIÓN
+========================================== */
+
+.introduccion-articulos {
+    max-width: 46.875rem;
+    margin-bottom: 3.4375rem;
+}
+
+.introduccion-articulos h2 {
+    margin: 0.625rem 0 0.9375rem;
+    color: var(--texto);
+    font-size: 1.875rem;
+}
+
+.introduccion-articulos p {
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   SECCIONES DE CADA CARRUSEL
+========================================== */
+
+.seccion-carrusel {
+    margin-bottom: 3.4375rem;
+}
+
+.cabecera-carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-bottom: 1.375rem;
+    padding-bottom: 1.125rem;
+    border-bottom: 1px solid var(--borde);
+}
+
+.titulo-carrusel h2 {
+    margin: 0 0 0.5rem;
+    color: var(--texto);
+    font-size: 1.4375rem;
+}
+
+.titulo-carrusel p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   ÁREA DESPLAZABLE DEL CARRUSEL
+========================================== */
+
+.carrusel-articulos {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carrusel-articulos::-webkit-scrollbar {
+    display: none;
+}
+
+.pista-carrusel {
+    display: flex;
+    gap: 1.125rem;
+    width: 100%;
+}
+
+
+/* ==========================================
+   TARJETAS
+========================================== */
+
+.tarjeta-articulo {
+    display: flex;
+    min-width: 0;
+    flex: 0 0 calc((100% - 4.5rem) / 5);
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: 0.875rem;
+    background: var(--superficie);
+    box-shadow: 0 0.1875rem 0.75rem rgba(23, 50, 47, 0.07);
+    scroll-snap-align: start;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.tarjeta-articulo:hover {
+    transform: translateY(-0.375rem);
+    border-color: var(--color-foco);
+    box-shadow: 0 0.75rem 1.625rem rgba(23, 50, 47, 0.14);
+}
+
+
+/* ==========================================
+   IMAGEN REDUCIDA
+========================================== */
+
+.enlace-imagen {
+    display: block;
+    width: 100%;
+    height: 5.625rem;
+    overflow: hidden;
+}
+
+.tarjeta-imagen {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.tarjeta-articulo:hover .tarjeta-imagen {
+    transform: scale(1.06);
+}
+
+
+/* ==========================================
+   CONTENIDO DE LA TARJETA
+========================================== */
+
+.tarjeta-contenido {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.9375rem;
+}
+
+.categoria-articulo {
+    margin-bottom: 0.5625rem;
+    color: var(--verde-oscuro);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+}
+
+.tarjeta-contenido h3 {
+    margin: 0 0 0.625rem;
+    color: var(--texto);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.tarjeta-contenido h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duracion) var(--curva);
+}
+
+.tarjeta-contenido h3 a:hover {
+    color: var(--verde-oscuro);
+}
+
+.resumen-articulo {
+    margin: 0 0 0.9375rem;
+    color: var(--texto-secundario);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   FECHA Y TIEMPO DE LECTURA
+========================================== */
+
+.informacion-articulo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.3125rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--borde);
+    color: var(--texto-secundario);
+    font-size: 0.625rem;
+}
+
+
+/* ==========================================
+   ENLACE LEER ARTÍCULO
+========================================== */
+
+.leer-articulo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    width: fit-content;
+    margin-top: 0.8125rem;
+    color: var(--verde);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        gap var(--duracion) var(--curva),
+        color var(--duracion) var(--curva);
+}
+
+.leer-articulo:hover {
+    gap: 0.75rem;
+    color: var(--verde-oscuro);
+}
+
+
+/* ==========================================
+   INDICADORES DE NAVEGACIÓN
+========================================== */
+
+.indicadores-carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6875rem;
+    margin-top: 1.5625rem;
+}
+
+.punto-carrusel {
+    display: block;
+    width: 0.5625rem;
+    height: 0.5625rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--borde);
+    transition:
+        background-color var(--duracion) var(--curva),
+        transform var(--duracion) var(--curva),
+        box-shadow var(--duracion) var(--curva);
+}
+
+.punto-carrusel:hover {
+    transform: scale(1.35);
+    background: var(--verde-oscuro);
+}
+
+.punto-carrusel:focus-visible {
+    outline: 0.1875rem solid var(--verde);
+    outline-offset: 0.3125rem;
+}
+
+.punto-carrusel:active {
+    transform: scale(1.2);
+    background: var(--verde);
+}
+
+
+/* ==========================================
+   ACCESIBILIDAD DEL CARRUSEL
+========================================== */
+
+.carrusel-articulos:focus-visible {
+    outline: 0.1875rem solid var(--verde);
+    outline-offset: 0.25rem;
+}
+
+
+/* ==========================================
+   TABLET: TRES TARJETAS
+========================================== */
+
+@media (max-width: 1050px) {
+    .tarjeta-articulo {
+        flex-basis: calc((100% - 2.25rem) / 3);
+    }
+}
+
+
+/* ==========================================
+   MÓVIL: DOS TARJETAS
+========================================== */
+
+@media (max-width: 650px) {
+    .seccion-articulos {
+        padding: 2.5rem 0;
+    }
+
+    .introduccion-articulos {
+        margin-bottom: 2.5rem;
+    }
+
+    .introduccion-articulos h2 {
+        font-size: 1.5625rem;
+    }
+
+    .seccion-carrusel {
+        margin-bottom: 2.5rem;
+    }
+
+    .cabecera-carrusel {
+        align-items: flex-start;
+    }
+
+    .titulo-carrusel h2 {
+        font-size: 1.1875rem;
+    }
+
+    .titulo-carrusel p {
+        font-size: 0.75rem;
+    }
+
+    .tarjeta-articulo {
+        flex-basis: calc((100% - 1.125rem) / 2);
+    }
+
+    .enlace-imagen {
+        height: 5.3125rem;
+    }
+}
+
+
+/* ==========================================
+   MÓVILES PEQUEÑOS: UNA TARJETA
+========================================== */
+
+@media (max-width: 400px) {
+    .tarjeta-articulo {
+        flex-basis: 100%;
+    }
+}
+
+
+conocimiento/conocimiento.css
+
+<?php
+/**
+ * Hoja de estilos dinámica para los estados de los carruseles.
+ * Genera CSS a partir de los artículos existentes en articulos.json.
+ * No necesita JavaScript.
+ */
+
+header('Content-Type: text/css; charset=UTF-8');
+
+$rutaArticulos = __DIR__ . '/data/articulos.json';
+$articulos = [];
+
+if (is_readable($rutaArticulos)) {
+    $contenido = file_get_contents($rutaArticulos);
+
+    try {
+        $datos = json_decode($contenido, true, 512, JSON_THROW_ON_ERROR);
+        if (is_array($datos)) {
+            $articulos = $datos;
+        }
+    } catch (JsonException $e) {
+        error_log('Error al generar estados de carrusel: ' . $e->getMessage());
+    }
+}
+
+// Mantener exactamente el mismo orden por fecha que utiliza index.php.
+usort($articulos, function ($a, $b) {
+    return strcmp(
+        $b['fecha'] ?? '',
+        $a['fecha'] ?? ''
+    );
+});
+
+// Estas claves deben coincidir con las temáticas de conocimiento/index.php.
+$clavesTematicas = [
+    'coaching',
+    'liderazgo',
+    'tecnologia',
+    'estrategia',
+    'mejora'
+];
+
+foreach ($clavesTematicas as $clave) {
+    $listaArticulos = [];
+
+    foreach ($articulos as $articulo) {
+        if (($articulo['tematica'] ?? '') === $clave) {
+            $listaArticulos[] = $articulo;
+        }
+    }
+
+    foreach ($listaArticulos as $indice => $articulo) {
+        $idTarjeta = 'articulo-' . $clave . '-' . $indice;
+        $pagina = intdiv($indice, 5);
+
+        echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
+        echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex; }\n";
+
+        echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
+        echo ".punto-carrusel[data-pagina=\"{$pagina}\"] {\n";
+        echo "    background: var(--verde-oscuro);\n";
+        echo "    transform: scale(1.3);\n";
+        echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
+        echo "}\n";
+    }
+
+    // Estado inicial: primera flecha y primer indicador activos.
+    echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
+    echo ".estado-flechas[data-indice=\"0\"] { display: flex; }\n";
+
+    echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
+    echo ".punto-carrusel[data-pagina=\"0\"] {\n";
+    echo "    background: var(--verde-oscuro);\n";
+    echo "    transform: scale(1.3);\n";
+    echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
+    echo "}\n";
+}
+
+conocimiento/estado-carrusel.php
+

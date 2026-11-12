@@ -137,9 +137,13 @@ $articulosPorPagina = 5;
 
     <!-- CSS ESPECÍFICO DE CONOCIMIENTO -->
 
-    <link rel="stylesheet" href="assets/css/conocimiento.css">
+    <link
+        rel="stylesheet"
+        href="assets/css/conocimiento.css?v=<?= filemtime(__DIR__ . '/assets/css/conocimiento.css') ?>"
+    >
 
-    <!-- Estados dinámicos de flechas e indicadores (CSS generado por PHP) -->
+    <!-- ESTADOS DINÁMICOS DE FLECHAS E INDICADORES -->
+
     <link rel="stylesheet" href="estados-carrusel.php">
 
 </head>
@@ -153,9 +157,10 @@ $articulosPorPagina = 5;
     <?php require __DIR__ . '/header.php'; ?>
 
     <main id="contenido">
+
         <section class="hero">
 
-            <div class="container ">
+            <div class="container">
 
                 <!-- INTRODUCCIÓN -->
 
@@ -170,16 +175,19 @@ $articulosPorPagina = 5;
                     </h1>
 
                     <p class="lead">
-                        
+
                     </p>
 
                 </div>
-          </div>
+
+            </div>
+
         </section>
+
     </main>
 
+
     <main>
-        
 
         <!-- ======================================
              CONTENIDO EDITORIAL
@@ -188,7 +196,6 @@ $articulosPorPagina = 5;
         <section class="hero seccion-articulos">
 
             <div class="container contenedor-articulos">
-
 
                 <!-- ======================================
                      GENERAR LOS CINCO CARRUSELES
@@ -245,183 +252,215 @@ $articulosPorPagina = 5;
 
                             <div class="marco-carrusel">
 
-                                <!-- FLECHAS IZQUIERDAS: una por cada posición del carrusel -->
-                                <nav class="control-flecha control-flecha-izquierda"
-                                     aria-label="Retroceder artículos">
+                                <!-- FLECHAS IZQUIERDAS -->
+
+                                <nav
+                                    class="control-flecha control-flecha-izquierda"
+                                    aria-label="Retroceder artículos"
+                                >
 
                                     <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
-                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
+
+                                        <div
+                                            class="estado-flechas"
+                                            data-indice="<?= $indiceFlecha ?>"
+                                        >
+
                                             <?php if ($indiceFlecha > 0): ?>
-                                                <a class="flecha-carrusel"
-                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha - 1 ?>"
-                                                   aria-label="Artículo anterior"
-                                                   title="Artículo anterior">
+
+                                                <?php $indiceDestino = max(0, $indiceFlecha - $articulosPorPagina); ?>
+
+                                                <a
+                                                    class="flecha-carrusel"
+                                                    href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
+                                                    aria-label="Grupo anterior de artículos"
+                                                    title="Grupo anterior de artículos"
+                                                >
                                                     &larr;
                                                 </a>
-                                            <?php else: ?>
-                                                <span class="flecha-carrusel flecha-deshabilitada"
-                                                      aria-hidden="true">&larr;</span>
+
                                             <?php endif; ?>
+
                                         </div>
+
                                     <?php endforeach; ?>
 
                                 </nav>
 
+
+                                <!-- CARRUSEL -->
+
                                 <div
-                                class="carrusel-articulos"
-                                id="carrusel-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>"
-                                tabindex="0"
-                                aria-label="Artículos de <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>"
-                            >
+                                    class="carrusel-articulos"
+                                    id="carrusel-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>"
+                                    tabindex="0"
+                                    aria-label="Artículos de <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>"
+                                >
 
-                                <div class="pista-carrusel">
+                                    <div class="pista-carrusel">
 
-                                    <?php foreach ($listaArticulos as $indice => $articulo): ?>
+                                        <?php foreach ($listaArticulos as $indice => $articulo): ?>
 
-                                        <?php
+                                            <?php
 
-                                        $id = $articulo['id'] ?? '';
+                                            $id = $articulo['id'] ?? '';
 
-                                        $tituloArticulo = $articulo['titulo'] ?? '';
+                                            $tituloArticulo = $articulo['titulo'] ?? '';
 
-                                        $resumen = $articulo['resumen'] ?? '';
+                                            $resumen = $articulo['resumen'] ?? '';
 
-                                        $categoria = $articulo['categoria'] ?? '';
+                                            $categoria = $articulo['categoria'] ?? '';
 
-                                        $imagen = $articulo['imagen'] ?? '';
+                                            $imagen = $articulo['imagen'] ?? '';
 
-                                        $alt = $articulo['alt'] ?? '';
+                                            $alt = $articulo['alt'] ?? '';
 
-                                        $fecha = $articulo['fecha'] ?? '';
+                                            $fecha = $articulo['fecha'] ?? '';
 
-                                        $tiempoLectura = $articulo['tiempo_lectura'] ?? '';
+                                            $tiempoLectura = $articulo['tiempo_lectura'] ?? '';
 
-                                        // Identificador único para cada tarjeta.
+                                            // Identificador único para cada tarjeta.
 
-                                        $idTarjeta = 'articulo-' . $clave . '-' . $indice;
+                                            $idTarjeta = 'articulo-' . $clave . '-' . $indice;
 
-                                        ?>
+                                            ?>
 
-                                        <article
-                                            class="tarjeta-articulo"
-                                            id="<?= htmlspecialchars($idTarjeta, ENT_QUOTES, 'UTF-8') ?>"
-                                        >
-
-                                            <!-- IMAGEN -->
-
-                                            <a
-                                                href="articulo.php?id=<?= rawurlencode((string) $id) ?>"
-                                                class="enlace-imagen"
-                                                aria-label="Leer <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>"
+                                            <article
+                                                class="tarjeta-articulo"
+                                                id="<?= htmlspecialchars($idTarjeta, ENT_QUOTES, 'UTF-8') ?>"
                                             >
 
-                                                <img
-                                                    class="tarjeta-imagen"
-                                                    src="<?= htmlspecialchars($imagen, ENT_QUOTES, 'UTF-8') ?>"
-                                                    alt="<?= htmlspecialchars($alt, ENT_QUOTES, 'UTF-8') ?>"
-                                                    loading="lazy"
-                                                >
-
-                                            </a>
-
-
-                                            <!-- CONTENIDO -->
-
-                                            <div class="tarjeta-contenido">
-
-                                                <span class="categoria-articulo">
-
-                                                    <?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8') ?>
-
-                                                </span>
-
-
-                                                <h3>
-
-                                                    <a href="articulo.php?id=<?= rawurlencode((string) $id) ?>">
-
-                                                        <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>
-
-                                                    </a>
-
-                                                </h3>
-
-
-                                                <p class="resumen-articulo">
-
-                                                    <?= htmlspecialchars($resumen, ENT_QUOTES, 'UTF-8') ?>
-
-                                                </p>
-
-
-                                                <!-- FECHA Y TIEMPO DE LECTURA -->
-
-                                                <div class="informacion-articulo">
-
-                                                    <span>
-
-                                                        <?= htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8') ?>
-
-                                                    </span>
-
-                                                    <span>
-
-                                                        <?= htmlspecialchars((string) $tiempoLectura, ENT_QUOTES, 'UTF-8') ?> min lectura
-
-                                                    </span>
-
-                                                </div>
-
-
-                                                <!-- ENLACE AL ARTÍCULO -->
+                                                <!-- IMAGEN -->
 
                                                 <a
                                                     href="articulo.php?id=<?= rawurlencode((string) $id) ?>"
-                                                    class="leer-articulo"
+                                                    class="enlace-imagen"
+                                                    aria-label="Leer <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>"
                                                 >
 
-                                                    Leer artículo
+                                                    <img
+                                                        class="tarjeta-imagen"
+                                                        src="<?= htmlspecialchars($imagen, ENT_QUOTES, 'UTF-8') ?>"
+                                                        alt="<?= htmlspecialchars($alt, ENT_QUOTES, 'UTF-8') ?>"
+                                                        loading="lazy"
+                                                    >
 
-                                                    <span aria-hidden="true">
-                                                        &rarr;
+                                                </a>
+
+
+                                                <!-- CONTENIDO -->
+
+                                                <div class="tarjeta-contenido">
+
+                                                    <span class="categoria-articulo">
+
+                                                        <?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8') ?>
+
                                                     </span>
 
-                                                </a>
 
-                                            </div>
+                                                    <h3>
 
-                                        </article>
+                                                        <a href="articulo.php?id=<?= rawurlencode((string) $id) ?>">
 
-                                    <?php endforeach; ?>
+                                                            <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>
+
+                                                        </a>
+
+                                                    </h3>
+
+
+                                                    <p class="resumen-articulo">
+
+                                                        <?= htmlspecialchars($resumen, ENT_QUOTES, 'UTF-8') ?>
+
+                                                    </p>
+
+
+                                                    <!-- FECHA Y TIEMPO DE LECTURA -->
+
+                                                    <div class="informacion-articulo">
+
+                                                        <span>
+
+                                                            <?= htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8') ?>
+
+                                                        </span>
+
+                                                        <span>
+
+                                                            <?= htmlspecialchars((string) $tiempoLectura, ENT_QUOTES, 'UTF-8') ?> min lectura
+
+                                                        </span>
+
+                                                    </div>
+
+
+                                                    <!-- ENLACE AL ARTÍCULO -->
+
+                                                    <a
+                                                        href="articulo.php?id=<?= rawurlencode((string) $id) ?>"
+                                                        class="leer-articulo"
+                                                    >
+
+                                                        Leer artículo
+
+                                                        <span aria-hidden="true">
+                                                            &rarr;
+                                                        </span>
+
+                                                    </a>
+
+                                                </div>
+
+                                            </article>
+
+                                        <?php endforeach; ?>
+
+                                    </div>
 
                                 </div>
 
-                                </div>
 
-                                <!-- FLECHAS DERECHAS: una por cada posición del carrusel -->
-                                <nav class="control-flecha control-flecha-derecha"
-                                     aria-label="Avanzar artículos">
+                                <!-- FLECHAS DERECHAS -->
+
+                                <nav
+                                    class="control-flecha control-flecha-derecha"
+                                    aria-label="Avanzar artículos"
+                                >
 
                                     <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
-                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
-                                            <?php if ($indiceFlecha < count($listaArticulos) - 1): ?>
-                                                <a class="flecha-carrusel"
-                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha + 1 ?>"
-                                                   aria-label="Artículo siguiente"
-                                                   title="Artículo siguiente">
+
+                                        <div
+                                            class="estado-flechas"
+                                            data-indice="<?= $indiceFlecha ?>"
+                                        >
+
+                                            <?php $indiceDestino = $indiceFlecha + $articulosPorPagina; ?>
+
+                                            <?php if ($indiceDestino < count($listaArticulos)): ?>
+
+                                                <a
+                                                    class="flecha-carrusel"
+                                                    href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
+                                                    aria-label="Grupo siguiente de artículos"
+                                                    title="Grupo siguiente de artículos"
+                                                >
                                                     &rarr;
                                                 </a>
-                                            <?php else: ?>
-                                                <span class="flecha-carrusel flecha-deshabilitada"
-                                                      aria-hidden="true">&rarr;</span>
+
                                             <?php endif; ?>
+
                                         </div>
+
                                     <?php endforeach; ?>
 
                                 </nav>
 
                             </div>
-<!-- ======================================
+
+
+                            <!-- ======================================
                                  INDICADORES DE NAVEGACIÓN
                             ======================================= -->
 
