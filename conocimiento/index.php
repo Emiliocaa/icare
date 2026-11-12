@@ -139,6 +139,9 @@ $articulosPorPagina = 5;
 
     <link rel="stylesheet" href="assets/css/conocimiento.css">
 
+    <!-- Estados dinámicos de flechas e indicadores (CSS generado por PHP) -->
+    <link rel="stylesheet" href="estados-carrusel.php">
+
 </head>
 
 <body>
@@ -240,7 +243,31 @@ $articulosPorPagina = 5;
                                  CONTENEDOR DESPLAZABLE
                             ======================================= -->
 
-                            <div
+                            <div class="marco-carrusel">
+
+                                <!-- FLECHAS IZQUIERDAS: una por cada posición del carrusel -->
+                                <nav class="control-flecha control-flecha-izquierda"
+                                     aria-label="Retroceder artículos">
+
+                                    <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
+                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
+                                            <?php if ($indiceFlecha > 0): ?>
+                                                <a class="flecha-carrusel"
+                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha - 1 ?>"
+                                                   aria-label="Artículo anterior"
+                                                   title="Artículo anterior">
+                                                    &larr;
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="flecha-carrusel flecha-deshabilitada"
+                                                      aria-hidden="true">&larr;</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </nav>
+
+                                <div
                                 class="carrusel-articulos"
                                 id="carrusel-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>"
                                 tabindex="0"
@@ -369,10 +396,32 @@ $articulosPorPagina = 5;
 
                                 </div>
 
+                                </div>
+
+                                <!-- FLECHAS DERECHAS: una por cada posición del carrusel -->
+                                <nav class="control-flecha control-flecha-derecha"
+                                     aria-label="Avanzar artículos">
+
+                                    <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
+                                        <div class="estado-flechas" data-indice="<?= $indiceFlecha ?>">
+                                            <?php if ($indiceFlecha < count($listaArticulos) - 1): ?>
+                                                <a class="flecha-carrusel"
+                                                   href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceFlecha + 1 ?>"
+                                                   aria-label="Artículo siguiente"
+                                                   title="Artículo siguiente">
+                                                    &rarr;
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="flecha-carrusel flecha-deshabilitada"
+                                                      aria-hidden="true">&rarr;</span>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endforeach; ?>
+
+                                </nav>
+
                             </div>
-
-
-                            <!-- ======================================
+<!-- ======================================
                                  INDICADORES DE NAVEGACIÓN
                             ======================================= -->
 
@@ -398,6 +447,7 @@ $articulosPorPagina = 5;
 
                                         <a
                                             class="punto-carrusel"
+                                            data-pagina="<?= $numeroPagina ?>"
                                             href="#<?= htmlspecialchars($idDestino, ENT_QUOTES, 'UTF-8') ?>"
                                             aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
                                             title="Grupo <?= $numeroPagina + 1 ?>"
