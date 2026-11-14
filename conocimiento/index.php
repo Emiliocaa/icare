@@ -2,9 +2,7 @@
 <?php
 
 $titulo = 'Conocimiento | Icare Coaching';
-
 $rutaArticulos = __DIR__ . '/data/articulos.json';
-
 $articulos = [];
 
 // ==========================================
@@ -14,12 +12,10 @@ $articulos = [];
 if (is_readable($rutaArticulos)) {
 
     $contenido = file_get_contents($rutaArticulos);
-
     try {
-
         $datos = json_decode(
-            $contenido,
-            true,
+            $contenido,// Contenido del archivo JSON que se va a decodificar a php.
+            true, //Convierte el JSON en un array asociativo
             512,
             JSON_THROW_ON_ERROR
         );
@@ -27,11 +23,9 @@ if (is_readable($rutaArticulos)) {
         if (is_array($datos)) {
             $articulos = $datos;
         }
-
     } catch (JsonException $e) {
 
         error_log('Error al leer articulos.json: ' . $e->getMessage());
-
     }
 }
 
@@ -45,7 +39,6 @@ usort($articulos, function ($a, $b) {
         $b['fecha'] ?? '',
         $a['fecha'] ?? ''
     );
-
 });
 
 // ==========================================
@@ -58,27 +51,22 @@ $tematicas = [
         'titulo' => 'Coaching y desarrollo personal',
         'descripcion' => 'Herramientas para crecer, aprender y desarrollar todo tu potencial.'
     ],
-
     'liderazgo' => [
         'titulo' => 'Liderazgo y gestión de equipos',
         'descripcion' => 'Nuevas perspectivas para liderar personas y organizaciones.'
     ],
-
     'tecnologia' => [
         'titulo' => 'Tecnología e inteligencia artificial',
         'descripcion' => 'Innovación, digitalización y nuevas oportunidades para las empresas.'
     ],
-
     'estrategia' => [
         'titulo' => 'Estrategia y dirección empresarial',
         'descripcion' => 'Ideas para tomar mejores decisiones y construir empresas competitivas.'
     ],
-
     'mejora' => [
         'titulo' => 'Mejora continua y optimización',
         'descripcion' => 'Procesos más eficientes, organizaciones más ágiles y mejores resultados.'
     ]
-
 ];
 
 // ==========================================
@@ -90,7 +78,6 @@ $articulosPorTematica = [];
 foreach ($tematicas as $clave => $tematica) {
 
     $articulosPorTematica[$clave] = [];
-
 }
 
 foreach ($articulos as $articulo) {
@@ -100,9 +87,7 @@ foreach ($articulos as $articulo) {
     if (isset($articulosPorTematica[$clave])) {
 
         $articulosPorTematica[$clave][] = $articulo;
-
     }
-
 }
 
 // ==========================================
@@ -133,7 +118,8 @@ $articulosPorPagina = 5;
 
     <!-- CSS GENERAL -->
 
-    <link rel="stylesheet" href="../assets/css/estilos.css">
+    <link rel="stylesheet"
+      href="../assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/../assets/css/estilos.css') ?>">
 
     <!-- CSS ESPECÍFICO DE CONOCIMIENTO -->
 
@@ -157,33 +143,20 @@ $articulosPorPagina = 5;
     <?php require __DIR__ . '/header.php'; ?>
 
     <main id="contenido">
-
         <section class="hero">
-
             <div class="container">
 
                 <!-- INTRODUCCIÓN -->
-
                 <div class="introduccion-articulos">
 
-                    <p class="eyebrow">
-                        REVISTA ICARE
-                    </p>
+                    <p class="eyebrow">Conocimiento</p>
 
-                    <h1>
-                        Ideas que impulsan el cambio.
-                    </h1>
+                    <h1>Ideas que impulsan el cambio.</h1>
 
-                    <p class="lead">
-
-                    </p>
-
+                    <p class="lead"></p>
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
 
@@ -240,11 +213,8 @@ $articulosPorPagina = 5;
                                         <?= htmlspecialchars($tematica['descripcion'], ENT_QUOTES, 'UTF-8') ?>
 
                                     </p>
-
                                 </div>
-
                             </div>
-
 
                             <!-- ======================================
                                  CONTENEDOR DESPLAZABLE
@@ -278,15 +248,10 @@ $articulosPorPagina = 5;
                                                 >
                                                     &larr;
                                                 </a>
-
                                             <?php endif; ?>
-
                                         </div>
-
                                     <?php endforeach; ?>
-
                                 </nav>
-
 
                                 <!-- CARRUSEL -->
 
@@ -304,19 +269,12 @@ $articulosPorPagina = 5;
                                             <?php
 
                                             $id = $articulo['id'] ?? '';
-
                                             $tituloArticulo = $articulo['titulo'] ?? '';
-
                                             $resumen = $articulo['resumen'] ?? '';
-
                                             $categoria = $articulo['categoria'] ?? '';
-
                                             $imagen = $articulo['imagen'] ?? '';
-
                                             $alt = $articulo['alt'] ?? '';
-
                                             $fecha = $articulo['fecha'] ?? '';
-
                                             $tiempoLectura = $articulo['tiempo_lectura'] ?? '';
 
                                             // Identificador único para cada tarjeta.
@@ -347,7 +305,6 @@ $articulosPorPagina = 5;
 
                                                 </a>
 
-
                                                 <!-- CONTENIDO -->
 
                                                 <div class="tarjeta-contenido">
@@ -357,7 +314,6 @@ $articulosPorPagina = 5;
                                                         <?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8') ?>
 
                                                     </span>
-
 
                                                     <h3>
 
@@ -369,13 +325,11 @@ $articulosPorPagina = 5;
 
                                                     </h3>
 
-
                                                     <p class="resumen-articulo">
 
                                                         <?= htmlspecialchars($resumen, ENT_QUOTES, 'UTF-8') ?>
 
                                                     </p>
-
 
                                                     <!-- FECHA Y TIEMPO DE LECTURA -->
 
@@ -392,9 +346,7 @@ $articulosPorPagina = 5;
                                                             <?= htmlspecialchars((string) $tiempoLectura, ENT_QUOTES, 'UTF-8') ?> min lectura
 
                                                         </span>
-
                                                     </div>
-
 
                                                     <!-- ENLACE AL ARTÍCULO -->
 
@@ -410,17 +362,11 @@ $articulosPorPagina = 5;
                                                         </span>
 
                                                     </a>
-
                                                 </div>
-
                                             </article>
-
                                         <?php endforeach; ?>
-
                                     </div>
-
                                 </div>
-
 
                                 <!-- FLECHAS DERECHAS -->
 
@@ -450,15 +396,10 @@ $articulosPorPagina = 5;
                                                 </a>
 
                                             <?php endif; ?>
-
                                         </div>
-
                                     <?php endforeach; ?>
-
                                 </nav>
-
                             </div>
-
 
                             <!-- ======================================
                                  INDICADORES DE NAVEGACIÓN
@@ -493,23 +434,13 @@ $articulosPorPagina = 5;
                                         ></a>
 
                                     <?php endforeach; ?>
-
                                 </nav>
-
                             <?php endif; ?>
-
                         </section>
-
                     <?php endif; ?>
-
                 <?php endforeach; ?>
-
             </div>
-
         </section>
-
     </main>
-
 </body>
-
 </html>

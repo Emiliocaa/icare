@@ -9,8 +9,8 @@ $anioActual = date('Y');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Coaching ejecutivo, motivación de equipos, consultoría de datos e Inteligencia Artificial con Emilio Casañ Arolas. Valencia y online.">
-    <title><?= htmlspecialchars($nombreApp, ENT_QUOTES, 'UTF-8') ?> | Liderazgo, datos y personas</title>
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <title><?= htmlspecialchars($nombreApp, ENT_QUOTES, 'UTF-8') ?> | Personas, liderazgo y datos </title>
+    <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
     
 </head>
 
@@ -23,8 +23,8 @@ $anioActual = date('Y');
         <section class="hero" id="inicio">
             <div class="container">
                 <p class="eyebrow">Liderazgo · Datos · Personas</p>
-                <h1>Motiva a tus equipos, impulsa tu liderazgo y optimiza tus datos para escalar tu negocio.</h1>
-                <p class="lead">Coaching gerencial, implantación de sistemas, consultoría de datos, adopción de Inteligencia Artificial y formación motivacional de equipos. Todo respaldado por la trayectoria de un ex-Adjunto a CEO, Economista y apasionado de la tecnología.</p>
+                <h1>Motiva a tus equipos, impulsa tu liderazgo y optimiza tus sistemas y datos para escalar tu negocio.</h1>
+                <p class="lead">Coaching gerencial, evaluación de sistemas, consultoría de datos, adopción de Inteligencia Artificial y coordinación de equipos que ayuden a la motivación de las personas. Todo respaldado por la trayectoria de un ex-CEO, Economista y apasionado de la tecnología.</p>
                 <p class="pitch">En <strong>icare coaching </strong> unimos el coaching ejecutivo y personal con el pragmatismo del control de gestión, el análisis de datos y la transformación digital. Ayudamos a CEOs, gerentes, mandos intermedios y equipos a evolucionar hacia una cultura <em>data-driven</em>, adoptar nuevas tecnologías y trabajar con cohesión, motivación y alto rendimiento.</p>
                 <div class="actions"><a class="button" href="#contacto">Agendar una Sesión Diagnóstica Estratégica</a><a class="button secondary" href="#servicios">Explorar servicios</a></div>
                 <div class="tags"><span>Más de 25 años de trayectoria</span><span>Valencia y online</span><span>Empresas y profesionales</span></div>
@@ -40,17 +40,17 @@ $anioActual = date('Y');
                     <p>A través de <strong>icare coaching, s.l.</strong>, pongo a tu disposición un acompañamiento integral 360°: la combinación de visión ejecutiva de alta dirección (C-Level), herramientas tecnológicas avanzadas y estrategias de motivación y liderazgo para potenciar a las personas y los resultados.</p>
                 </div>
                 <div class="grid section-heading">
-                    <article class="card"><span class="number">01 / DATOS</span>
-                        <h3>Cultura Data-Driven &amp; Eficiente</h3>
-                        <p>Transformar datos dispersos en KPIs e información estratégica útil para decidir con seguridad.</p>
-                    </article>
-                    <article class="card"><span class="number">02 / PERSONAS</span>
+                    <article class="card"><span class="number">01 / PERSONAS</span>
                         <h3>Cohesión y Motivación del Factor Humano</h3>
                         <p>Desarrollar el potencial de los equipos reduciendo la resistencia al cambio y fomentando el compromiso.</p>
                     </article>
-                    <article class="card"><span class="number">03 / TECNOLOGÍA</span>
+                    <article class="card"><span class="number">02 / TECNOLOGÍA</span>
                         <h3>Tecnología Útil y Aplicada</h3>
                         <p>Integrar IA, automatizaciones y sistemas ERP/IT alineados con los objetivos de negocio y la productividad personal.</p>
+                    </article>
+                    <article class="card"><span class="number">03 / DATOS</span>
+                        <h3>Tecnología Útil y Aplicada Cultura Data-Driven &amp; Eficiente</h3>
+                        <p>Transformar datos dispersos en KPIs e información estratégica útil para decidir con seguridad.</p>
                     </article>
                 </div>
             </div>
@@ -134,25 +134,17 @@ $anioActual = date('Y');
                     <li><strong>Capacitación e Inspiración Práctica:</strong> Formaciones y talleres con dinámicas participativas que generan cambios de actitud tangibles desde el primer día.</li>
                     <li><strong>Inteligencia Artificial y Eficiencia:</strong> Integración de herramientas de vanguardia para ahorrar tiempo gerencial y permitir que las personas se concentren en tareas de alto valor.</li>
                     <li class="accordion">
-                        <div class="accordion_bar"></div>
-                        <details class="accordion_details">
-                            <summary class="accordion_sumary">
-                                <span class="accordion_question">
-                                    <strong>Inteligencia Artificial aplicada: </strong>
-                                </span>
-                                <div class="accordion_icon">
-                                    <span class="line-1"></span>
-                                    <span class="line-2"></span>
-                                </div>
+                        <details>
+                            <summary>
+                                <strong>Inteligencia Artificial aplicada:</strong>
+                                <span class="accordion_icon" aria-hidden="true"></span>
                             </summary>
-                        </details>
-                        <article class="accordion_body">
-                            <div class="accordion_inner">
-                                <div class="accordion_answer">
-                                  Integración de herramientas de vanguardia para ahorrar tiempo gerencial y permitir que las personas se concentren en tareas de alto valor.  
+                            <div class="accordion_body">
+                                <div class="accordion_inner">
+                                    Integración de herramientas de vanguardia para ahorrar tiempo gerencial y permitir que las personas se concentren en tareas de alto valor.
                                 </div>
                             </div>
-                        </article>
+                        </details>
                     </li>
 
                 </ol>
@@ -199,7 +191,8 @@ $anioActual = date('Y');
                         <div class="field full"><label for="nombre">Nombre y Apellidos *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="150"></div>
                         <div class="field full"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
                         <div class="field"><label for="perfil">Empresa / Particular *</label><select id="perfil" name="perfil" required>
-                                <option value="">Selecciona una opción</option>Empresa</option>
+                                <option value="">Selecciona una opción</option>
+                                <option>Empresa</option>
                                 <option>Particular</option>
                             </select></div>
                         <div class="field"><label for="empresa">Nombre de la empresa</label><input id="empresa" name="empresa" autocomplete="organization" maxlength="200"></div>
@@ -215,7 +208,7 @@ $anioActual = date('Y');
                     </div>
                     <p class="note">Este formulario abrirá tu aplicación de correo con los datos introducidos. Revisa el mensaje y envíalo desde allí. No se envía automáticamente.</p><button class="button" type="submit">Preparar correo de contacto</button>
                     <p class="note" id="form-status" role="status"></p><noscript>
-                        <p>Para contactar, escribe directamente a <a href="mailto:ecarolas@gmail.com">ecarolas@gmail.com</a>.</p>
+                    <p>Para contactar, escribe directamente a <a href="mailto:ecarolas@gmail.com">ecarolas@gmail.com</a>.</p>
                     </noscript>
                 </form>
             </div>
@@ -226,14 +219,18 @@ $anioActual = date('Y');
             <div><a href="#inicio">Volver al inicio</a><a href="login.php">Área privada</a></div>
         </div>
     </footer>
-    <script>
-        // Se prepara un correo; el envío lo realiza el usuario desde su aplicación de correo.
+        <script>
+        /* Prepara un correo; el usuario realiza el envío desde su aplicación. */
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); //Por defecto, cuando un documento se envia, el navegador recarga la pagina.
-            //con este event.preventDefault() evitamos que se recargue la pagina para poder validar los datos con JS o enviarlos de forma
-            //asincrona con fetch() o XMLHttpRequest. En este caso, vamos a preparar un correo para que el usuario lo envie desde su aplicación de correo.
-            if (!this.reportValidity()) return; //validamos los campos del formulario, si no son validos, no se envia el correo.
-            const data = new FormData(this); //Crea un objeto especial de JavaScript llamado FormData que extrae automáticamente todos los pares de clave-valor de los inputs, selects y textareas que están dentro de ese formulario (this).
+            event.preventDefault();
+
+            /* Comprueba las reglas de validación del formulario. */
+            if (!this.reportValidity()) return;
+
+            /* Recoge los valores de los campos mediante su atributo name. */
+            const data = new FormData(this);
+
+            /* Define el orden y las etiquetas de los datos del mensaje. */
             const fields = [
                 ['nombre', 'Nombre y Apellidos'],
                 ['email', 'Correo electrónico'],
@@ -244,15 +241,20 @@ $anioActual = date('Y');
                 ['telefono', 'Teléfono de contacto'],
                 ['mensaje', 'Mensaje']
             ];
-            const body = fields.map(([key, label]) => label + ': ' + String(data.get(key) || '').trim()).join('\r\n');
-            const subject = 'Sesión Diagnóstica Estratégica - ' + data.get('servicio');
+
+            /* Construye el mensaje y elimina espacios al inicio y al final de cada valor. */
+            const body = fields.map(([key, label]) => label + ': ' + String(data.get(key) ?? '').trim()).join('\r\n');
+
+            /* Utiliza un asunto alternativo si el servicio está vacío o no existe. */
+            const subject = 'Sesión Diagnóstica Estratégica - ' + (String(data.get('servicio') ?? '').trim() || 'Consulta general');
+
+            /* Muestra el aviso antes de intentar abrir la aplicación de correo. */
+            document.getElementById('form-status').textContent = 'Se intentará abrir tu aplicación de correo. Revisa el mensaje y pulsa Enviar. Si no se abre, escribe a ecarolas@gmail.com.';
+
+            /* Prepara el destinatario, el asunto y el cuerpo del correo. */
             window.location.href = 'mailto:ecarolas@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-            document.getElementById('form-status').textContent = 'Si no se abre tu aplicación de correo, escribe directamente a ecarolas@gmail.com.';
         });
-
     </script>
-
     <script src="js/menu.js"></script>
 </body>
-
 </html>

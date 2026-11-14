@@ -6,13 +6,10 @@
 // ==========================================
 
 $tituloWeb = 'Icare Coaching | Artículo';
-
 $rutaArticulos = __DIR__ . '/data/articulos.json';
-
 $articulos = [];
 $articulo = null;
 $articulosRelacionados = [];
-
 $idSolicitado = $_GET['id'] ?? '';
 
 
@@ -27,7 +24,6 @@ $esc = function ($valor) {
         'UTF-8'
     );
 };
-
 
 // ==========================================
 // CARGAR ARTÍCULOS JSON
@@ -49,31 +45,23 @@ if (file_exists($rutaArticulos)) {
     } catch (JsonException $e) {
 
         $articulos = [];
-
     }
-
 }
-
 
 // ==========================================
 // BUSCAR ARTÍCULO SOLICITADO
 // ==========================================
 
 foreach ($articulos as $item) {
-
     if (
         isset($item['id']) &&
         $item['id'] === $idSolicitado
     ) {
 
         $articulo = $item;
-
         break;
-
     }
-
 }
-
 
 // ==========================================
 // ARTÍCULO NO ENCONTRADO
@@ -82,16 +70,13 @@ foreach ($articulos as $item) {
 if (!$articulo) {
 
     http_response_code(404);
-
 }
-
 
 // ==========================================
 // ARTÍCULOS RELACIONADOS
 // ==========================================
 
 if ($articulo) {
-
     foreach ($articulos as $item) {
 
         if (
@@ -103,7 +88,6 @@ if ($articulo) {
             $articulosRelacionados[] = $item;
 
         }
-
     }
 
     $articulosRelacionados = array_slice(
@@ -111,37 +95,26 @@ if ($articulo) {
         0,
         3
     );
-
 }
-
 
 // ==========================================
 // PREPARAR DATOS DEL ARTÍCULO
 // ==========================================
 
 $tituloArticulo = $articulo['titulo'] ?? 'Artículo no encontrado';
-
 $resumen = $articulo['resumen'] ?? '';
-
 $categoria = $articulo['categoria'] ?? '';
-
 $fecha = $articulo['fecha'] ?? '';
-
 $tiempoLectura = $articulo['tiempo_lectura'] ?? '';
-
 $imagen = $articulo['imagen'] ?? '';
-
 $alt = $articulo['alt'] ?? $tituloArticulo;
-
 $bloquesContenido = $articulo['contenido'] ?? [];
-
 $tituloWeb = $tituloArticulo . ' | Icare Coaching';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
     <meta charset="UTF-8">
@@ -154,296 +127,182 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
         name="description"
         content="<?= $esc($resumen) ?>"
     >
-
     <link
         rel="stylesheet"
         href="../assets/css/estilos.css"
     >
-
     <link
         rel="stylesheet"
         href="assets/css/conocimiento.css"
     >
-
     <link
         rel="stylesheet"
-        href="assets/css/articulo.css"
+        href="assets/css/articulo.css?v=<?= filemtime(__DIR__ . '/assets/css/articulo.css') ?>"
     >
-
 </head>
 
-
 <body>
-
     <?php include __DIR__ . '/header.php'; ?>
 
-
     <main class="pagina-articulo">
-
         <div class="contenedor-articulo">
-
-
-            <!-- ======================================
-                 RUTA DE NAVEGACIÓN
-            ====================================== -->
-
-            <nav class="ruta-articulo" aria-label="Ruta de navegación">
-
-                <a href="../index.php">Inicio</a>
-
-                <span>/</span>
-
-                <a href="index.php">Conocimiento</a>
-
-                <span>/</span>
-
-                <span><?= $esc($tituloArticulo) ?></span>
-
-            </nav>
-
-
             <?php if ($articulo): ?>
+                <div class="tarjeta-lectura">
+                    <header class="cabecera-articulo">
+                        <span class="categoria-destacada">
 
+                            <?= $esc($categoria) ?>
+                        </span>
 
-                <!-- ======================================
-                     CABECERA DEL ARTÍCULO
-                ====================================== -->
+                        <h1 class="titulo-articulo">
 
-                <header class="cabecera-articulo">
+                            <?= $esc($tituloArticulo) ?>
+                        </h1>
 
-                    <span class="categoria-destacada">
+                        <p class="resumen-destacado">
 
-                        <?= $esc($categoria) ?>
+                            <?= $esc($resumen) ?>
+                        </p>
 
-                    </span>
+                        <div class="datos-articulo">
+                            <?php if ($fecha !== ''): ?>
+                                <span>
 
+                                    <?= $esc($fecha) ?>
 
-                    <h1>
-
-                        <?= $esc($tituloArticulo) ?>
-
-                    </h1>
-
-
-                    <p class="resumen-destacado">
-
-                        <?= $esc($resumen) ?>
-
-                    </p>
-
-
-                    <div class="datos-articulo">
-
-                        <?php if ($fecha !== ''): ?>
-
-                            <span>
-
-                                <?= $esc($fecha) ?>
-
-                            </span>
-
-                        <?php endif; ?>
-
-
-                        <?php if ($fecha !== '' && $tiempoLectura !== ''): ?>
-
-                            <span class="separador-datos">·</span>
-
-                        <?php endif; ?>
-
-
-                        <?php if ($tiempoLectura !== ''): ?>
-
-                            <span>
-
-                                <?= $esc($tiempoLectura) ?> min de lectura
-
-                            </span>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                </header>
-
-
-                <!-- ======================================
-                     CUERPO DEL ARTÍCULO
-                ====================================== -->
-
-                <article class="contenido-articulo">
-
-
-                    <!-- IMAGEN LATERAL -->
-
-                    <?php if ($imagen !== ''): ?>
-
-                        <figure class="imagen-lateral-articulo">
-
-                            <img
-                                src="<?= $esc($imagen) ?>"
-                                alt="<?= $esc($alt) ?>"
-                            >
-
-                        </figure>
-
-                    <?php endif; ?>
-
-
-                    <!-- CONTENIDO DINÁMICO DESDE JSON -->
-
-                    <?php if (!empty($bloquesContenido)): ?>
-
-
-                        <?php foreach ($bloquesContenido as $bloque): ?>
-
-
-                            <?php
-
-                            $tipo = $bloque['tipo'] ?? '';
-
-                            $texto = $bloque['texto'] ?? '';
-
-                            ?>
-
-
-                            <?php if ($tipo === 'parrafo'): ?>
-
-                                <p>
-
-                                    <?= nl2br($esc($texto)) ?>
-
-                                </p>
-
-
-                            <?php elseif ($tipo === 'titulo'): ?>
-
-                                <h2>
-
-                                    <?= $esc($texto) ?>
-
-                                </h2>
-
-
-                            <?php elseif ($tipo === 'cita'): ?>
-
-                                <blockquote class="cita-articulo">
-
-                                    <?= $esc($texto) ?>
-
-                                </blockquote>
-
-
-                            <?php elseif ($tipo === 'lista'): ?>
-
-                                <ul class="lista-articulo">
-
-                                    <?php foreach (($bloque['elementos'] ?? []) as $elemento): ?>
-
-                                        <li>
-
-                                            <?= $esc($elemento) ?>
-
-                                        </li>
-
-                                    <?php endforeach; ?>
-
-                                </ul>
-
-
-                            <?php elseif ($tipo === 'imagen'): ?>
-
-                                <figure class="imagen-contenido-articulo">
-
-                                    <img
-                                        src="<?= $esc($bloque['src'] ?? '') ?>"
-                                        alt="<?= $esc($bloque['alt'] ?? '') ?>"
-                                    >
-
-                                    <?php if (!empty($bloque['pie'])): ?>
-
-                                        <figcaption>
-
-                                            <?= $esc($bloque['pie']) ?>
-
-                                        </figcaption>
-
-                                    <?php endif; ?>
-
-                                </figure>
-
+                                </span>
                             <?php endif; ?>
 
+                            <?php if ($fecha !== '' && $tiempoLectura !== ''): ?>
 
-                        <?php endforeach; ?>
+                                <span class="separador-datos">·</span>
+                            <?php endif; ?>
 
+                            <?php if ($tiempoLectura !== ''): ?>
+                                <span>
 
-                    <?php else: ?>
+                                    <?= $esc($tiempoLectura) ?> min de lectura
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </header>
 
+                    <article class="contenido-articulo">
+                        <!-- IMAGEN LATERAL -->
 
-                        <!-- CONTENIDO PROVISIONAL -->
+                        <?php if ($imagen !== ''): ?>
+                            <figure class="imagen-lateral-articulo">
+
+                                <img
+                                    src="<?= $esc($imagen) ?>"
+                                    alt="<?= $esc($alt) ?>"
+                                >
+
+                            </figure>
+                        <?php endif; ?>
+
+                        <!-- CONTENIDO DINÁMICO DESDE JSON -->
+
+                        <?php if (!empty($bloquesContenido)): ?>
+                            <?php foreach ($bloquesContenido as $bloque): ?>
+                                <?php
+
+                                $tipo = $bloque['tipo'] ?? '';
+                                $texto = $bloque['texto'] ?? '';
+
+                                ?>
+
+                                <?php if ($tipo === 'parrafo'): ?>
+                                    <p>
+
+                                        <?= nl2br($esc($texto)) ?>
+                                    </p>
+
+                                <?php elseif ($tipo === 'titulo'): ?>
+                                    <h2>
+
+                                        <?= $esc($texto) ?>
+                                    </h2>
+
+                                <?php elseif ($tipo === 'cita'): ?>
+                                    <blockquote class="cita-articulo">
+
+                                        <?= $esc($texto) ?>
+                                    </blockquote>
+
+                                <?php elseif ($tipo === 'lista'): ?>
+                                    <ul class="lista-articulo">
+                                        <?php foreach (($bloque['elementos'] ?? []) as $elemento): ?>
+                                            <li>
+
+                                                <?= $esc($elemento) ?>
+
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
+                                <?php elseif ($tipo === 'imagen'): ?>
+                                    <figure class="imagen-contenido-articulo">
+
+                                        <img
+                                            src="<?= $esc($bloque['src'] ?? '') ?>"
+                                            alt="<?= $esc($bloque['alt'] ?? '') ?>"
+                                        >
+
+                                        <?php if (!empty($bloque['pie'])): ?>
+                                            <figcaption>
+
+                                                <?= $esc($bloque['pie']) ?>
+
+                                            </figcaption>
+                                        <?php endif; ?>
+                                    </figure>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+
+                            <!-- CONTENIDO PROVISIONAL -->
+
+                            <p>
+
+                                <?= nl2br($esc($resumen)) ?>
+                            </p>
+
+                            <div class="aviso-contenido">
+
+                                El contenido completo de este artículo estará disponible próximamente.
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- LIMPIAR EL FLOTADO DE LA IMAGEN -->
+
+                        <div class="limpiar-flotado"></div>
+                    </article>
+
+                    <div class="final-articulo">
+                        <p>
+
+                            El conocimiento impulsa el cambio.
+                        </p>
 
                         <p>
 
-                            <?= nl2br($esc($resumen)) ?>
-
+                            En Icare Coaching creemos que el desarrollo personal y empresarial comienza con nuevas ideas y decisiones conscientes.
                         </p>
-
-
-                        <div class="aviso-contenido">
-
-                            El contenido completo de este artículo estará disponible próximamente.
-
-                        </div>
-
-
-                    <?php endif; ?>
-
-
-                    <!-- LIMPIAR EL FLOTADO DE LA IMAGEN -->
-
-                    <div class="limpiar-flotado"></div>
-
-
-                </article>
-
-
-                <!-- ======================================
-                     CIERRE DEL ARTÍCULO
-                ====================================== -->
-
-                <div class="final-articulo">
-
-                    <p>
-
-                        El conocimiento impulsa el cambio.
-
-                    </p>
-
-                    <p>
-
-                        En Icare Coaching creemos que el desarrollo personal y empresarial comienza con nuevas ideas y decisiones conscientes.
-
-                    </p>
-
+                    </div>
                 </div>
-
 
                 <!-- ======================================
                      NAVEGACIÓN DE REGRESO
                 ====================================== -->
 
                 <nav class="navegacion-articulo">
-
                     <a
                         href="index.php"
                         class="boton-volver"
                     >
-
                         Volver a Conocimiento
-
                     </a>
-
 
                     <a
                         href="../index.php"
@@ -451,47 +310,30 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                     >
 
                         Página principal
-
                     </a>
-
                 </nav>
-
 
                 <!-- ======================================
                      ARTÍCULOS RELACIONADOS
                 ====================================== -->
 
                 <?php if (!empty($articulosRelacionados)): ?>
-
                     <section class="relacionados-articulo">
-
-
                         <div class="cabecera-relacionados">
-
                             <span class="eyebrow">
 
                                 CONTINÚA EXPLORANDO
-
                             </span>
 
                             <h2>
 
                                 Artículos relacionados
-
                             </h2>
-
                         </div>
 
-
                         <div class="rejilla-relacionados">
-
-
                             <?php foreach ($articulosRelacionados as $relacionado): ?>
-
-
                                 <article class="tarjeta-relacionada">
-
-
                                     <a
                                         href="articulo.php?id=<?= urlencode($relacionado['id']) ?>"
                                         class="imagen-relacionada"
@@ -501,37 +343,26 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                             src="<?= $esc($relacionado['imagen'] ?? '') ?>"
                                             alt="<?= $esc($relacionado['alt'] ?? '') ?>"
                                         >
-
                                     </a>
 
-
                                     <div class="contenido-relacionado">
-
-
                                         <span>
 
                                             <?= $esc($relacionado['categoria'] ?? '') ?>
-
                                         </span>
-
 
                                         <h3>
 
                                             <a href="articulo.php?id=<?= urlencode($relacionado['id']) ?>">
 
                                                 <?= $esc($relacionado['titulo'] ?? '') ?>
-
                                             </a>
-
                                         </h3>
-
 
                                         <p>
 
                                             <?= $esc($relacionado['resumen'] ?? '') ?>
-
                                         </p>
-
 
                                         <a
                                             href="articulo.php?id=<?= urlencode($relacionado['id']) ?>"
@@ -541,42 +372,27 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                             Leer artículo →
 
                                         </a>
-
-
                                     </div>
-
                                 </article>
-
-
                             <?php endforeach; ?>
-
-
                         </div>
-
                     </section>
-
                 <?php endif; ?>
-
-
             <?php else: ?>
-
 
                 <!-- ======================================
                      ARTÍCULO NO ENCONTRADO
                 ====================================== -->
 
                 <section class="articulo-no-encontrado">
-
                     <h1>
 
                         Artículo no encontrado
-
                     </h1>
 
                     <p>
 
                         El artículo que buscas no existe o ha sido trasladado.
-
                     </p>
 
                     <a
@@ -587,28 +403,17 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                         Volver a Conocimiento
 
                     </a>
-
                 </section>
-
-
             <?php endif; ?>
-
-
         </div>
-
     </main>
-
 
     <?php
 
     if (file_exists(__DIR__ . '/footer.php')) {
 
         include __DIR__ . '/footer.php';
-
     }
-
     ?>
-
 </body>
-
 </html>

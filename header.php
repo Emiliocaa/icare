@@ -41,9 +41,10 @@
             class="menu-lateral"
             id="menuLateral"
             role="dialog"
-            aria-modal="true"
+            aria-modal="true" 
             aria-label="Navegación móvil"
             tabindex="-1">
+            <!-- aria-modal el contenido exterior queda temporalmente inactivo -->
 
             <button
                 type="button"

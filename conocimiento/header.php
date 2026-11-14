@@ -1,6 +1,5 @@
 
 <header class="cabecera">
-
     <nav class="contenedor navegacion" aria-label="Menú principal">
 
         <a href="../index.php" class="logo">
@@ -10,13 +9,9 @@
         <div class="enlaces">
 
             <a href="../index.php#enfoque">Mi enfoque</a>
-
             <a href="../index.php#servicios">Servicios</a>
-
             <a href="../index.php#experiencia">Trayectoria</a>
-
             <a href="index.php" class="activo">Conocimiento</a>
-
             <a href="../index.php#contacto">Contacto</a>
 
             <hr>
@@ -80,8 +75,6 @@
                 Registrarse
             </a>
         </div>
-
     </nav>
-
 </header>
- 
+<script src="../js/menu.js?v=<?= filemtime(__DIR__ . '/../js/menu.js') ?>"></script>
