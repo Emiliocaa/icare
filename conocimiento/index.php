@@ -1,76 +1,21 @@
 
 <?php
 
+require_once __DIR__ . '/cargador-articulos.php';
+
+$configuracionArticulos = require __DIR__ . '/configuracion-articulos.php';
+
+// ==========================================
+// CONFIGURACIÓN
+// ==========================================
+
 $titulo = 'Conocimiento | Icare Coaching';
-$rutaArticulos = __DIR__ . '/data/articulos.json';
-$articulos = [];
+$tematicas = $configuracionArticulos['tematicas'];
+$articulosPorPagina = $configuracionArticulos['articulosPorPagina'];
+$articulos = ordenarArticulosPorFecha(cargarArticulos());
 
 // ==========================================
-// 1. LEER LOS ARTÍCULOS DEL ARCHIVO JSON
-// ==========================================
-
-if (is_readable($rutaArticulos)) {
-
-    $contenido = file_get_contents($rutaArticulos);
-    try {
-        $datos = json_decode(
-            $contenido,// Contenido del archivo JSON que se va a decodificar a php.
-            true, //Convierte el JSON en un array asociativo
-            512,
-            JSON_THROW_ON_ERROR
-        );
-
-        if (is_array($datos)) {
-            $articulos = $datos;
-        }
-    } catch (JsonException $e) {
-
-        error_log('Error al leer articulos.json: ' . $e->getMessage());
-    }
-}
-
-// ==========================================
-// 2. ORDENAR LOS ARTÍCULOS POR FECHA
-// ==========================================
-
-usort($articulos, function ($a, $b) {
-
-    return strcmp(
-        $b['fecha'] ?? '',
-        $a['fecha'] ?? ''
-    );
-});
-
-// ==========================================
-// 3. DEFINIR LOS CARRUSELES
-// ==========================================
-
-$tematicas = [
-
-    'coaching' => [
-        'titulo' => 'Coaching y desarrollo personal',
-        'descripcion' => 'Herramientas para crecer, aprender y desarrollar todo tu potencial.'
-    ],
-    'liderazgo' => [
-        'titulo' => 'Liderazgo y gestión de equipos',
-        'descripcion' => 'Nuevas perspectivas para liderar personas y organizaciones.'
-    ],
-    'tecnologia' => [
-        'titulo' => 'Tecnología e inteligencia artificial',
-        'descripcion' => 'Innovación, digitalización y nuevas oportunidades para las empresas.'
-    ],
-    'estrategia' => [
-        'titulo' => 'Estrategia y dirección empresarial',
-        'descripcion' => 'Ideas para tomar mejores decisiones y construir empresas competitivas.'
-    ],
-    'mejora' => [
-        'titulo' => 'Mejora continua y optimización',
-        'descripcion' => 'Procesos más eficientes, organizaciones más ágiles y mejores resultados.'
-    ]
-];
-
-// ==========================================
-// 4. AGRUPAR LOS ARTÍCULOS POR TEMÁTICA
+// 1. AGRUPAR LOS ARTÍCULOS POR TEMÁTICA
 // ==========================================
 
 $articulosPorTematica = [];
@@ -83,37 +28,25 @@ foreach ($tematicas as $clave => $tematica) {
 foreach ($articulos as $articulo) {
 
     $clave = $articulo['tematica'] ?? '';
-
+    //Comprueba si hay un elemento con esa clave y si su valor es distinto de null.
     if (isset($articulosPorTematica[$clave])) {
 
         $articulosPorTematica[$clave][] = $articulo;
     }
 }
 
-// ==========================================
-// 5. CONFIGURACIÓN DE LA PAGINACIÓN
-// ==========================================
-
-// Cada punto representa un grupo de cinco artículos.
-
-$articulosPorPagina = 5;
-
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta
         name="description"
         content="Artículos y reflexiones sobre liderazgo, coaching, inteligencia artificial, tecnología y estrategia empresarial."
     >
-
     <title><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?></title>
 
     <!-- CSS GENERAL -->
@@ -150,24 +83,17 @@ $articulosPorPagina = 5;
                 <div class="introduccion-articulos">
 
                     <p class="eyebrow">Conocimiento</p>
-
                     <h1>Ideas que impulsan el cambio.</h1>
-
                     <p class="lead"></p>
                 </div>
             </div>
         </section>
-    </main>
-
-
-    <main>
 
         <!-- ======================================
              CONTENIDO EDITORIAL
         ======================================= -->
 
         <section class="hero seccion-articulos">
-
             <div class="container contenedor-articulos">
 
                 <!-- ======================================
@@ -177,7 +103,6 @@ $articulosPorPagina = 5;
                 <?php foreach ($tematicas as $clave => $tematica): ?>
 
                     <?php
-
                     $listaArticulos = $articulosPorTematica[$clave];
 
                     // Dividir los artículos en grupos de cinco.
@@ -186,11 +111,9 @@ $articulosPorPagina = 5;
                         $listaArticulos,
                         $articulosPorPagina
                     );
-
                     ?>
 
                     <?php if (!empty($listaArticulos)): ?>
-
                         <section
                             class="seccion-carrusel"
                             aria-labelledby="titulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>"
@@ -199,19 +122,14 @@ $articulosPorPagina = 5;
                             <!-- TÍTULO DE LA TEMÁTICA -->
 
                             <div class="cabecera-carrusel">
-
                                 <div class="titulo-carrusel">
-
                                     <h2 id="titulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>">
 
                                         <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>
-
                                     </h2>
-
                                     <p>
 
                                         <?= htmlspecialchars($tematica['descripcion'], ENT_QUOTES, 'UTF-8') ?>
-
                                     </p>
                                 </div>
                             </div>
@@ -228,18 +146,13 @@ $articulosPorPagina = 5;
                                     class="control-flecha control-flecha-izquierda"
                                     aria-label="Retroceder artículos"
                                 >
-
                                     <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
-
                                         <div
                                             class="estado-flechas"
                                             data-indice="<?= $indiceFlecha ?>"
                                         >
-
                                             <?php if ($indiceFlecha > 0): ?>
-
                                                 <?php $indiceDestino = max(0, $indiceFlecha - $articulosPorPagina); ?>
-
                                                 <a
                                                     class="flecha-carrusel"
                                                     href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
@@ -261,11 +174,8 @@ $articulosPorPagina = 5;
                                     tabindex="0"
                                     aria-label="Artículos de <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>"
                                 >
-
                                     <div class="pista-carrusel">
-
                                         <?php foreach ($listaArticulos as $indice => $articulo): ?>
-
                                             <?php
 
                                             $id = $articulo['id'] ?? '';
@@ -282,12 +192,10 @@ $articulosPorPagina = 5;
                                             $idTarjeta = 'articulo-' . $clave . '-' . $indice;
 
                                             ?>
-
                                             <article
                                                 class="tarjeta-articulo"
                                                 id="<?= htmlspecialchars($idTarjeta, ENT_QUOTES, 'UTF-8') ?>"
                                             >
-
                                                 <!-- IMAGEN -->
 
                                                 <a
@@ -295,24 +203,20 @@ $articulosPorPagina = 5;
                                                     class="enlace-imagen"
                                                     aria-label="Leer <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>"
                                                 >
-
                                                     <img
                                                         class="tarjeta-imagen"
                                                         src="<?= htmlspecialchars($imagen, ENT_QUOTES, 'UTF-8') ?>"
                                                         alt="<?= htmlspecialchars($alt, ENT_QUOTES, 'UTF-8') ?>"
                                                         loading="lazy"
                                                     >
-
                                                 </a>
 
                                                 <!-- CONTENIDO -->
 
                                                 <div class="tarjeta-contenido">
-
                                                     <span class="categoria-articulo">
 
                                                         <?= htmlspecialchars($categoria, ENT_QUOTES, 'UTF-8') ?>
-
                                                     </span>
 
                                                     <h3>
@@ -320,31 +224,25 @@ $articulosPorPagina = 5;
                                                         <a href="articulo.php?id=<?= rawurlencode((string) $id) ?>">
 
                                                             <?= htmlspecialchars($tituloArticulo, ENT_QUOTES, 'UTF-8') ?>
-
                                                         </a>
-
                                                     </h3>
 
                                                     <p class="resumen-articulo">
 
                                                         <?= htmlspecialchars($resumen, ENT_QUOTES, 'UTF-8') ?>
-
                                                     </p>
 
                                                     <!-- FECHA Y TIEMPO DE LECTURA -->
 
                                                     <div class="informacion-articulo">
-
                                                         <span>
 
                                                             <?= htmlspecialchars($fecha, ENT_QUOTES, 'UTF-8') ?>
-
                                                         </span>
 
                                                         <span>
 
                                                             <?= htmlspecialchars((string) $tiempoLectura, ENT_QUOTES, 'UTF-8') ?> min lectura
-
                                                         </span>
                                                     </div>
 
@@ -354,13 +252,11 @@ $articulosPorPagina = 5;
                                                         href="articulo.php?id=<?= rawurlencode((string) $id) ?>"
                                                         class="leer-articulo"
                                                     >
-
                                                         Leer artículo
 
                                                         <span aria-hidden="true">
                                                             &rarr;
                                                         </span>
-
                                                     </a>
                                                 </div>
                                             </article>
@@ -374,14 +270,11 @@ $articulosPorPagina = 5;
                                     class="control-flecha control-flecha-derecha"
                                     aria-label="Avanzar artículos"
                                 >
-
                                     <?php foreach ($listaArticulos as $indiceFlecha => $articuloFlecha): ?>
-
                                         <div
                                             class="estado-flechas"
                                             data-indice="<?= $indiceFlecha ?>"
                                         >
-
                                             <?php $indiceDestino = $indiceFlecha + $articulosPorPagina; ?>
 
                                             <?php if ($indiceDestino < count($listaArticulos)): ?>
@@ -394,7 +287,6 @@ $articulosPorPagina = 5;
                                                 >
                                                     &rarr;
                                                 </a>
-
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -406,21 +298,17 @@ $articulosPorPagina = 5;
                             ======================================= -->
 
                             <?php if (count($paginasArticulos) > 1): ?>
-
                                 <nav
                                     class="indicadores-carrusel"
                                     aria-label="Páginas de artículos de <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>"
                                 >
-
                                     <?php foreach ($paginasArticulos as $numeroPagina => $grupoArticulos): ?>
-
                                         <?php
 
                                         // El primer artículo de cada grupo
                                         // será el destino del indicador.
 
                                         $primerArticulo = $numeroPagina * $articulosPorPagina;
-
                                         $idDestino = 'articulo-' . $clave . '-' . $primerArticulo;
 
                                         ?>
@@ -432,7 +320,6 @@ $articulosPorPagina = 5;
                                             aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
                                             title="Grupo <?= $numeroPagina + 1 ?>"
                                         ></a>
-
                                     <?php endforeach; ?>
                                 </nav>
                             <?php endif; ?>

@@ -198,7 +198,8 @@ $anioActual = date('Y');
                         <div class="field"><label for="empresa">Nombre de la empresa</label><input id="empresa" name="empresa" autocomplete="organization" maxlength="200"></div>
                         <div class="field"><label for="cargo">Cargo</label><input id="cargo" name="cargo" autocomplete="organization-title" maxlength="150"></div>
                         <div class="field"><label for="servicio">Servicio de Interés *</label><select id="servicio" name="servicio" required>
-                                <option value="">Selecciona un servicio</option>Coaching</option>
+                                <option value="">Selecciona un servicio</option>
+                                <option>Coaching</option>
                                 <option>Formación</option>
                                 <option>Datos</option>
                                 <option>IA</option>
@@ -255,6 +256,5 @@ $anioActual = date('Y');
             window.location.href = 'mailto:ecarolas@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         });
     </script>
-    <script src="js/menu.js"></script>
 </body>
 </html>

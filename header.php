@@ -1,21 +1,31 @@
+<?php
+
+$basePath = $basePath ?? '';
+$paginaActiva = $paginaActiva ?? '';
+
+?>
 <header class="cabecera">
     <nav class="contenedor navegacion" aria-label="Menú principal">
-        <a href="index.php" class="logo">
+        <a href="<?= $basePath ?>index.php" class="logo">
              icare coaching 
         </a>
 
         <div class="enlaces">
-            <a href="index.php#enfoque">Mi enfoque</a>
-            <a href="index.php#servicios">Servicios</a>
-            <a href="index.php#experiencia">Trayectoria</a>
-            <a href="conocimiento/index.php">Conocimiento</a>
-            <a href="index.php#contacto">Contacto</a>
+            <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
+            <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
+            <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
+            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo"' : '' ?>>Conocimiento</a>
+            <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
 
-            <a href="login.php" class="boton boton-secundario">
+            <?php if ($paginaActiva === 'conocimiento'): ?>
+                <hr>
+            <?php endif; ?>
+
+            <a href="<?= $basePath ?>login.php" class="boton boton-secundario">
                 Iniciar sesión
             </a>
 
-            <a href="registro.php" class="boton boton-principal">
+            <a href="<?= $basePath ?>registro.php" class="boton boton-principal">
                 Registrarse
             </a>
         </div>
@@ -54,26 +64,27 @@
                 &times;
             </button>
 
-            <a href="index.php" class="logoMenuLateral" style="text-decoration: none;">
+            <a href="<?= $basePath ?>index.php" class="logoMenuLateral" style="text-decoration: none;">
              icare coaching 
             </a>
             
-            <a href="index.php#enfoque">Mi enfoque</a>
-            <a href="index.php#servicios">Servicios</a>
-            <a href="index.php#experiencia">Trayectoria</a>
-            <a href="conocimiento/index.php">Conocimiento</a>
-            <a href="index.php#contacto">Contacto</a>
+            <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
+            <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
+            <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
+            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo"' : '' ?>>Conocimiento</a>
+            <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
 
             <hr>
 
-            <a href="login.php" class="boton boton-secundario">
+            <a href="<?= $basePath ?>login.php" class="boton boton-secundario">
                 Iniciar sesión
             </a>
 
-            <a href="registro.php" class="boton boton-principal">
+            <a href="<?= $basePath ?>registro.php" class="boton boton-principal">
                 Registrarse
             </a>
 
         </div>
     </nav>
 </header>
+<script src="<?= $basePath ?>js/menu.js?v=<?= filemtime(__DIR__ . '/js/menu.js') ?>"></script>

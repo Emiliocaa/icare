@@ -8,40 +8,14 @@
 header('Content-Type: text/css; charset=UTF-8');
 header('Cache-Control: no-cache, no-store, must-revalidate');
 
-$rutaArticulos = __DIR__ . '/data/articulos.json';
-$articulos = [];
+require_once __DIR__ . '/cargador-articulos.php';
 
-if (is_readable($rutaArticulos)) {
-    $contenido = file_get_contents($rutaArticulos);
+$configuracionArticulos = require __DIR__ . '/configuracion-articulos.php';
+$tematicas = $configuracionArticulos['tematicas'];
+$articulosPorPagina = $configuracionArticulos['articulosPorPagina'];
+$articulos = ordenarArticulosPorFecha(cargarArticulos());
 
-    try {
-        $datos = json_decode($contenido, true, 512, JSON_THROW_ON_ERROR);
-        if (is_array($datos)) {
-            $articulos = $datos;
-        }
-    } catch (JsonException $e) {
-        error_log('Error al generar estados de carrusel: ' . $e->getMessage());
-    }
-}
-
-// Mantener exactamente el mismo orden por fecha que utiliza index.php.
-usort($articulos, function ($a, $b) {
-    return strcmp(
-        $b['fecha'] ?? '',
-        $a['fecha'] ?? ''
-    );
-});
-
-// Estas claves deben coincidir con las temáticas de conocimiento/index.php.
-$clavesTematicas = [
-    'coaching',
-    'liderazgo',
-    'tecnologia',
-    'estrategia',
-    'mejora'
-];
-
-foreach ($clavesTematicas as $clave) {
+foreach ($tematicas as $clave => $tematica) {
     $listaArticulos = [];
 
     foreach ($articulos as $articulo) {
@@ -52,7 +26,7 @@ foreach ($clavesTematicas as $clave) {
 
     foreach ($listaArticulos as $indice => $articulo) {
         $idTarjeta = 'articulo-' . $clave . '-' . $indice;
-        $pagina = intdiv($indice, 5);
+        $pagina = intdiv($indice, $articulosPorPagina);
 
         echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
         echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";

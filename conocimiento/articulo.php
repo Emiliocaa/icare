@@ -1,13 +1,14 @@
 
 <?php
 
+require_once __DIR__ . '/cargador-articulos.php';
+
 // ==========================================
 // CONFIGURACIÓN
 // ==========================================
 
-$tituloWeb = 'Icare Coaching | Artículo';
-$rutaArticulos = __DIR__ . '/data/articulos.json';
-$articulos = [];
+$tituloWeb = 'Articulo | Icare Coaching ';
+$articulos = cargarArticulos();
 $articulo = null;
 $articulosRelacionados = [];
 $idSolicitado = $_GET['id'] ?? '';
@@ -16,7 +17,8 @@ $idSolicitado = $_GET['id'] ?? '';
 // ==========================================
 // FUNCIÓN DE SEGURIDAD
 // ==========================================
-
+//$esc es un atajo reutilizable para mostrar los datos de tus 
+//artículos como texto HTML, sin repetir htmlspecialchars() en cada línea.
 $esc = function ($valor) {
     return htmlspecialchars(
         (string) $valor,
@@ -24,29 +26,6 @@ $esc = function ($valor) {
         'UTF-8'
     );
 };
-
-// ==========================================
-// CARGAR ARTÍCULOS JSON
-// ==========================================
-
-if (file_exists($rutaArticulos)) {
-
-    try {
-
-        $contenidoJson = file_get_contents($rutaArticulos);
-
-        $articulos = json_decode(
-            $contenidoJson,
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
-
-    } catch (JsonException $e) {
-
-        $articulos = [];
-    }
-}
 
 // ==========================================
 // BUSCAR ARTÍCULO SOLICITADO
@@ -308,7 +287,6 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                         href="../index.php"
                         class="enlace-inicio"
                     >
-
                         Página principal
                     </a>
                 </nav>
@@ -338,7 +316,6 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                         href="articulo.php?id=<?= urlencode($relacionado['id']) ?>"
                                         class="imagen-relacionada"
                                     >
-
                                         <img
                                             src="<?= $esc($relacionado['imagen'] ?? '') ?>"
                                             alt="<?= $esc($relacionado['alt'] ?? '') ?>"
@@ -352,7 +329,6 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                         </span>
 
                                         <h3>
-
                                             <a href="articulo.php?id=<?= urlencode($relacionado['id']) ?>">
 
                                                 <?= $esc($relacionado['titulo'] ?? '') ?>
@@ -368,9 +344,7 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                             href="articulo.php?id=<?= urlencode($relacionado['id']) ?>"
                                             class="leer-relacionado"
                                         >
-
                                             Leer artículo →
-
                                         </a>
                                     </div>
                                 </article>
@@ -399,9 +373,7 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                         href="index.php"
                         class="boton-volver"
                     >
-
                         Volver a Conocimiento
-
                     </a>
                 </section>
             <?php endif; ?>
