@@ -29,3 +29,20 @@ CREATE TABLE IF NOT EXISTS tasks(
 )  ENGINE=InnoDB
 
 DEFAULT COLLATE=utf8mb4_unicode_ci CHARSET=utf8mb4;
+
+-- El id numerico identifica la fila; id_texto conserva el id actual de articulos.json
+-- Para mantener el contrato actual, las consultas pueden exponerlo como id_texto AS id.
+CREATE TABLE IF NOT EXISTS articulo(
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_texto VARCHAR(100) NOT NULL UNIQUE,
+    tematica VARCHAR(50) NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    resumen TEXT NOT NULL,
+    categoria VARCHAR(100) NOT NULL,
+    fecha DATE NOT NULL,
+    tiempo_lectura SMALLINT UNSIGNED NOT NULL,
+    imagen VARCHAR(500) NOT NULL,
+    alt VARCHAR(500) NOT NULL,
+    contenido JSON NOT NULL
+) ENGINE=InnoDB
+DEFAULT COLLATE=utf8mb4_unicode_ci CHARSET=utf8mb4;

@@ -4,6 +4,7 @@
 
 :root {
     --fondo: #faf9f5;
+    --naranja: rgb(255, 165, 0);
     --superficie: #ffffff;
     --verde: #225e50;
     --verde-oscuro: #348f75;
@@ -14,11 +15,13 @@
     --borde-input: #aebfb6;
 
     --texto-blanco: #fff;
+    --texto-naranja:rgb(255, 165, 0);
     --texto-contraste: #222;
     --color-foco: #b9d7c8;
     --color-hero: #dbe9df;
 
     --ancho-contenido: 71.25rem;
+    --ancho-menu-lateral: min(17.5rem, 85vw);
     --duracion: 180ms;
     --curva: cubic-bezier(0.2, 0, 0, 1);
 
@@ -339,7 +342,7 @@ html.menu-abierto {
     position: fixed;
     top: 0;
     left: 0;
-    width: min(17.5rem, 85vw);
+    width: var(--ancho-menu-lateral);
     max-width: 85%;
     height: 100vh;
     height: 100dvh;
@@ -1135,6 +1138,13 @@ footer a {
 
     .logo {
         margin-left: -3.125rem;
+        transition: transform var(--duracion) var(--curva);
+    }
+
+    html.menu-abierto .navegacion > .logo {
+        position: relative;
+        z-index: 1002;
+        transform: translateX(calc(var(--ancho-menu-lateral) - 2rem));
     }
 
     .boton-menu {
