@@ -6,7 +6,7 @@ Sitio web de Icare Coaching, S. L., centrado en coaching, liderazgo, desarrollo 
 
 Presentar los servicios y la trayectoria de Icare Coaching, facilitar el contacto y publicar artículos sobre coaching, liderazgo, estrategia, mejora continua e inteligencia artificial.
 
-La página de contacto prepara un correo mediante `mailto:` para que el visitante lo revise y lo envíe desde su propia aplicación. No envía los datos a un servidor.
+La página de contacto abre Gmail con un borrador para que el visitante lo revise y lo envíe desde allí. Es necesario iniciar sesión en Google; el sitio no envía los datos a un servidor.
 
 ## Estado actual
 
@@ -129,3 +129,15 @@ También conviene abrir las páginas principal y de Conocimiento en el navegador
 ## Mantenimiento de este README
 
 Actualiza este documento cuando cambien el stack, los requisitos, los pasos para ejecutar el sitio, el esquema de los artículos o la estructura principal de carpetas. Mantén el estado de las funciones y las páginas reservadas acorde con lo que realmente esté implementado.
+
+## ERRORES VS FUNCIONALIDADES PENDIENTES POR CORREGIR
+
+1.SUBMIT FUNCIONA PERO HAY QUE VERIFICAR EL CODIGO YA  QUE REDIRIGE A GMAIL???? VER SI ES ADECUADO
+2.ENLACE EN FORM , MISMA PROBLEMATICA QUE PUNTO 1
+3.EN SQL VER EL CAMPO CONTENIDO COMO SE ESTRUCTURA ANTES DE CARGAR EN MYSQL
+4.PENDIENTE DE DAR CONTENIDO A LOGIN
+5.PENDIENTE DE DAR CONTENIDO A REGISTRARSE
+6.EL JSON DE ARTICULOS , PODRIA SERVIR COMO FICHERO ENLACE CON LA BASE DE DATOS,...TIPO API????
+7.MONTAR SISTEMA DE SEGURIDAD HAKERS
+8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR
+

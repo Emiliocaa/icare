@@ -158,9 +158,7 @@ foreach ($articulos as $articulo) {
                                                     href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
                                                     aria-label="Grupo anterior de artículos"
                                                     title="Grupo anterior de artículos"
-                                                >
-                                                    &larr;
-                                                </a>
+                                                ></a>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -284,9 +282,7 @@ foreach ($articulos as $articulo) {
                                                     href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
                                                     aria-label="Grupo siguiente de artículos"
                                                     title="Grupo siguiente de artículos"
-                                                >
-                                                    &rarr;
-                                                </a>
+                                                ></a>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>

@@ -181,9 +181,26 @@ $anioActual = date('Y');
                     <h2>¿Hablamos de impulsar tus equipos y digitalizar tu negocio?</h2>
                     <p>Cuéntame qué necesitas y preparemos una sesión diagnóstica estratégica.</p>
                     <div class="contact-links">
-                        <div><strong>Email</strong><br><a href="mailto:ecarolas@gmail.com">ecarolas@gmail.com</a></div>
-                        <div><strong>Ubicación</strong><br>Valencia, España<br>Modalidad presencial y online</div>
-                        <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/emilio-casa%C3%B1-arolas-81502ab7" target="_blank" rel="noopener noreferrer">Emilio Casañ Arolas ↗</a></div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="m3 7 9 6 9-6"></path>
+                            </svg>
+                            <div><strong>Email</strong><br><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">ecarolas@gmail.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="2.5"></circle>
+                            </svg>
+                            <div><strong>Ubicación</strong><br>Valencia, España<br>Modalidad presencial y online</div>
+                        </div>
+                        <div class="contact-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <text x="2" y="20" fill="currentColor" font-family="Arial, sans-serif" font-size="21" font-weight="700">in</text>
+                            </svg>
+                            <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/emilio-casa%C3%B1-arolas-81502ab7" target="_blank" rel="noopener noreferrer">Emilio Casañ Arolas ↗</a></div>
+                        </div>
                     </div>
                 </div>
                 <form id="contact-form">
@@ -207,9 +224,18 @@ $anioActual = date('Y');
                         <div class="field full"><label for="telefono">Teléfono de contacto</label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="40"></div>
                         <div class="field full"><label for="mensaje">Mensaje *</label><textarea id="mensaje" name="mensaje" rows="5" required maxlength="4000"></textarea></div>
                     </div>
-                    <p class="note">Este formulario abrirá tu aplicación de correo con los datos introducidos. Revisa el mensaje y envíalo desde allí. No se envía automáticamente.</p><button class="button" type="submit">Preparar correo de contacto</button>
-                    <p class="note" id="form-status" role="status"></p><noscript>
-                    <p>Para contactar, escribe directamente a <a href="mailto:ecarolas@gmail.com">ecarolas@gmail.com</a>.</p>
+                    <p class="note">Este formulario abrirá Gmail con un borrador del mensaje. Inicia sesión si te lo solicita, revísalo y envíalo desde allí. No se envía automáticamente.</p>
+                    <button class="button" type="submit">Preparar correo de contacto</button>
+                    <p class="note" id="form-status" role="status"></p>
+                    <p id="correo-alternativo" hidden>
+                        <a id="abrir-correo" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">Abrir el correo preparado en Gmail</a>
+                    </p>
+                    <p class="note">
+                        También puedes escribir directamente a
+                        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">ecarolas@gmail.com</a>.
+                    </p>
+                    <noscript>
+                        <p>JavaScript está desactivado. Utiliza el enlace de correo anterior para contactar.</p>
                     </noscript>
                 </form>
             </div>
@@ -220,41 +246,70 @@ $anioActual = date('Y');
             <div><a href="#inicio">Volver al inicio</a><a href="login.php">Área privada</a></div>
         </div>
     </footer>
-        <script>
-        /* Prepara un correo; el usuario realiza el envío desde su aplicación. */
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+    <script>
+            const formulario = document.getElementById('contact-form');
+            const estado = document.getElementById('form-status');
+            const alternativa = document.getElementById('correo-alternativo');
+            const enlaceCorreo = document.getElementById('abrir-correo');
 
-            /* Comprueba las reglas de validación del formulario. */
-            if (!this.reportValidity()) return;
+            if (formulario && estado && alternativa && enlaceCorreo) {
+                formulario.addEventListener('submit', function(event) {
+                    // Impide el envío normal del formulario.
+                    event.preventDefault();
 
-            /* Recoge los valores de los campos mediante su atributo name. */
-            const data = new FormData(this);
+                    // Comprueba los campos y muestra los errores de validación.
+                    if (!this.reportValidity()) return;
 
-            /* Define el orden y las etiquetas de los datos del mensaje. */
-            const fields = [
-                ['nombre', 'Nombre y Apellidos'],
-                ['email', 'Correo electrónico'],
-                ['perfil', 'Empresa / Particular'],
-                ['empresa', 'Empresa'],
-                ['cargo', 'Cargo'],
-                ['servicio', 'Servicio de Interés'],
-                ['telefono', 'Teléfono de contacto'],
-                ['mensaje', 'Mensaje']
-            ];
+                    // Recoge los datos mediante los atributos name del formulario.
+                    const data = new FormData(this);
 
-            /* Construye el mensaje y elimina espacios al inicio y al final de cada valor. */
-            const body = fields.map(([key, label]) => label + ': ' + String(data.get(key) ?? '').trim()).join('\r\n');
+                    // Define las etiquetas y el orden de los datos del mensaje.
+                    const fields = [
+                        ['nombre', 'Nombre y Apellidos'],
+                        ['email', 'Correo electrónico'],
+                        ['perfil', 'Empresa / Particular'],
+                        ['empresa', 'Empresa'],
+                        ['cargo', 'Cargo'],
+                        ['servicio', 'Servicio de Interés'],
+                        ['telefono', 'Teléfono de contacto'],
+                        ['mensaje', 'Mensaje']
+                    ];
 
-            /* Utiliza un asunto alternativo si el servicio está vacío o no existe. */
-            const subject = 'Sesión Diagnóstica Estratégica - ' + (String(data.get('servicio') ?? '').trim() || 'Consulta general');
+                    // Construye el cuerpo del correo.
+                    const body = fields
+                        .map(([key, label]) =>
+                            label + ': ' + String(data.get(key) ?? '').trim()
+                        )
+                        .join('\r\n');
 
-            /* Muestra el aviso antes de intentar abrir la aplicación de correo. */
-            document.getElementById('form-status').textContent = 'Se intentará abrir tu aplicación de correo. Revisa el mensaje y pulsa Enviar. Si no se abre, escribe a ecarolas@gmail.com.';
+                    // Prepara el asunto con un valor alternativo.
+                    const servicio =
+                        String(data.get('servicio') ?? '').trim() || 'Consulta general';
 
-            /* Prepara el destinatario, el asunto y el cuerpo del correo. */
-            window.location.href = 'mailto:ecarolas@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-        });
-    </script>
+                    const subject = 'Sesión Diagnóstica Estratégica - ' + servicio;
+
+                    // Codifica el asunto y el mensaje para incluirlos en la dirección.
+                    const gmailUrl =
+                        'https://mail.google.com/mail/?view=cm&fs=1&to=ecarolas%40gmail.com&su=' +
+                        encodeURIComponent(subject) +
+                        '&body=' +
+                        encodeURIComponent(body);
+
+                    // Habilita una alternativa para abrir manualmente el borrador en Gmail.
+                    enlaceCorreo.href = gmailUrl;
+                    alternativa.hidden = false;
+
+                    // Informa sin afirmar que el mensaje se haya enviado.
+                    estado.textContent =
+                        'Se ha preparado el correo. Si Gmail no se abre, ' +
+                        'pulsa «Abrir el correo preparado en Gmail». ' +
+                        'Revisa el borrador y envíalo desde Gmail. ' +
+                        'Todavía no se ha enviado.';
+
+                    // Abre Gmail directamente, sin depender de un gestor mailto del sistema.
+                    window.location.assign(gmailUrl);
+                });
+            }
+     </script>
 </body>
 </html>

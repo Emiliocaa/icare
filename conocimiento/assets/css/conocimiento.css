@@ -134,6 +134,14 @@
     box-shadow: 0 0.5rem 1.25rem rgba(23, 50, 47, 0.35);
 }
 
+.control-flecha-izquierda .flecha-carrusel::before {
+    content: "<";
+}
+
+.control-flecha-derecha .flecha-carrusel::before {
+    content: ">";
+}
+
 .flecha-carrusel:focus-visible {
     outline: 0.1875rem solid var(--verde);
     outline-offset: 0.2rem;

@@ -509,7 +509,7 @@ html.menu-abierto {
     padding: 2.8rem 0 1.125rem;
     background: radial-gradient(ellipse at top right,
             var(--color-hero),
-            transparent 60%);
+            transparent 70%);
 }
 
 .hero h1 {
@@ -518,7 +518,7 @@ html.menu-abierto {
 }
 
 .hero h1:hover {
-    transform: translateY(-0.3em);
+    transform: translateY(-0.3em) translateX(0.3em);
 }
 
 .lead {
@@ -558,6 +558,32 @@ html.menu-abierto {
 
 section.section {
     padding: 1.2rem 0;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        translate: 0 1rem;
+        scale: 0.7s;
+    }
+
+    to {
+        opacity: 1;
+        translate: 0;
+        scale: 1;
+    }
+}
+
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        #enfoque .card,
+        #servicios .card,
+        #experiencia .card {
+            animation: fade-in linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 45%;
+        }
+    }
 }
 
 .section .container h2:hover {
@@ -793,6 +819,20 @@ summary, ol {
     overflow-wrap: anywhere;
 }
 
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--espacio-3);
+}
+
+.contact-icon {
+    flex: 0 0 1.25rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.2rem;
+    color: var(--verde);
+}
+
 .contact-links a {
     color: var(--verde);
     text-underline-offset: 0.1875rem;
@@ -965,6 +1005,10 @@ summary, ol {
 }
 
 .formulario-tarjeta [hidden] {
+    display: none !important;
+}
+
+#correo-alternativo[hidden] {
     display: none !important;
 }
 
