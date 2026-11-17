@@ -114,6 +114,34 @@ Las imágenes deben guardarse en `conocimiento/assets/img/articulos/` y sus ruta
 
 El número de artículos por página se configura en `conocimiento/configuracion-articulos.php`. Las temáticas y ese valor son compartidos por el índice y los estilos dinámicos del carrusel.
 
+## Construcción SEO
+
+El SEO se trabaja desde la estructura y el contenido de cada página, sin repetir palabras clave artificialmente:
+
+- Cada página pública debe tener un título y una descripción propios; los artículos toman ambos datos de `titulo` y `resumen` en `conocimiento/data/articulos.json`.
+- Se utiliza `lang="es"`, un encabezado principal por página y una jerarquía ordenada de encabezados.
+- Los enlaces a artículos son HTML navegable, sus identificadores se mantienen estables y las imágenes editoriales deben llevar textos `alt` descriptivos.
+- La fecha de cada artículo se marca con `<time datetime="YYYY-MM-DD">`. Una URL de artículo inexistente devuelve HTTP 404 y `noindex`.
+- El índice de Conocimiento debe ofrecer una introducción visible y descriptiva, además de enlazar a los artículos por temática.
+
+Antes de publicar, hay que configurar el dominio HTTPS definitivo. Con ese dato se podrán añadir etiquetas `canonical` y metadatos de redes sociales con URLs absolutas, y generar `sitemap.xml` y `robots.txt` coherentes con las páginas públicas. Después conviene verificar las URLs y el sitemap en Google Search Console y Bing Webmaster Tools. No se deben generar URLs canónicas con `localhost` ni indexar las páginas de desarrollo.
+
+Al crear artículos nuevos, redacta títulos y resúmenes únicos y claros, conserva el `id` textual usado en la URL, usa fechas ISO (`YYYY-MM-DD`) y describe la función de cada imagen en su texto `alt`.
+
+## Accesibilidad
+
+La implementación se revisa con el objetivo de acercarse a WCAG 2.2 nivel AA; estas comprobaciones no constituyen una certificación de conformidad.
+
+- Las páginas públicas declaran el idioma, usan regiones semánticas y una jerarquía de encabezados; las páginas principales incluyen un enlace para saltar al contenido.
+- Los campos del formulario tienen etiquetas asociadas, validación nativa, una explicación de los campos obligatorios y una región de estado.
+- El menú móvil y los controles del carrusel tienen nombres accesibles; los indicadores del carrusel anuncian la página actual y tienen un área táctil de al menos 24 × 24 píxeles.
+- Los elementos interactivos muestran foco de teclado. Los enlaces que abren una pestaña nueva lo indican en su nombre accesible.
+- La paleta de enlaces, metadatos y foco se ha ajustado para mejorar el contraste. Las animaciones respetan `prefers-reduced-motion`.
+
+La revisión actual incluyó comprobaciones DOM en la portada, el índice de Conocimiento y un artículo: un `h1` por página, imágenes con atributo `alt`, controles etiquetados, botones con nombre y ausencia de IDs duplicados. También se midieron combinaciones de color usadas en texto y foco. No hay un escáner automatizado como axe-core integrado en el proyecto.
+
+Se comprobó por teclado el menú móvil: apertura, recorrido circular con Tab y Mayús+Tab, cierre con Escape y restauración del foco. Antes de publicar, completar las pruebas de teclado del carrusel y de los errores del formulario, y probar con lector de pantalla, zoom/reflujo y dispositivos táctiles reales. Las páginas reservadas de inicio de sesión y registro no están implementadas; deben diseñarse y probarse accesiblemente antes de habilitarlas.
+
 ## Validación básica
 
 No hay un runner de pruebas configurado. Tras modificar PHP, se puede comprobar su sintaxis desde PowerShell con:

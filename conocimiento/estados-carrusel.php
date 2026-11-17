@@ -32,8 +32,8 @@ foreach ($tematicas as $clave => $tematica) {
         echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
         echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
-        echo ".punto-carrusel[data-pagina=\"{$pagina}\"] {\n";
-        echo "    background: var(--verde-oscuro);\n";
+        echo ".punto-carrusel[data-pagina=\"{$pagina}\"]::before {\n";
+        echo "    background: var(--verde);\n";
         echo "    transform: scale(1.3);\n";
         echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
         echo "}\n";
@@ -44,8 +44,8 @@ foreach ($tematicas as $clave => $tematica) {
     echo ".estado-flechas[data-indice=\"0\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
     echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
-    echo ".punto-carrusel[data-pagina=\"0\"] {\n";
-    echo "    background: var(--verde-oscuro);\n";
+    echo ".punto-carrusel[data-pagina=\"0\"]::before {\n";
+    echo "    background: var(--verde);\n";
     echo "    transform: scale(1.3);\n";
     echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
     echo "}\n";

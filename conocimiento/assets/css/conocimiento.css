@@ -326,19 +326,29 @@
 }
 
 .punto-carrusel {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.punto-carrusel::before {
+    content: "";
     display: block;
     width: 0.5625rem;
     height: 0.5625rem;
-    flex-shrink: 0;
     border-radius: 50%;
-    background: var(--borde);
+    background: var(--texto-secundario);
     transition:
         background-color var(--duracion) var(--curva),
         transform var(--duracion) var(--curva),
         box-shadow var(--duracion) var(--curva);
 }
 
-.punto-carrusel:hover {
+.punto-carrusel:hover::before {
     transform: scale(1.35);
     background: var(--verde-oscuro);
 }
@@ -348,7 +358,7 @@
     outline-offset: 0.3125rem;
 }
 
-.punto-carrusel:active {
+.punto-carrusel:active::before {
     transform: scale(1.2);
     background: var(--verde);
 }

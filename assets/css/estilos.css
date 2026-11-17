@@ -7,7 +7,7 @@
     --naranja: rgb(255, 165, 0);
     --superficie: #ffffff;
     --verde: #225e50;
-    --verde-oscuro: #348f75;
+    --verde-oscuro: #276b56;
     --verde-suave: #e4eee8;
     --texto: #17322f;
     --texto-secundario: #536862;
@@ -18,7 +18,7 @@
     --texto-naranja:rgb(255, 165, 0);
     --texto-contraste: #222;
     --color-foco: #b9d7c8;
-    --color-hero: #dbe9df;
+    --color-hero: #e2efe5;
 
     --ancho-contenido: 71.25rem;
     --ancho-menu-lateral: min(17.5rem, 85vw);
@@ -240,7 +240,7 @@ h4 {
 }
 
 a:focus-visible,
-boton:focus-visible,
+.boton:focus-visible,
 button:focus-visible {
     outline: 0.1875rem solid var(--verde);
     outline-offset: var(--espacio-1);
@@ -509,7 +509,7 @@ html.menu-abierto {
     padding: 2.8rem 0 1.125rem;
     background: radial-gradient(ellipse at top right,
             var(--color-hero),
-            transparent 70%);
+            transparent 50%);
 }
 
 .hero h1 {
@@ -562,9 +562,9 @@ section.section {
 
 @keyframes fade-in {
     from {
-        opacity: 0;
+        opacity: 0.2;
         translate: 0 1rem;
-        scale: 0.7s;
+        scale: 0.3s;
     }
 
     to {
@@ -616,7 +616,7 @@ section.section {
     min-width: 0;
     padding: 1.75rem;
     border: 1px solid var(--borde);
-    box-shadow: 0.3125rem 0.3125rem 0.9375rem rgba(0, 0, 0, 0.20);
+    box-shadow: 0.3125rem 0.3125rem 1.1375rem rgba(0, 0, 0, 0.30);
     transition: all 0.3s ease;
     border-radius: 1.125rem;
     background: var(--superficie);
@@ -892,7 +892,7 @@ summary, ol {
 .field select:focus,
 .field textarea:focus {
     border-color: var(--verde);
-    outline: 0.1875rem solid var(--color-foco);
+    outline: 0.1875rem solid var(--verde);
     outline-offset: 0.125rem;
 }
 
@@ -970,7 +970,7 @@ summary, ol {
 .formulario-tarjeta .campo select:focus,
 .formulario-tarjeta .campo textarea:focus {
     border-color: var(--verde);
-    outline: 0.1875rem solid var(--color-foco);
+    outline: 0.1875rem solid var(--verde);
     outline-offset: 0.125rem;
 }
 
@@ -1061,6 +1061,8 @@ footer a {
     left: 0.625rem;
     z-index: 20;
     padding: 0.625rem;
+    outline: 0.1875rem solid var(--verde);
+    outline-offset: 0.125rem;
     background: var(--superficie);
     transform: none;
 }

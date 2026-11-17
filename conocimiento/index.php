@@ -9,7 +9,7 @@ $configuracionArticulos = require __DIR__ . '/configuracion-articulos.php';
 // CONFIGURACIÓN
 // ==========================================
 
-$titulo = 'Conocimiento | Icare Coaching';
+$titulo = 'Artículos sobre liderazgo, coaching e innovación | Icare Coaching';
 $tematicas = $configuracionArticulos['tematicas'];
 $articulosPorPagina = $configuracionArticulos['articulosPorPagina'];
 $articulos = ordenarArticulosPorFecha(cargarArticulos());
@@ -45,7 +45,7 @@ foreach ($articulos as $articulo) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
         name="description"
-        content="Artículos y reflexiones sobre liderazgo, coaching, inteligencia artificial, tecnología y estrategia empresarial."
+        content="Artículos sobre coaching, liderazgo, estrategia, tecnología e inteligencia artificial para mejorar equipos y organizaciones."
     >
     <title><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?></title>
 
@@ -69,6 +69,8 @@ foreach ($articulos as $articulo) {
 
 <body>
 
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
     <!-- ======================================
          CABECERA Y NAVEGACIÓN
     ======================================= -->
@@ -84,7 +86,7 @@ foreach ($articulos as $articulo) {
 
                     <p class="eyebrow">Conocimiento</p>
                     <h1>Ideas que impulsan el cambio.</h1>
-                    <p class="lead"></p>
+                    <p class="lead">Artículos sobre coaching, liderazgo, estrategia, mejora continua, tecnología e inteligencia artificial para impulsar equipos y organizaciones.</p>
                 </div>
             </div>
         </section>
@@ -315,6 +317,7 @@ foreach ($articulos as $articulo) {
                                             href="#<?= htmlspecialchars($idDestino, ENT_QUOTES, 'UTF-8') ?>"
                                             aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
                                             title="Grupo <?= $numeroPagina + 1 ?>"
+                                            <?= $numeroPagina === 0 ? 'aria-current="page"' : '' ?>
                                         ></a>
                                     <?php endforeach; ?>
                                 </nav>
@@ -325,5 +328,29 @@ foreach ($articulos as $articulo) {
             </div>
         </section>
     </main>
+    <script>
+        const seccionesCarrusel = document.querySelectorAll('.seccion-carrusel');
+
+        function actualizarIndicadoresCarrusel() {
+            seccionesCarrusel.forEach(seccion => {
+                const articuloActual = seccion.querySelector('.tarjeta-articulo:target');
+                const indiceActual = articuloActual
+                    ? Number(articuloActual.id.split('-').pop())
+                    : 0;
+                const paginaActual = Math.floor(indiceActual / <?= (int) $articulosPorPagina ?>);
+
+                seccion.querySelectorAll('.punto-carrusel').forEach(punto => {
+                    if (Number(punto.dataset.pagina) === paginaActual) {
+                        punto.setAttribute('aria-current', 'page');
+                    } else {
+                        punto.removeAttribute('aria-current');
+                    }
+                });
+            });
+        }
+
+        window.addEventListener('hashchange', actualizarIndicadoresCarrusel);
+        actualizarIndicadoresCarrusel();
+    </script>
 </body>
 </html>

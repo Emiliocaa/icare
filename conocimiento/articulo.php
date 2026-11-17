@@ -81,7 +81,7 @@ if ($articulo) {
 // ==========================================
 
 $tituloArticulo = $articulo['titulo'] ?? 'Artículo no encontrado';
-$resumen = $articulo['resumen'] ?? '';
+$resumen = $articulo['resumen'] ?? 'El artículo solicitado no está disponible.';
 $categoria = $articulo['categoria'] ?? '';
 $fecha = $articulo['fecha'] ?? '';
 $tiempoLectura = $articulo['tiempo_lectura'] ?? '';
@@ -106,6 +106,9 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
         name="description"
         content="<?= $esc($resumen) ?>"
     >
+    <?php if (!$articulo): ?>
+        <meta name="robots" content="noindex, nofollow">
+    <?php endif; ?>
     <link
         rel="stylesheet"
         href="../assets/css/estilos.css"
@@ -121,9 +124,10 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
 </head>
 
 <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
     <?php include __DIR__ . '/header.php'; ?>
 
-    <main class="pagina-articulo">
+    <main class="pagina-articulo" id="contenido">
         <div class="contenedor-articulo">
             <?php if ($articulo): ?>
                 <div class="tarjeta-lectura">
@@ -145,11 +149,7 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
 
                         <div class="datos-articulo">
                             <?php if ($fecha !== ''): ?>
-                                <span>
-
-                                    <?= $esc($fecha) ?>
-
-                                </span>
+                                <time datetime="<?= $esc($fecha) ?>"><?= $esc($fecha) ?></time>
                             <?php endif; ?>
 
                             <?php if ($fecha !== '' && $tiempoLectura !== ''): ?>

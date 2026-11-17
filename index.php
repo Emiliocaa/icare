@@ -8,9 +8,10 @@ $anioActual = date('Y');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Coaching ejecutivo, motivación de equipos, consultoría de datos e Inteligencia Artificial con Emilio Casañ Arolas. Valencia y online.">
-    <title><?= htmlspecialchars($nombreApp, ENT_QUOTES, 'UTF-8') ?> | Personas, liderazgo y datos </title>
+    <meta name="description" content="Coaching ejecutivo, liderazgo y motivación de equipos, consultoría de datos e inteligencia artificial para empresas y profesionales en Valencia y online.">
+    <title>Coaching ejecutivo y consultoría en Valencia | Icare Coaching</title>
     <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
+    <meta name="keywords" content="liderazgo, personas, mejora continua, finanzas, estrategia, ia, productividad,">
     
 </head>
 
@@ -186,7 +187,7 @@ $anioActual = date('Y');
                                 <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                                 <path d="m3 7 9 6 9-6"></path>
                             </svg>
-                            <div><strong>Email</strong><br><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">ecarolas@gmail.com</a></div>
+                            <div><strong>Email</strong><br><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Escribir a ecarolas@gmail.com en Gmail (se abre en una pestaña nueva)">ecarolas@gmail.com</a></div>
                         </div>
                         <div class="contact-item">
                             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -199,11 +200,12 @@ $anioActual = date('Y');
                             <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <text x="2" y="20" fill="currentColor" font-family="Arial, sans-serif" font-size="21" font-weight="700">in</text>
                             </svg>
-                            <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/emilio-casa%C3%B1-arolas-81502ab7" target="_blank" rel="noopener noreferrer">Emilio Casañ Arolas ↗</a></div>
+                            <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/emilio-casa%C3%B1-arolas-81502ab7" target="_blank" rel="noopener noreferrer" aria-label="Emilio Casañ Arolas en LinkedIn (se abre en una pestaña nueva)">Emilio Casañ Arolas ↗</a></div>
                         </div>
                     </div>
                 </div>
                 <form id="contact-form">
+                    <p class="note">Los campos marcados con * son obligatorios.</p>
                     <div class="fields">
                         <div class="field full"><label for="nombre">Nombre y Apellidos *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="150"></div>
                         <div class="field full"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
@@ -228,11 +230,11 @@ $anioActual = date('Y');
                     <button class="button" type="submit">Preparar correo de contacto</button>
                     <p class="note" id="form-status" role="status"></p>
                     <p id="correo-alternativo" hidden>
-                        <a id="abrir-correo" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">Abrir el correo preparado en Gmail</a>
+                        <a id="abrir-correo" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Abrir el correo preparado en Gmail (se abre en una pestaña nueva)">Abrir el correo preparado en Gmail</a>
                     </p>
                     <p class="note">
                         También puedes escribir directamente a
-                        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer">ecarolas@gmail.com</a>.
+                        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ecarolas%40gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Escribir a ecarolas@gmail.com en Gmail (se abre en una pestaña nueva)">ecarolas@gmail.com</a>.
                     </p>
                     <noscript>
                         <p>JavaScript está desactivado. Utiliza el enlace de correo anterior para contactar.</p>

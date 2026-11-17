@@ -14,7 +14,7 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
             <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
             <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
-            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo"' : '' ?>>Conocimiento</a>
+            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
             <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
 
             <?php if ($paginaActiva === 'conocimiento'): ?>
@@ -71,7 +71,7 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
             <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
             <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
-            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo"' : '' ?>>Conocimiento</a>
+            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
             <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
 
             <hr>

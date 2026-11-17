@@ -79,7 +79,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 12px;
-    color: #829088;
+    color: var(--texto-secundario);
     font-size: 12px;
 }
 
@@ -219,7 +219,7 @@
 .imagen-contenido-articulo figcaption {
     margin-top: 10px;
 
-    color: #829088;
+    color: var(--texto-secundario);
     font-size: 12px;
     text-align: center;
 }
