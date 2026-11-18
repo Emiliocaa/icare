@@ -11,9 +11,10 @@ La página de contacto abre Gmail con un borrador para que el visitante lo revis
 ## Estado actual
 
 - La página principal y el área de Conocimiento están implementadas.
+- `registro.php` registra cuentas en MySQL y no permite reutilizar un correo electrónico.
 - Los artículos se leen desde `conocimiento/data/articulos.json`.
-- Las páginas `login.php`, `registro.php` y `conocimiento/categoria.php` se mantienen como espacios reservados para trabajo futuro.
-- `bdd/bdd.sql` y `bdd/conexion.php` son la base de una futura integración con base de datos; actualmente no están conectados a los formularios de acceso.
+- Las páginas `login.php` y `conocimiento/categoria.php` se mantienen como espacios reservados para trabajo futuro.
+- `bdd/bdd.sql` define el esquema inicial; `bdd/conexion.php` configura la conexión local ignorada por Git.
 - No hay una integración de IA ejecutándose en el sitio. Copilot se utiliza como apoyo de desarrollo, no como dependencia de la aplicación.
 - El repositorio no incluye todavía una suite de pruebas automatizadas ni un gestor de dependencias.
 
@@ -45,7 +46,7 @@ El código usa `JSON_THROW_ON_ERROR`, disponible desde PHP 7.3. Se recomienda ut
    - Página principal: <http://localhost/proyectos/icare/>
    - Conocimiento: <http://localhost/proyectos/icare/conocimiento/>
 
-La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual.
+La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual. El registro requiere MySQL/MariaDB activo y la tabla `users`.
 
 ### Base de datos
 
@@ -54,8 +55,9 @@ La base de datos es opcional para el sitio actual. Si se retoma esa funcionalida
 1. Inicia MySQL/MariaDB desde XAMPP.
 2. Importa `bdd/bdd.sql`.
 3. Revisa la configuración local de `bdd/conexion.php`.
+4. Si la tabla `users` ya existía, comprueba que no haya correos duplicados y ejecuta una sola vez `bdd/migrar-email-unico.sql` para añadir la restricción única.
 
-No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. La autenticación y las páginas de usuario aún no están implementadas.
+No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El inicio de sesión y el resto de páginas de usuario aún no están implementados.
 
 `.gitignore` contiene reglas para `bdd/conexion.php` y `bdd/copia.mkd`.
 
@@ -76,6 +78,7 @@ icare/
 │       └── estilos.css               # Estilos compartidos
 ├── bdd/
 │   ├── bdd.sql                       # Esquema inicial de la base de datos
+│   ├── migrar-email-unico.sql        # Migración para bases ya existentes
 │   ├── conexion.php                  # Conexión local mediante PDO
 │   └── copia.mkd
 ├── js/
@@ -162,10 +165,8 @@ Actualiza este documento cuando cambien el stack, los requisitos, los pasos para
 
 1.SUBMIT FUNCIONA PERO HAY QUE VERIFICAR EL CODIGO YA  QUE REDIRIGE A GMAIL???? VER SI ES ADECUADO
 2.ENLACE EN FORM , MISMA PROBLEMATICA QUE PUNTO 1
-3.EN SQL VER EL CAMPO CONTENIDO COMO SE ESTRUCTURA ANTES DE CARGAR EN MYSQL
 4.PENDIENTE DE DAR CONTENIDO A LOGIN
-5.PENDIENTE DE DAR CONTENIDO A REGISTRARSE
-6.EL JSON DE ARTICULOS , PODRIA SERVIR COMO FICHERO ENLACE CON LA BASE DE DATOS,...TIPO API????
 7.MONTAR SISTEMA DE SEGURIDAD HAKERS
 8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR
+11.ENVIAR UN CORREO DE BIENVENIDA AL REGISTRARSE????
 
