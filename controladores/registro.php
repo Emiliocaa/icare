@@ -63,31 +63,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$errores) {
         try {
+            $passwordIntroducida = $password;
             require_once dirname(__DIR__) . '/bdd/conexion.php';
 
-            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $passwordHash = password_hash($passwordIntroducida, PASSWORD_DEFAULT);
             $consulta = $conn->prepare(
-                'INSERT INTO users (name, surnames, email, password)
-                VALUES (:name, :surnames, :email, :password)'
+                'UPDATE users
+                SET password = :password
+                WHERE email = :email AND activo = TRUE'
             );
             $consulta->execute([
-                'name' => $nombre,
-                'surnames' => $apellidos,
-                'email' => $email,
                 'password' => $passwordHash,
+                'email' => $email,
             ]);
 
-            $_SESSION['registro_correcto'] = true;
-            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-            header('Location: registro.php', true, 303);
-            exit;
-        } catch (PDOException $error) {
-            if ((int) ($error->errorInfo[1] ?? 0) === 1062) {
-                $errores[] = 'Ya existe una cuenta registrada con ese correo electrónico.';
+            $verificarConsulta = $conn->prepare(
+                'SELECT password
+                FROM users
+                WHERE email = :email AND activo = TRUE
+                LIMIT 1'
+            );
+            $verificarConsulta->execute(['email' => $email]);
+            $hashGuardado = $verificarConsulta->fetchColumn();
+            $passwordPersistidaCorrecta = is_string($hashGuardado)
+                && password_verify($passwordIntroducida, $hashGuardado);
+
+            if (
+                $consulta->rowCount() !== 1
+                || !$passwordPersistidaCorrecta
+            ) {
+                $errores[] = 'No se pudo completar el registro. Contacta con el administrador de Icare en ecarolas@gmail.com.';
             } else {
-                error_log('Error durante el registro: ' . $error->getMessage());
-                $errores[] = 'No se pudo completar el registro. Inténtalo más tarde.';
+                $_SESSION['registro_correcto'] = true;
+                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                header('Location: registro.php', true, 303);
+                exit;
             }
+        } catch (PDOException $error) {
+            error_log('Error durante el registro: ' . $error->getMessage());
+            $errores[] = 'No se pudo completar el registro. Inténtalo más tarde.';
         }
     }
 }

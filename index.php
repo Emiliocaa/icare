@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 $nombreApp = 'icare coaching, s.l.';
 $anioActual = date('Y');
 ?>
@@ -205,6 +211,7 @@ $anioActual = date('Y');
                     </div>
                 </div>
                 <form id="contact-form">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
                     <p class="note">Los campos marcados con * son obligatorios.</p>
                     <div class="fields">
                         <div class="field full"><label for="nombre">Nombre y Apellidos *</label><input id="nombre" name="nombre" autocomplete="name" required maxlength="150"></div>
@@ -255,7 +262,7 @@ $anioActual = date('Y');
             const enlaceCorreo = document.getElementById('abrir-correo');
 
             if (formulario && estado && alternativa && enlaceCorreo) {
-                formulario.addEventListener('submit', function(event) {
+                formulario.addEventListener('submit', async function(event) {
                     // Impide el envío normal del formulario.
                     event.preventDefault();
 
@@ -264,6 +271,30 @@ $anioActual = date('Y');
 
                     // Recoge los datos mediante los atributos name del formulario.
                     const data = new FormData(this);
+                    const botonEnviar = this.querySelector('button[type="submit"]');
+                    botonEnviar.disabled = true;
+                    estado.textContent = 'Guardando los datos del contacto...';
+                    alternativa.hidden = true;
+
+                    try {
+                        const respuesta = await fetch('controladores/contacto.php', {
+                            method: 'POST',
+                            headers: { 'Accept': 'application/json' },
+                            body: data
+                        });
+                        const resultado = await respuesta.json();
+
+                        if (!respuesta.ok || !resultado.success) {
+                            throw new Error(resultado.message || 'No se pudieron guardar los datos del contacto.');
+                        }
+                    } catch (error) {
+                        estado.textContent =
+                            error instanceof Error
+                                ? error.message
+                                : 'No se pudieron guardar los datos del contacto. Inténtalo de nuevo.';
+                        botonEnviar.disabled = false;
+                        return;
+                    }
 
                     // Define las etiquetas y el orden de los datos del mensaje.
                     const fields = [
@@ -303,10 +334,13 @@ $anioActual = date('Y');
 
                     // Informa sin afirmar que el mensaje se haya enviado.
                     estado.textContent =
-                        'Se ha preparado el correo. Si Gmail no se abre, ' +
+                        'Los datos se han guardado y se ha preparado el correo. Si Gmail no se abre, ' +
                         'pulsa «Abrir el correo preparado en Gmail». ' +
                         'Revisa el borrador y envíalo desde Gmail. ' +
                         'Todavía no se ha enviado.';
+
+                    formulario.reset();
+                    botonEnviar.disabled = false;
 
                     // Abre Gmail directamente, sin depender de un gestor mailto del sistema.
                     window.location.assign(gmailUrl);

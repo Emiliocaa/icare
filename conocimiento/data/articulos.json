@@ -1,6 +1,434 @@
 
 [
-  {
+  
+    {
+    "id": "mejora-continua-toyota-kaizen",
+    "tematica": "mejora",
+    "titulo": "El modelo Toyota y el poder del Kaizen",
+    "resumen": "La excelencia empresarial no se consigue mediante una transformación puntual, sino construyendo una cultura en la que cada persona participa diariamente en la mejora de los procesos. Analizamos  sus dos pilares fundamentales, la filosofía Kaizen, el papel de las personas y otras metodologías de mejora continua como Six Sigma, Lean, 5S y TPM.",
+    "categoria": "MEJORA CONTINUA",
+    "fecha": "2026-11-20",
+    "tiempo_lectura": "10 min",
+    "imagen": "assets/img/articulos/toyota.png",
+    "alt": "Trabajador de Toyota en una línea de montaje de automóviles, ejemplo de organización del trabajo, estandarización y mejora continua.",
+    "contenido": [
+        {
+        "tipo": "parrafo",
+        "texto": "En un entorno empresarial cada vez más competitivo, mejorar ya no es una opción: es una necesidad estratégica. Las organizaciones deben reducir costes, mejorar la calidad, responder más rápido al cliente, aprovechar mejor sus recursos y adaptarse continuamente a los cambios del mercado. Sin embargo, muchas empresas siguen abordando estos retos mediante actuaciones aisladas: una inversión tecnológica, una reorganización, una reducción de gastos o un proyecto puntual de eficiencia. El problema es que, cuando termina el proyecto, la organización tiende a recuperar sus antiguos hábitos."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Toyota representa uno de los ejemplos más estudiados de cómo superar esta limitación. Su éxito no se explica únicamente por sus fábricas, sus sistemas logísticos o sus herramientas de producción. Su principal aportación ha sido desarrollar una filosofía de gestión en la que la mejora continua forma parte del trabajo cotidiano y en la que las personas que realizan las tareas participan activamente en la identificación y resolución de problemas."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "1. Toyota: de fabricante de automóviles a referente mundial de gestión"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Los orígenes del modelo Toyota se encuentran en las innovaciones de Sakichi Toyoda, fundador del grupo empresarial, y en el desarrollo posterior de la actividad automovilística impulsada por Kiichiro Toyoda. La evolución del sistema estuvo especialmente vinculada a Taiichi Ohno, quien contribuyó decisivamente a desarrollar y extender el Sistema de Producción Toyota después de la Segunda Guerra Mundial."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El Toyota Production System (TPS) nació con un objetivo muy concreto: eliminar las actividades que no aportan valor, mejorar la productividad y fabricar productos de calidad utilizando los recursos necesarios, en el momento adecuado y en la cantidad requerida. Su filosofía persigue simultáneamente calidad, coste competitivo y plazos de entrega reducidos."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Pero existe una idea especialmente relevante: el sistema también debe facilitar el trabajo de las personas y evitar que tengan que realizar esfuerzos innecesarios. No se trata simplemente de exigir más producción a los empleados, sino de diseñar procesos mejores para que el trabajo sea más sencillo, seguro, eficiente y fiable."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "2. Toyota Production System: los dos pilares fundamentales"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El TPS se estructura sobre dos grandes pilares: Just-in-Time y Jidoka. Ambos se complementan y permiten construir un sistema productivo en el que los problemas se detectan rápidamente, los materiales fluyen de acuerdo con la demanda y la calidad se incorpora al propio proceso."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "Just-in-Time: producir lo necesario, cuando se necesita y en la cantidad necesaria"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Just-in-Time (JIT) busca sincronizar las diferentes fases de producción y suministro. Cada proceso debe disponer de aquello que necesita en el momento adecuado, evitando acumulaciones innecesarias de materiales, exceso de inventario, sobreproducción y tiempos de espera."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Uno de los instrumentos más conocidos es Kanban, un sistema visual de señales que permite comunicar las necesidades de reposición entre procesos. En lugar de producir grandes cantidades basándose exclusivamente en previsiones, se busca que las necesidades reales del proceso siguiente activen el suministro del anterior."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "Reducir inventarios y capital inmovilizado.",
+            "Evitar la sobreproducción y el exceso de recursos.",
+            "Disminuir los tiempos de espera y los plazos de fabricación.",
+            "Mejorar la coordinación entre departamentos y proveedores.",
+            "Aumentar la capacidad de respuesta ante cambios en la demanda."
+        ]
+        },
+        {
+        "tipo": "titulo",
+        "texto": "Jidoka: calidad incorporada al proceso"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Jidoka suele traducirse como automatización con un toque humano. Su principio es que una máquina o una persona deben poder detectar una anomalía y detener el proceso para evitar que el defecto continúe avanzando. La calidad no debe depender únicamente de una inspección al final de la producción: debe construirse en cada etapa."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Uno de sus mecanismos más conocidos es Andon, un sistema visual de aviso que permite comunicar una incidencia y solicitar ayuda. En determinadas condiciones, el trabajador puede detener la línea cuando detecta un problema. Esto transforma la detección de errores en una responsabilidad compartida y evita que los defectos se propaguen."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La importancia de Jidoka va más allá de detener una máquina. El objetivo es identificar la causa del problema, corregirla y evitar que vuelva a producirse. Así, la organización aprende de sus errores y mejora la estabilidad de sus procesos."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "3. Kaizen: la mejora continua como hábito de trabajo"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Kaizen es una palabra japonesa que suele traducirse como mejora continua. Representa una forma de entender la gestión: ningún proceso debe considerarse perfecto y siempre existe la posibilidad de hacerlo mejor. La mejora no tiene que proceder necesariamente de grandes inversiones o transformaciones radicales. Puede surgir de pequeños cambios acumulativos propuestos por las personas que conocen el trabajo de primera mano."
+        },
+        {
+        "tipo": "cita",
+        "texto": "La mejora continua no consiste en esperar a encontrar una gran solución, sino en desarrollar la capacidad de mejorar cada día."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "En la filosofía Toyota, Kaizen no es una campaña temporal ni un departamento aislado. Es una responsabilidad compartida. Un operario puede identificar una forma más sencilla de realizar una tarea; un administrativo puede eliminar duplicidades en la gestión documental; un responsable comercial puede mejorar el seguimiento de oportunidades; y un equipo financiero puede reducir los tiempos de cierre contable."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La aportación más importante de Kaizen es cultural: convierte a los empleados en participantes activos de la evolución de la empresa. Para conseguirlo, la dirección debe escuchar, facilitar recursos, analizar las propuestas y reconocer las mejoras implantadas. Pedir ideas y no responder a ellas termina destruyendo la participación."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "4. Los principios culturales de Toyota: las personas en el centro"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El Toyota Way expresa los valores que orientan el comportamiento de la organización. Entre sus principios destacan el desafío, la mejora continua, Genchi Genbutsu, el respeto por las personas y el trabajo en equipo. Estos conceptos ayudan a entender por qué el TPS no puede implantarse correctamente limitándose a copiar herramientas de producción."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "Challenge (desafío): mantener una visión a largo plazo y afrontar los retos con creatividad, compromiso y capacidad de aprendizaje.",
+            "Kaizen (mejora continua): cuestionar el estado actual y buscar permanentemente formas mejores de trabajar.",
+            "Genchi Genbutsu (ir y ver): acudir al lugar donde sucede el trabajo para observar los hechos y comprender el problema directamente.",
+            "Respect (respeto): escuchar a las personas, comprender sus necesidades, asumir responsabilidades y construir confianza.",
+            "Teamwork (trabajo en equipo): fomentar el desarrollo individual y colectivo, compartir conocimientos y aprovechar el potencial de los equipos."
+        ]
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Genchi Genbutsu merece una atención especial. En muchas organizaciones, las decisiones se toman exclusivamente a partir de informes, reuniones o indicadores. Toyota promueve que los responsables se acerquen al lugar real donde se desarrolla la actividad. Observar una línea de producción, acompañar a un trabajador administrativo o analizar cómo se atiende a un cliente permite descubrir problemas que no siempre aparecen en los informes."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El respeto por las personas también tiene una dimensión operativa. Los trabajadores no deben limitarse a ejecutar instrucciones: deben disponer de conocimientos, formación y autonomía para identificar problemas y contribuir a resolverlos. La dirección tiene la responsabilidad de desarrollar esas capacidades y crear un entorno donde comunicar una incidencia sea una oportunidad de aprendizaje, no un motivo de castigo."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "5. Eliminar los desperdicios: Muda, Mura y Muri"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Una de las bases del pensamiento Lean consiste en identificar y reducir tres tipos de ineficiencia conocidos como Muda, Mura y Muri. Estos conceptos permiten analizar no solo cuánto se produce, sino cómo se organiza el trabajo y qué obstáculos impiden obtener resultados de forma estable."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "Muda: desperdicio o actividad que consume recursos sin aportar valor al cliente. Por ejemplo, esperas, movimientos innecesarios, errores, duplicidades, inventarios excesivos o tareas que deben repetirse.",
+            "Mura: irregularidad o falta de equilibrio en la carga de trabajo. Puede producirse cuando unos días existe exceso de actividad y otros días los recursos permanecen infrautilizados.",
+            "Muri: sobrecarga de personas, equipos o procesos. Aparece cuando se exige más capacidad de la razonable, generando errores, averías, estrés y pérdida de calidad."
+        ]
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La eliminación de estos tres problemas permite mejorar la productividad sin trasladar sistemáticamente la presión a los trabajadores. Una organización eficiente no es aquella que mantiene a todo el mundo permanentemente ocupado, sino aquella que utiliza sus recursos de manera equilibrada y genera valor con el menor desperdicio posible."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "6. Cómo se desarrolla un proceso Kaizen en una empresa"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Para que Kaizen se convierta en una práctica real, es necesario disponer de un método sencillo y repetible. Una mejora debe partir de un problema concreto, analizar la situación actual, proponer una solución, probarla y comprobar sus resultados. Cuando funciona, se incorpora al estándar de trabajo para que el avance no dependa exclusivamente de la memoria o voluntad de una persona."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "1. Identificar el problema: detectar una actividad que genera errores, retrasos, costes innecesarios o dificultades para el cliente.",
+            "2. Observar el proceso real: acudir al lugar de trabajo, hablar con las personas implicadas y recopilar datos fiables.",
+            "3. Analizar la causa: distinguir los síntomas de las causas reales y evitar soluciones basadas únicamente en suposiciones.",
+            "4. Proponer una mejora: buscar alternativas sencillas, viables y consensuadas con las personas que realizan la actividad.",
+            "5. Probar el cambio: aplicar la solución a pequeña escala y medir sus efectos.",
+            "6. Estandarizar: documentar el nuevo método cuando los resultados sean positivos y formar a las personas implicadas.",
+            "7. Volver a mejorar: comprobar que el resultado se mantiene e identificar nuevas oportunidades."
+        ]
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Este proceso está estrechamente relacionado con el ciclo PDCA, también conocido como ciclo de Deming: Planificar, Hacer, Verificar y Actuar. PDCA proporciona una estructura de experimentación y aprendizaje que permite convertir las mejoras en un proceso sistemático."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "7. Herramientas prácticas que acompañan a la filosofía Toyota"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La filosofía de mejora continua se apoya en herramientas que ayudan a hacer visibles los problemas, ordenar los procesos y mantener los resultados. No es necesario implantarlas todas simultáneamente. La elección debe depender de las necesidades de la empresa y de la madurez de sus equipos."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "5S: metodología para clasificar, ordenar, limpiar, estandarizar y mantener los puestos de trabajo. Favorece la seguridad, el control visual y la eficiencia.",
+            "Estandarización del trabajo: documentar la mejor forma conocida de realizar una actividad para reducir variaciones y facilitar la formación.",
+            "Kanban: sistema visual para controlar el flujo de materiales, tareas o solicitudes y evitar acumulaciones.",
+            "Poka-Yoke: mecanismos de prevención de errores que dificultan o impiden que una equivocación llegue a convertirse en un defecto.",
+            "Value Stream Mapping (VSM): representación visual del flujo de materiales e información para identificar actividades que no aportan valor.",
+            "Andon: sistema de comunicación visual que permite hacer visibles las anomalías y solicitar asistencia.",
+            "Análisis de causa raíz: técnicas como los cinco porqués y el diagrama de Ishikawa para investigar por qué ocurre un problema."
+        ]
+        },
+        {
+        "tipo": "titulo",
+        "texto": "8. Otras metodologías de mejora continua: Six Sigma, Lean y más"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El modelo Toyota es una referencia fundamental, pero no es la única metodología disponible. A lo largo de las últimas décadas se han desarrollado otros enfoques que permiten mejorar la calidad, reducir la variabilidad, optimizar procesos y aumentar la eficiencia. Algunas metodologías son complementarias y pueden combinarse según el tipo de problema."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "Six Sigma: reducir la variabilidad y los defectos mediante datos"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Six Sigma es una metodología orientada a mejorar la calidad y el rendimiento de los procesos mediante el análisis de datos y la reducción de la variabilidad. Su objetivo es comprender qué factores provocan defectos o resultados inconsistentes y establecer controles que permitan mantener las mejoras."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Su estructura más conocida es DMAIC: Definir, Medir, Analizar, Mejorar y Controlar. Se utiliza especialmente para mejorar procesos existentes cuyo rendimiento no alcanza los niveles esperados. Frente al enfoque cotidiano e incremental de Kaizen, Six Sigma suele organizar proyectos de mejora más estructurados, con objetivos medibles y análisis cuantitativo."
+        },
+        {
+        "tipo": "lista",
+        "items": [
+            "Definir: delimitar el problema, los objetivos y las necesidades del cliente.",
+            "Medir: recopilar datos y establecer una línea de partida.",
+            "Analizar: identificar las causas principales de los defectos o de la variabilidad.",
+            "Mejorar: diseñar, probar e implantar soluciones.",
+            "Controlar: establecer indicadores y mecanismos para mantener los resultados."
+        ]
+        },
+        {
+        "tipo": "titulo",
+        "texto": "Lean Management: maximizar el valor para el cliente"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Lean Management desarrolla principios asociados al Sistema de Producción Toyota y los aplica a diferentes sectores. Su objetivo es identificar qué actividades aportan valor al cliente y reducir aquellas que consumen recursos sin mejorar el producto o servicio. Puede utilizarse en fabricación, logística, administración, distribución, sanidad o servicios profesionales."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "TPM: mantenimiento productivo total"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Total Productive Maintenance (TPM) busca mejorar la disponibilidad y fiabilidad de los equipos mediante la implicación de producción, mantenimiento y otras áreas. Promueve el mantenimiento preventivo y autónomo, la detección temprana de anomalías y la reducción de averías, paradas y pérdidas de rendimiento."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "TQM: gestión de la calidad total"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Total Quality Management (TQM) plantea que la calidad es responsabilidad de toda la organización, no únicamente del departamento de calidad. Implica orientar los procesos al cliente, promover la participación de los empleados, medir los resultados y mejorar de forma sistemática."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "Hoshin Kanri: alinear la mejora con la estrategia"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Hoshin Kanri es un enfoque de despliegue estratégico que conecta los objetivos a largo plazo de la dirección con los planes de trabajo de los departamentos y equipos. Su finalidad es evitar que las iniciativas de mejora se conviertan en actuaciones aisladas y asegurar que los esfuerzos de la organización contribuyan a prioridades comunes."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "9. Comparativa de las principales metodologías"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Cada metodología responde a necesidades distintas. No existe una herramienta universal que resuelva todos los problemas. Una empresa puede utilizar Kaizen para fomentar la participación diaria, Six Sigma para resolver problemas complejos de calidad, 5S para organizar los puestos de trabajo y Hoshin Kanri para alinear los proyectos con la estrategia."
+        },
+        {
+        "tipo": "tabla",
+        "encabezados": [
+            "Metodología",
+            "Objetivo principal",
+            "Enfoque",
+            "Aplicación habitual"
+        ],
+        "filas": [
+            [
+            "Kaizen",
+            "Mejorar continuamente",
+            "Pequeños cambios y participación de las personas",
+            "Toda la organización"
+            ],
+            [
+            "Toyota Production System",
+            "Eliminar desperdicios y asegurar calidad y flujo",
+            "Just-in-Time y Jidoka",
+            "Producción y operaciones"
+            ],
+            [
+            "Six Sigma",
+            "Reducir defectos y variabilidad",
+            "Datos, estadística y DMAIC",
+            "Procesos con problemas medibles"
+            ],
+            [
+            "Lean Management",
+            "Maximizar el valor y reducir desperdicios",
+            "Flujo y eliminación de actividades sin valor",
+            "Operaciones y servicios"
+            ],
+            [
+            "5S",
+            "Organizar y mantener el entorno de trabajo",
+            "Orden, limpieza y disciplina",
+            "Puestos de trabajo y oficinas"
+            ],
+            [
+            "TPM",
+            "Mejorar la fiabilidad de equipos",
+            "Prevención y mantenimiento compartido",
+            "Instalaciones y producción"
+            ],
+            [
+            "TQM",
+            "Integrar la calidad en toda la empresa",
+            "Orientación al cliente y participación",
+            "Organización completa"
+            ],
+            [
+            "Hoshin Kanri",
+            "Alinear estrategia y ejecución",
+            "Despliegue y seguimiento de objetivos",
+            "Dirección y departamentos"
+            ],
+            [
+            "PDCA",
+            "Estructurar el aprendizaje y la mejora",
+            "Planificar, hacer, verificar y actuar",
+            "Cualquier proceso"
+            ]
+        ]
+        },
+        {
+        "tipo": "titulo",
+        "texto": "10. Cómo trasladar la filosofía Toyota a una empresa que no fabrica automóviles"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Una de las grandes ventajas del modelo Toyota es que sus principios pueden aplicarse fuera de la industria del automóvil. Una empresa comercial, una compañía de distribución, una asesoría, una perfumería o una organización de servicios también dispone de procesos, clientes, recursos, errores, esperas y actividades que pueden mejorarse."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Por ejemplo, en una empresa de distribución se podría analizar el proceso completo desde la recepción de un pedido hasta su entrega. El equipo podría detectar duplicidades en la introducción de datos, errores de preparación, tiempos de espera entre departamentos o inventario innecesario. A partir de esa observación se definirían mejoras, se probarían y se medirían sus resultados."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "En una empresa administrativa se podría estudiar el circuito de aprobación de facturas. Si una factura permanece varios días esperando una autorización, el problema quizá no sea la velocidad de trabajo de una persona, sino un proceso mal diseñado, responsabilidades poco claras o falta de información. La mejora debe dirigirse a la causa del retraso y no limitarse a exigir mayor rapidez."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "11. Indicadores para medir los resultados de la mejora continua"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La mejora continua debe producir resultados observables. Sin indicadores, una organización puede confundir actividad con progreso. Es importante establecer una situación inicial, definir objetivos realistas y medir los efectos de los cambios implantados."
+        },
+        {
+        "tipo": "tabla",
+        "encabezados": [
+            "Área",
+            "Indicador",
+            "Qué permite evaluar"
+        ],
+        "filas": [
+            [
+            "Productividad",
+            "Unidades o servicios por hora",
+            "Rendimiento de los recursos"
+            ],
+            [
+            "Calidad",
+            "Porcentaje de errores o defectos",
+            "Fiabilidad del proceso"
+            ],
+            [
+            "Servicio",
+            "Tiempo de entrega o respuesta",
+            "Rapidez y cumplimiento"
+            ],
+            [
+            "Costes",
+            "Coste por unidad o servicio",
+            "Eficiencia económica"
+            ],
+            [
+            "Inventario",
+            "Rotación y días de existencias",
+            "Capital inmovilizado y gestión de stock"
+            ],
+            [
+            "Personas",
+            "Participación y propuestas implantadas",
+            "Implicación de los equipos"
+            ],
+            [
+            "Mantenimiento",
+            "Tiempo de parada y frecuencia de averías",
+            "Disponibilidad de los equipos"
+            ],
+            [
+            "Cliente",
+            "Reclamaciones y satisfacción",
+            "Calidad percibida del servicio"
+            ]
+        ]
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Los indicadores deben seleccionarse según la actividad de cada empresa. No es recomendable implantar decenas de métricas sin utilidad operativa. Es preferible disponer de un cuadro de mando reducido, comprensible y revisado periódicamente por los responsables y los equipos."
+        },
+        {
+        "tipo": "titulo",
+        "texto": "12. Conclusión: la mejora continua empieza por las personas"
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "La principal enseñanza del modelo Toyota es que la excelencia no se alcanza únicamente mediante tecnología, inversiones o reorganizaciones. Se construye desarrollando una forma de trabajar en la que los problemas se hacen visibles, las personas participan en su resolución, los procesos se estandarizan y los resultados se revisan permanentemente."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "Kaizen aporta una mentalidad de mejora diaria; el TPS proporciona un sistema operativo basado en Just-in-Time y Jidoka; PDCA permite estructurar el aprendizaje; y metodologías como Six Sigma, Lean, TPM o TQM ofrecen herramientas adicionales para resolver problemas específicos. Su combinación puede generar un modelo de gestión sólido, siempre que se adapte a la realidad de cada empresa."
+        },
+        {
+        "tipo": "cita",
+        "texto": "La mejora continua no debe ser un proyecto que empieza y termina. Debe convertirse en una manera de dirigir, trabajar y aprender."
+        },
+        {
+        "tipo": "parrafo",
+        "texto": "El verdadero cambio cultural se produce cuando un empleado no espera a que alguien le indique que existe un problema, sino que se siente responsable de identificarlo y proponer una solución. En ese momento, la mejora continua deja de ser una herramienta de gestión y se convierte en una capacidad de toda la organización."
+        }
+    ]
+    },       
+
+    {
     "id": "autoconocimiento-liderazgo",
     "tematica": "coaching",
     "titulo": "El autoconocimiento como punto de partida",
@@ -21,7 +449,7 @@
         },
         {
             "tipo": "parrafo",
-            "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos...lore ipsum dolor sit amet, consectetur adipiscing elit."
+            "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos."
         },
         {
             "tipo": "cita",
@@ -171,9 +599,722 @@
     }
     ]
 
-  },
+    },
   
-  {
+    {
+  "id": "implantacion-erp-exito-personas",
+  "tematica": "tecnologia",
+  "titulo": "Implantar un ERP: tecnología, procesos y personas para alcanzar el éxito",
+  "resumen": "Descubre cómo implantar un ERP con éxito, las metodologías de SAP, Oracle y Microsoft, la importancia de la gestión del cambio y el papel decisivo de las personas en la transformación empresarial.",
+  "categoria": "Gestión Empresarial",
+  "fecha": "2026-11-20",
+  "tiempo_lectura": 10,
+  "imagen": "assets/img/articulos/tecnologia-erp.png",
+  "alt": "Equipo profesional trabajando conjuntamente en la implantación de un sistema ERP",
+  "contenido": [
+    {
+      "tipo": "parrafo",
+      "texto": "La implantación de un sistema ERP (Enterprise Resource Planning) constituye una de las decisiones estratégicas más importantes que puede adoptar una empresa para mejorar su organización, optimizar sus recursos y disponer de una visión integrada de su actividad. Sin embargo, incorporar un nuevo sistema de gestión no consiste simplemente en instalar un programa informático, trasladar información o configurar una serie de módulos. Supone revisar la manera en que trabaja la organización, redefinir procesos, establecer nuevas responsabilidades y conseguir que las personas adopten una forma diferente de desarrollar sus actividades."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La experiencia acumulada por los principales fabricantes de software empresarial, junto con los estudios sobre implantaciones ERP, demuestra que el éxito depende de la combinación de tres elementos: tecnología, procesos y personas. Una solución técnicamente excelente puede terminar ofreciendo resultados muy limitados cuando no responde a las necesidades reales de la empresa o cuando sus trabajadores no comprenden, aceptan o utilizan correctamente el nuevo sistema."
+    },
+    {
+      "tipo": "cita",
+      "texto": "Un ERP no transforma una empresa por el simple hecho de instalarse. La transformación comienza cuando las personas modifican sus procesos y utilizan la información para trabajar y decidir mejor."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "1. Antes de implantar un ERP: comprender la empresa"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El primer paso de cualquier proyecto de implantación debe ser comprender cómo funciona realmente la organización. Antes de seleccionar una solución tecnológica es necesario analizar sus procesos, departamentos, estructura organizativa, sistemas de información y necesidades de gestión. También debemos identificar las dificultades que se pretenden resolver y los resultados que se esperan conseguir."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En muchas organizaciones encontramos procedimientos que han evolucionado con el tiempo sin una planificación global. Cada departamento desarrolla sus propias herramientas, utiliza hojas de cálculo independientes o mantiene registros que no siempre están conectados con el resto de la empresa. Esta situación puede generar duplicidad de información, falta de coordinación, errores administrativos y dificultades para conocer la situación real del negocio."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Por este motivo, el análisis inicial debe estudiar, entre otros aspectos, los procesos comerciales, compras, aprovisionamiento, almacenes, producción, logística, administración, contabilidad, tesorería y control de gestión. El objetivo no es trasladar automáticamente al nuevo ERP todo lo que se hace actualmente, sino identificar qué procedimientos aportan valor, cuáles necesitan mejorar y qué oportunidades ofrece la integración de la información."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "2. Las principales metodologías de implantación ERP"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Los principales fabricantes de ERP han desarrollado metodologías propias para estructurar los proyectos de implantación, reducir riesgos y facilitar la adopción de sus soluciones. Aunque existen diferencias en su terminología y organización, comparten principios fundamentales: planificación, análisis de procesos, diseño, configuración, pruebas, formación, puesta en marcha y mejora continua."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "SAP Activate: una implantación basada en buenas prácticas"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "SAP utiliza la metodología SAP Activate para orientar la implantación de sus soluciones empresariales. Su estructura se organiza en seis fases: Discover, Prepare, Explore, Realize, Deploy y Run. Durante Discover se identifican las necesidades y el alcance general del proyecto. Prepare establece la planificación, los recursos y la organización del equipo. Explore utiliza talleres Fit-to-Standard para comparar los procesos de la empresa con las mejores prácticas disponibles en SAP. Realize desarrolla la configuración, integraciones y pruebas. Deploy prepara la transición al entorno productivo y Run se centra en la operación, el soporte y la optimización continua."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Uno de los principios más interesantes de SAP Activate es el enfoque Fit-to-Standard. En lugar de adaptar indiscriminadamente el ERP a todos los procedimientos existentes, se analiza qué procesos pueden ajustarse a las funcionalidades estándar del sistema. Esto permite evitar personalizaciones innecesarias, simplificar el mantenimiento y aprovechar los conocimientos y las buenas prácticas incorporados en la solución."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Oracle Cloud ERP: planificación, validación y transición"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Oracle plantea un enfoque estructurado que contempla el análisis y preparación, la planificación y diseño, la configuración y construcción, la validación y pruebas, la transición y puesta en producción, y finalmente la estabilización y obtención de beneficios. La gestión del proyecto y la gobernanza acompañan todas estas etapas."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Su enfoque presta especial atención a la validación de la configuración, la calidad de los datos, las integraciones, la seguridad, las pruebas y la preparación de los usuarios. La transición a producción debe producirse cuando la organización ha comprobado que los procesos funcionan correctamente y que existen recursos preparados para asumir la nueva operativa."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Microsoft Dynamics 365: Success by Design"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Microsoft ha desarrollado Success by Design como un marco de buenas prácticas basado en la experiencia de miles de proyectos reales. Se estructura en cinco fases: Discover, Initiate, Implement, Prepare y Operate. Su finalidad es identificar riesgos de manera anticipada, establecer una arquitectura adecuada y asegurar que la solución pueda responder a las necesidades presentes y futuras de la organización."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una característica especialmente relevante es la incorporación de revisiones durante el ciclo de vida del proyecto. Estas permiten evaluar las decisiones adoptadas, comprobar la calidad de la solución, detectar posibles desviaciones y corregir problemas antes de que se conviertan en dificultades importantes. Microsoft considera este marco un complemento de la metodología de implantación elegida por el equipo del proyecto."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Oracle NetSuite: orientación a procesos y adopción"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "NetSuite estructura sus implantaciones alrededor del descubrimiento de necesidades, la definición de requisitos, la planificación, la configuración, la migración de datos, las pruebas y la puesta en producción. El alcance y la duración dependen de la dimensión de la empresa, los módulos seleccionados y el nivel de personalización."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Su planteamiento destaca la importancia de definir correctamente los requisitos desde el principio, preparar la información que se trasladará al nuevo sistema y comprobar que los usuarios pueden ejecutar sus actividades antes de iniciar la operativa real. También considera fundamental financiar adecuadamente la gestión del cambio y la formación."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "A pesar de sus diferencias, estas metodologías coinciden en algo esencial: el proyecto debe estar dirigido por objetivos empresariales y no exclusivamente por criterios informáticos. La implantación debe producir una mejora real en la organización y no limitarse a sustituir una herramienta por otra."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "3. Las fases fundamentales de una implantación ERP exitosa"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Tomando como referencia las metodologías anteriores, podemos establecer un modelo de trabajo que permita organizar la implantación de manera ordenada, independientemente del fabricante o de la dimensión de la empresa."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 1. Diagnóstico y análisis de necesidades"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Se analiza la situación actual de la empresa, identificando procesos, sistemas, departamentos, problemas operativos y necesidades de información. Es fundamental escuchar a las personas que realizan diariamente las actividades, porque conocen las dificultades reales que no siempre aparecen en los procedimientos escritos."
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Analizar los procesos actuales de cada departamento.",
+        "Identificar duplicidades, errores y tareas manuales.",
+        "Determinar las necesidades funcionales y de información.",
+        "Definir objetivos medibles y resultados esperados.",
+        "Identificar los responsables y usuarios clave de cada proceso."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 2. Selección del ERP y definición del proyecto"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una vez identificadas las necesidades, se evalúan las soluciones disponibles. La elección debe considerar la funcionalidad, capacidad de integración, escalabilidad, facilidad de uso, costes, soporte y adecuación a la actividad de la empresa. También se debe establecer el alcance del proyecto, el presupuesto, el calendario, los recursos necesarios y los indicadores que permitirán medir los resultados."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 3. Rediseño y adaptación de los procesos"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Esta fase es una de las más importantes y, al mismo tiempo, una de las que más dificultades puede generar. La empresa debe decidir qué procedimientos conservar, cuáles simplificar y cuáles modificar para aprovechar las posibilidades del nuevo ERP. No resulta recomendable reproducir automáticamente todas las costumbres existentes si estas generan ineficiencias."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El rediseño debe realizarse con la participación de los responsables funcionales y de los usuarios que conocen cada actividad. De esta manera se consigue que la solución responda a las necesidades del negocio sin introducir complejidades innecesarias."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 4. Configuración, migración e integración"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En esta etapa se configura el ERP de acuerdo con los procesos aprobados. Se definen los parámetros, permisos, estructuras organizativas, circuitos de aprobación, informes e integraciones necesarias. Paralelamente se prepara la migración de datos desde los sistemas anteriores."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La calidad de la información es determinante. Antes de trasladar los datos es necesario revisar clientes, proveedores, referencias, artículos, tarifas, inventarios, cuentas contables y cualquier otro registro relevante. Migrar información incorrecta o duplicada significa trasladar los problemas del sistema anterior al nuevo."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 5. Pruebas funcionales y validación de usuarios"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Antes de la puesta en producción es necesario comprobar que el sistema funciona correctamente y que los procesos completos pueden ejecutarse de principio a fin. No basta con verificar que cada módulo abre o que una determinada operación se registra correctamente. Es necesario probar situaciones reales que impliquen la participación de diferentes departamentos."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Por ejemplo, una operación comercial debe poder recorrer todo su ciclo: presupuesto, pedido, disponibilidad de producto, preparación, expedición, facturación y contabilización. Los usuarios responsables deben participar en las pruebas y validar que los resultados corresponden con las necesidades del negocio."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 6. Formación y puesta en producción"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La formación no debe limitarse a explicar dónde se encuentran los botones o cómo se introducen determinados datos. Debe enseñar a cada persona cómo desarrollar correctamente su trabajo dentro del nuevo modelo de gestión. Es importante adaptar los contenidos a las responsabilidades y necesidades de cada departamento."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La puesta en producción requiere una planificación específica: migración definitiva, comprobación de datos, revisión de permisos, disponibilidad de usuarios de soporte y definición de procedimientos de contingencia. Durante las primeras semanas es recomendable establecer un acompañamiento cercano que permita resolver incidencias y reforzar la confianza de los trabajadores."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fase 7. Seguimiento y mejora continua"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La implantación no termina el día que se pone en marcha el ERP. Es necesario medir los resultados, comprobar los niveles de utilización, analizar incidencias y detectar nuevas oportunidades de mejora. El sistema debe evolucionar con la organización y convertirse en una herramienta permanente de gestión y toma de decisiones."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "4. El factor humano: la variable decisiva del proyecto"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Uno de los errores más frecuentes en los proyectos ERP consiste en considerar a los trabajadores como destinatarios de una solución diseñada exclusivamente por la dirección, el departamento informático o la consultora implantadora. Esta perspectiva reduce su participación y puede provocar rechazo, inseguridad y dificultades de adaptación."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Los usuarios no son simplemente las personas que utilizarán el sistema cuando esté terminado. Son una parte fundamental del equipo de implantación. Conocen los procedimientos, las excepciones, las dificultades y las necesidades de información de cada departamento. Su experiencia permite identificar problemas que difícilmente podrían descubrirse mediante un análisis exclusivamente técnico."
+    },
+    {
+      "tipo": "cita",
+      "texto": "Las personas que conocen los procesos deben participar en su transformación. No podemos esperar que un equipo adopte con entusiasmo un sistema que no ha tenido la oportunidad de comprender ni de ayudar a construir."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La importancia de los diferentes niveles de participación"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El compromiso debe extenderse a toda la organización, aunque cada colectivo tenga responsabilidades diferentes."
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Dirección general: debe liderar el proyecto, comunicar su importancia, proporcionar recursos y resolver conflictos entre departamentos.",
+        "Responsables de departamento: deben definir necesidades, revisar procesos, coordinar a sus equipos y validar los resultados.",
+        "Usuarios clave: deben participar en talleres, pruebas, formación y validación funcional, actuando como enlace entre los consultores y los usuarios finales.",
+        "Usuarios finales: deben conocer los cambios que afectarán a su trabajo, participar en la formación y comunicar dificultades y propuestas de mejora.",
+        "Equipo técnico y consultora: deben aportar conocimientos tecnológicos, metodología, configuración, integración, soporte y transferencia de conocimiento."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "texto": "5. La resistencia al cambio: comprender antes de exigir"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La resistencia al cambio no siempre responde a una actitud negativa de los trabajadores. En numerosas ocasiones aparece como consecuencia de la incertidumbre, la falta de información, el miedo a cometer errores o la percepción de que el nuevo sistema puede dificultar una actividad que anteriormente se realizaba de manera sencilla."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "También puede ocurrir que algunos trabajadores hayan desarrollado durante años conocimientos y procedimientos propios que consideran eficaces. Cuando la implantación pretende modificar esas rutinas sin explicar las razones, es probable que aparezcan comportamientos defensivos o que se mantengan procedimientos paralelos fuera del ERP."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La respuesta no debe consistir únicamente en exigir que los usuarios utilicen la nueva herramienta. Es necesario explicar qué se pretende mejorar, escuchar sus preocupaciones, mostrar los beneficios, facilitar la formación y acompañar el aprendizaje. La gestión del cambio debe comenzar desde las primeras etapas del proyecto y mantenerse después de la puesta en producción."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "6. ¿Qué factores influyen en el éxito de una implantación ERP?"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Para comprender mejor la importancia de los diferentes elementos, resulta útil analizar los resultados de estudios especializados. El informe de Mint Jutras sobre implantaciones ERP recoge los factores que las organizaciones identificaron como contribuyentes a sus proyectos exitosos."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La siguiente tabla recoge el porcentaje de encuestados que mencionó cada factor como un elemento importante para el éxito. Los valores representan respuestas de los participantes y no una distribución matemática del peso de cada variable."
+    },
+    {
+      "tipo": "tabla",
+      "encabezados": [
+        "Factor de éxito",
+        "Porcentaje"
+      ],
+      "filas": [
+        [
+          "Apoyo y compromiso de la alta dirección",
+          "62 %"
+        ],
+        [
+          "Buena gestión del cambio organizativo",
+          "48 %"
+        ],
+        [
+          "Evaluación del ERP y participación de usuarios en la selección",
+          "38 %"
+        ],
+        [
+          "Pruebas y control de calidad de datos y procesos",
+          "38 %"
+        ],
+        [
+          "Comunicación abierta y transparente",
+          "33 %"
+        ],
+        [
+          "Formación adecuada",
+          "24 %"
+        ],
+        [
+          "Participación de usuarios finales",
+          "24 %"
+        ],
+        [
+          "Reingeniería de procesos empresariales",
+          "24 %"
+        ],
+        [
+          "Plan detallado de migración de datos",
+          "19 %"
+        ],
+        [
+          "Planes de contingencia",
+          "19 %"
+        ],
+        [
+          "Equipos internos reducidos con expertos funcionales",
+          "14 %"
+        ]
+      ]
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Los resultados muestran que el compromiso de la dirección ocupa el primer lugar, con un 62 %, seguido de la gestión del cambio organizativo, con un 48 %. También destaca la importancia de incorporar a los usuarios en la evaluación del ERP, garantizar la calidad de las pruebas y mantener una comunicación transparente."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Un aspecto especialmente interesante es que la formación y la participación de los usuarios finales aparecen con un 24 % cada una. Esto no significa que sean factores secundarios, sino que demuestra que el éxito depende de un conjunto de condiciones que deben funcionar conjuntamente."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "7. Principales causas de fracaso o resultados deficientes"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El análisis de los proyectos que no alcanzaron los resultados esperados permite identificar problemas recurrentes. Entre ellos destacan la falta de pruebas, la ausencia de un rediseño adecuado de procesos, la formación insuficiente, la planificación deficiente y la resistencia al cambio."
+    },
+    {
+      "tipo": "tabla",
+      "encabezados": [
+        "Factor asociado al fracaso",
+        "Porcentaje"
+      ],
+      "filas": [
+        [
+          "Calidad insuficiente de las pruebas",
+          "31 %"
+        ],
+        [
+          "Rediseño inadecuado de procesos empresariales",
+          "31 %"
+        ],
+        [
+          "Formación insuficiente",
+          "27 %"
+        ],
+        [
+          "Planificación inadecuada o falta de evaluación inicial",
+          "25 %"
+        ],
+        [
+          "Resistencia de los usuarios al cambio",
+          "24 %"
+        ],
+        [
+          "Desajuste entre el ERP y las necesidades de la empresa",
+          "24 %"
+        ],
+        [
+          "Escasa implicación de la alta dirección",
+          "19 %"
+        ],
+        [
+          "Deficiente gestión del cambio",
+          "17 %"
+        ],
+        [
+          "Insuficiente participación de usuarios o elevada rotación del equipo",
+          "16 %"
+        ],
+        [
+          "Baja calidad del software",
+          "12 %"
+        ]
+      ]
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La lectura de estos resultados permite observar que varios de los principales factores de fracaso están directamente relacionados con la organización y las personas. La formación insuficiente, la resistencia al cambio, la escasa participación de los usuarios y la falta de implicación de la dirección pueden comprometer el proyecto incluso cuando la solución tecnológica es adecuada."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "También resulta significativo que las pruebas y el rediseño de procesos aparezcan entre los problemas más mencionados. Un ERP puede funcionar correctamente desde el punto de vista informático y, sin embargo, no responder a las necesidades operativas de la empresa."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "8. Comparación entre los factores de éxito y fracaso"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Si comparamos ambas tablas, encontramos relaciones muy claras. La formación aparece en el 24 % de las menciones como factor de éxito y en el 27 % como causa de fracaso cuando resulta insuficiente. La implicación de la dirección se identifica como factor de éxito en el 62 % de las respuestas, mientras que su falta de participación aparece en el 19 % de las respuestas relacionadas con dificultades."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Estas cifras no deben interpretarse como una relación directa de causa y efecto ni como probabilidades de fracaso. Sin embargo, ofrecen una orientación muy útil para establecer prioridades durante la planificación de un proyecto."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "9. Cómo preparar a las personas para el nuevo ERP"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una implantación sólida necesita un plan específico de gestión del cambio y desarrollo de capacidades. No es suficiente organizar unas sesiones de formación inmediatamente antes de la puesta en producción. El aprendizaje debe acompañar a los usuarios durante todo el proceso."
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Comunicar desde el principio por qué se implanta el ERP y qué objetivos se persiguen.",
+        "Identificar cómo afectará el cambio a cada departamento y puesto de trabajo.",
+        "Incorporar usuarios clave en los talleres de análisis y diseño.",
+        "Explicar los nuevos procedimientos antes de exigir su aplicación.",
+        "Desarrollar formación práctica utilizando situaciones reales de la empresa.",
+        "Establecer canales para comunicar dudas, errores y propuestas.",
+        "Reconocer la participación de los trabajadores y compartir los avances del proyecto.",
+        "Mantener un equipo de apoyo durante las primeras semanas de funcionamiento."
+      ]
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "También es importante establecer una red de usuarios clave o superusuarios. Estas personas reciben una formación más avanzada y colaboran en la resolución de incidencias, el acompañamiento de sus compañeros y la transmisión de conocimientos. Su proximidad a la operativa diaria facilita la adaptación y reduce la dependencia de los consultores externos."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "10. El papel del liderazgo y la dirección empresarial"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La dirección debe asumir que un ERP representa un proyecto estratégico y no delegar toda la responsabilidad en el departamento informático o en la empresa implantadora. Es necesario nombrar un patrocinador ejecutivo, establecer un comité de seguimiento y proporcionar autoridad suficiente al responsable del proyecto."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El liderazgo también implica tomar decisiones cuando aparecen diferencias entre departamentos, resolver conflictos sobre responsabilidades, evitar ampliaciones innecesarias del alcance y garantizar que los recursos internos estén disponibles. Si los responsables de área consideran el proyecto una tarea secundaria, difícilmente podrán exigir a sus equipos el compromiso necesario."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Un buen líder debe transmitir que el objetivo no es adaptar la empresa a una aplicación informática de cualquier manera, sino utilizar la tecnología para mejorar la organización y facilitar el trabajo de las personas."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "11. Cómo medir el éxito después de la implantación"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La finalización técnica del proyecto no garantiza que se hayan conseguido los beneficios previstos. Por eso, antes de iniciar la implantación es necesario establecer indicadores que permitan evaluar los resultados y compararlos con la situación inicial."
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Reducción del tiempo necesario para realizar procesos administrativos.",
+        "Disminución de errores en pedidos, facturas y registros.",
+        "Mejora de la exactitud y fiabilidad de los inventarios.",
+        "Reducción de tareas manuales y duplicidad de información.",
+        "Mayor rapidez en la elaboración de informes de gestión.",
+        "Mejora de la coordinación entre departamentos.",
+        "Porcentaje de usuarios formados y nivel de utilización efectiva del ERP.",
+        "Reducción de incidencias y tiempo de resolución.",
+        "Cumplimiento de los objetivos presupuestarios y operativos."
+      ]
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Estos indicadores permiten comprobar si la inversión tecnológica está generando mejoras reales. También ayudan a identificar departamentos donde la adopción es insuficiente o procesos que necesitan una nueva revisión."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Conclusión: el éxito de un ERP depende de cómo trabaja la organización"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La implantación de un ERP es mucho más que un proyecto tecnológico. Es una oportunidad para revisar la organización, eliminar ineficiencias, integrar información y construir una forma de trabajar más coordinada y orientada a resultados."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Las metodologías de SAP, Oracle, Microsoft y NetSuite muestran que la planificación, el análisis de procesos, la validación, las pruebas y la adopción forman parte de una implantación profesional. Sin embargo, los estudios sobre resultados reales recuerdan que la metodología por sí sola no es suficiente. Se necesita una dirección comprometida, responsables funcionales implicados y usuarios que comprendan y participen en la transformación."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La empresa debe invertir tanto en preparar el sistema como en preparar a las personas que van a utilizarlo. Escuchar a los trabajadores, facilitar su aprendizaje y explicar el sentido de los cambios no son actividades complementarias: forman parte del núcleo del proyecto."
+    },
+    {
+      "tipo": "cita",
+      "texto": "La verdadera implantación de un ERP no termina cuando el sistema empieza a funcionar. Termina cuando la organización ha aprendido a trabajar mejor gracias a él."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Fuentes y referencias"
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "SAP. SAP Activate Methodology. https://www.sap.com/products/erp/activate-methodology.html",
+        "SAP Learning. Describing the Methodology Structure. https://learning.sap.com/",
+        "Oracle. What Is an ERP Implementation? https://www.oracle.com/erp/what-is-erp/implementation/",
+        "Oracle. ERP Cloud Service Implementation Leading Practices. Oracle White Paper.",
+        "Microsoft Learn. Introduction to the Success by Design Framework. https://learn.microsoft.com/dynamics365/guidance/implementation-guide/success-by-design",
+        "Oracle NetSuite. The Complete NetSuite Implementation Guide. https://www.netsuite.com/portal/resource/articles/erp/netsuite-implementation-guide.shtml",
+        "Mint Jutras. Real Facts About ERP Implementation. Research report.",
+        "Panorama Consulting Group. ERP Reports and implementation research. https://www.panorama-consulting.com/"
+      ]
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Nota metodológica: los porcentajes de las tablas proceden de respuestas recogidas en el estudio de Mint Jutras sobre implantaciones ERP. Son frecuencias de mención de factores entre los encuestados, no porcentajes de contribución causal ni probabilidades individuales. Las categorías pueden solaparse y no deben sumarse para obtener un total del 100 %. Los resultados deben interpretarse considerando la muestra y el contexto del estudio."
+    }
+  ]
+    },
+
+    {
+  "id": "estrategia-empresarial",
+  "tematica": "estrategia",
+  "titulo": "Estrategia empresarial: decidir qué camino seguir",
+  "resumen": "Define prioridades y alinea los recursos de tu organización con objetivos claros.",
+  "categoria": "Estrategia",
+  "fecha": "2026-11-02",
+  "tiempo_lectura": 7,
+  "imagen": "assets/img/articulos/estrategia2.png",
+  "alt": "Equipo directivo analizando un plan estratégico y definiendo objetivos empresariales",
+  "contenido": [
+    {
+      "tipo": "parrafo",
+      "texto": "Toda empresa necesita saber hacia dónde quiere avanzar. Sin una dirección definida, las decisiones del día a día pueden convertirse en acciones aisladas, los recursos pueden dispersarse y las oportunidades de crecimiento pueden pasar desapercibidas. La estrategia empresarial permite establecer un rumbo, identificar prioridades y coordinar los esfuerzos de toda la organización para alcanzar unos objetivos comunes. No consiste únicamente en elaborar un documento con previsiones a largo plazo, sino en tomar decisiones conscientes sobre qué quiere conseguir la empresa, cómo pretende hacerlo y qué recursos necesita para lograrlo."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "¿Qué es realmente la estrategia empresarial?"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La estrategia empresarial es el conjunto de decisiones y actuaciones que determinan la orientación de una organización a medio y largo plazo. Define qué mercados quiere atender, qué productos o servicios desea ofrecer, cómo pretende diferenciarse de sus competidores y qué capacidades necesita desarrollar. Una buena estrategia parte del conocimiento de la propia empresa y de su entorno. Analiza sus fortalezas y debilidades, estudia las oportunidades del mercado y anticipa posibles amenazas. A partir de esta información, la dirección puede decidir dónde concentrar sus esfuerzos y qué actividades tienen mayor capacidad para generar valor."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "De la visión a los objetivos concretos"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una estrategia eficaz debe transformar una visión general en objetivos comprensibles, medibles y alcanzables. No es suficiente con afirmar que una empresa quiere crecer, mejorar su rentabilidad o aumentar su presencia internacional. Es necesario concretar qué significa cada propósito, establecer prioridades, asignar responsabilidades y definir plazos. Por ejemplo, una empresa que desea crecer en mercados exteriores puede establecer como objetivo desarrollar tres nuevos mercados durante los próximos dos años, identificar distribuidores potenciales, adaptar su catálogo y asignar un presupuesto específico a la actividad comercial. De esta manera, la estrategia deja de ser una declaración de intenciones y se convierte en un plan de actuación."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "El análisis: conocer la situación antes de decidir"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Antes de definir el camino, la organización necesita comprender su situación real. El análisis estratégico permite evaluar los factores internos y externos que pueden influir en sus resultados. Una de las herramientas más conocidas es el análisis DAFO, que identifica debilidades, amenazas, fortalezas y oportunidades. También resulta útil estudiar el mercado, los competidores, los clientes, la evolución tecnológica y los cambios económicos. Este diagnóstico ayuda a evitar decisiones basadas únicamente en percepciones y permite fundamentar las prioridades en información relevante."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La importancia de las personas"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El liderazgo constituye uno de los factores fundamentales para el desarrollo de cualquier organización. Una estrategia puede estar técnicamente bien diseñada, pero difícilmente tendrá éxito si las personas que deben ejecutarla no comprenden su finalidad o no se sienten parte del proyecto. Las organizaciones necesitan profesionales comprometidos, capaces de colaborar, compartir objetivos y aportar sus conocimientos. La dirección debe comunicar con claridad el rumbo elegido, explicar las razones de las decisiones y facilitar que cada equipo comprenda cómo contribuye su trabajo al resultado global."
+    },
+    {
+      "tipo": "cita",
+      "texto": "El verdadero liderazgo consiste en conseguir que las personas quieran avanzar juntas."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El liderazgo estratégico no se limita a transmitir instrucciones. Implica escuchar, generar confianza, resolver obstáculos y desarrollar las capacidades del equipo. También requiere coherencia entre lo que la dirección comunica y lo que realmente hace. Cuando existe una visión compartida, las personas pueden tomar mejores decisiones en su ámbito de responsabilidad y actuar con mayor autonomía, manteniendo la orientación común de la empresa."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Alinear los recursos con las prioridades"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Uno de los principales retos de la estrategia consiste en convertir las prioridades en recursos y acciones concretas. El tiempo, el presupuesto, las personas y la tecnología son limitados, por lo que la organización debe decidir dónde invertir sus esfuerzos. Si una empresa establece como prioridad mejorar la experiencia del cliente, deberá revisar sus procesos comerciales, formar a sus equipos, analizar las incidencias y posiblemente incorporar nuevas herramientas tecnológicas. La asignación de recursos debe responder a los objetivos estratégicos y no únicamente a las necesidades inmediatas de cada departamento."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Tres claves para mejorar la ejecución estratégica"
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Comunicación clara y transparente: explicar los objetivos, las prioridades y las decisiones para que todos comprendan la dirección de la empresa.",
+        "Objetivos compartidos: establecer metas comunes y traducirlas en responsabilidades concretas para cada departamento y equipo.",
+        "Confianza y desarrollo profesional: facilitar la participación, reconocer las aportaciones y proporcionar formación para mejorar las capacidades de las personas."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Medir los resultados y adaptar el rumbo"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La estrategia no termina cuando se aprueba un plan. Es necesario realizar un seguimiento periódico para comprobar si las actuaciones están produciendo los resultados esperados. Los indicadores clave de rendimiento, conocidos como KPI, permiten evaluar aspectos como las ventas, la rentabilidad, la satisfacción del cliente, la productividad, los costes o la evolución de nuevos mercados. Estos indicadores deben estar relacionados con los objetivos definidos y proporcionar información útil para tomar decisiones. Cuando los resultados se desvían de lo previsto, la empresa debe analizar las causas y adoptar medidas correctoras."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El entorno empresarial cambia constantemente. Nuevos competidores, variaciones en los hábitos de consumo, avances tecnológicos o cambios económicos pueden hacer necesario revisar las prioridades. Adaptar la estrategia no significa improvisar ni abandonar continuamente los objetivos, sino mantener una dirección clara y tener capacidad para modificar las actuaciones cuando las circunstancias lo exijan. Las organizaciones más preparadas son aquellas que combinan planificación, seguimiento y flexibilidad."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La estrategia como responsabilidad de toda la organización"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una estrategia empresarial sólida debe conectar la visión de la dirección con el trabajo cotidiano de todas las áreas. Administración, finanzas, producción, compras, marketing, ventas y recursos humanos deben comprender cuáles son las prioridades y cómo contribuyen a ellas. Cuando cada departamento trabaja con objetivos independientes y sin coordinación, pueden aparecer duplicidades, conflictos y pérdida de eficiencia. Por el contrario, cuando existe una orientación compartida, las decisiones se complementan y los recursos se utilizan de forma más coherente."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En definitiva, la estrategia empresarial consiste en elegir conscientemente un camino y conseguir que la organización avance en esa dirección. Requiere análisis, objetivos claros, una adecuada asignación de recursos, liderazgo y capacidad de adaptación. Pero, sobre todo, necesita personas que comprendan el propósito del proyecto y participen activamente en su desarrollo. Porque una estrategia no alcanza sus resultados por estar bien escrita, sino por la capacidad de una organización para convertirla en decisiones y acciones."
+    }
+  ]
+    },
+
+    {
+  "id": "liderazgo-consciente",
+  "tematica": "liderazgo",
+  "titulo": "Liderazgo consciente: liderar sin perder el norte",
+  "resumen": "Cómo desarrollar una forma de liderar más humana, clara y eficaz en equipos complejos.",
+  "categoria": "Liderazgo",
+  "fecha": "2026-11-05",
+  "tiempo_lectura": 6,
+  "imagen": "assets/img/articulos/liderazgo.jpg",
+  "alt": "Responsable de equipo facilitando una conversación participativa en una reunión de trabajo",
+  "contenido": [
+    {
+      "tipo": "parrafo",
+      "texto": "Dirigir una organización implica tomar decisiones, alcanzar objetivos y gestionar recursos, pero también comprender a las personas que hacen posible los resultados. En un entorno empresarial cada vez más exigente, los responsables de equipo deben gestionar situaciones complejas, resolver conflictos, afrontar cambios y mantener la motivación de sus colaboradores. En este contexto adquiere importancia el liderazgo consciente: una forma de dirigir basada en el autoconocimiento, la atención, la responsabilidad y la comprensión de las personas. No se trata de ejercer una dirección menos exigente, sino de liderar con mayor claridad, equilibrio y coherencia."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "¿Qué entendemos por liderazgo consciente?"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El liderazgo consciente consiste en desarrollar la capacidad de observar y comprender tanto el propio comportamiento como el impacto que las decisiones y actuaciones del líder tienen sobre los demás. Supone actuar de manera intencionada, en lugar de responder automáticamente ante cada problema o situación de presión. Un líder consciente conoce sus fortalezas y limitaciones, reconoce sus emociones, escucha diferentes perspectivas y procura que sus decisiones estén alineadas con los valores y objetivos de la organización. Esta forma de liderazgo combina tres dimensiones fundamentales: conciencia de uno mismo, conciencia de las personas y comprensión del contexto en el que se desarrolla la actividad."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "El autoconocimiento: empezar por uno mismo"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La primera responsabilidad de un líder consciente es comprender cómo piensa, siente y actúa. Las emociones influyen en la comunicación, en la resolución de conflictos y en la toma de decisiones, especialmente cuando existe presión o incertidumbre. Reconocer una reacción impulsiva, aceptar una equivocación o identificar un prejuicio permite evitar respuestas que pueden perjudicar al equipo. El autoconocimiento también implica conocer las propias capacidades, admitir las limitaciones y mantener una actitud abierta a recibir opiniones y críticas. Un responsable que reconoce sus errores transmite credibilidad y facilita una cultura en la que aprender y mejorar forma parte del trabajo."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La importancia de las personas"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos. Sin embargo, las personas no responden únicamente a instrucciones o incentivos económicos. También necesitan sentirse escuchadas, comprender el sentido de su trabajo y disponer de un entorno donde puedan aportar ideas y desarrollar sus capacidades. El liderazgo consciente reconoce que cada integrante del equipo tiene experiencias, conocimientos, motivaciones y necesidades diferentes. Por ello, el responsable debe adaptar su comunicación, ofrecer orientación y crear oportunidades para que las personas participen en las decisiones que afectan a su actividad."
+    },
+    {
+      "tipo": "cita",
+      "texto": "El verdadero liderazgo consiste en conseguir que las personas quieran avanzar juntas."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Escuchar antes de decidir"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La escucha activa es una de las herramientas más importantes del liderazgo consciente. Escuchar no consiste simplemente en permitir que otra persona hable, sino en prestar atención, intentar comprender su perspectiva y comprobar que el mensaje se ha entendido correctamente. Para ello es necesario evitar interrupciones, formular preguntas, aclarar dudas y no anticipar conclusiones. Esta actitud permite detectar problemas que podrían pasar desapercibidos, conocer mejor las necesidades del equipo y disponer de información más completa antes de tomar decisiones. Además, cuando los profesionales perciben que sus opiniones son tenidas en cuenta, aumenta la disposición a participar y expresar propuestas o dificultades."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Confianza y seguridad psicológica"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Un equipo necesita un entorno en el que sus integrantes puedan plantear dudas, reconocer errores, expresar desacuerdos y proponer mejoras sin temor a ser humillados o castigados por hacerlo. Este concepto se conoce como seguridad psicológica y constituye una dimensión relevante para el funcionamiento de los equipos. No significa eliminar la responsabilidad individual ni aceptar cualquier comportamiento, sino permitir que los problemas se comuniquen a tiempo y que las diferencias puedan tratarse de forma constructiva. El líder contribuye a crear este entorno mediante la coherencia, el respeto, la transparencia y una respuesta equilibrada ante los errores."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Liderar con claridad sin renunciar a la exigencia"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una interpretación equivocada del liderazgo consciente sería asociarlo exclusivamente con la empatía o con una actitud conciliadora. Las organizaciones necesitan objetivos, disciplina, responsabilidad y resultados. La diferencia está en cómo se establecen las expectativas y cómo se gestionan las situaciones difíciles. Un líder consciente comunica lo que espera, explica las razones de sus decisiones, proporciona recursos y realiza un seguimiento del desempeño. Cuando es necesario corregir una conducta o afrontar un bajo rendimiento, lo hace con respeto y claridad, centrándose en los hechos y en las soluciones. La empatía no sustituye a la responsabilidad: permite ejercerla de una manera más constructiva."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Tres claves para desarrollar un liderazgo consciente"
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "Autoconocimiento y gestión emocional: reconocer las propias reacciones, identificar los puntos de mejora y aprender a responder con serenidad ante situaciones de presión.",
+        "Comunicación y escucha activa: mantener conversaciones abiertas, preguntar antes de juzgar y transmitir objetivos y decisiones de manera clara y transparente.",
+        "Confianza y desarrollo profesional: delegar responsabilidades, reconocer las aportaciones, facilitar el aprendizaje y crear un entorno donde las personas puedan participar y mejorar."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La toma de decisiones en entornos complejos"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Los responsables empresariales deben decidir con frecuencia sin disponer de toda la información. En estas circunstancias, el liderazgo consciente aporta una forma de actuar que combina análisis, reflexión y responsabilidad. Antes de decidir, conviene identificar los hechos, escuchar a las personas afectadas, valorar las alternativas y considerar las consecuencias a corto y largo plazo. También es importante reconocer cuándo una decisión necesita revisarse y comunicar los motivos de los cambios. Esta manera de proceder no elimina la incertidumbre, pero ayuda a reducir las decisiones impulsivas y favorece una dirección más coherente."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Cómo llevarlo a la práctica en la empresa"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "El liderazgo consciente se desarrolla mediante hábitos cotidianos, no únicamente a través de declaraciones o programas de formación. Puede comenzar con reuniones en las que se escuche activamente a los equipos, conversaciones individuales para conocer sus dificultades, espacios para analizar errores y revisiones periódicas de los objetivos. También resulta útil solicitar retroalimentación sobre el propio estilo de dirección y comprobar si las decisiones se están comunicando y aplicando de manera coherente. Estas prácticas permiten convertir los principios del liderazgo consciente en comportamientos observables y susceptibles de mejora."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "El liderazgo como motor de una cultura organizativa saludable"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La forma de dirigir influye en la cultura de una organización. Los comportamientos de los responsables establecen referencias sobre cómo se comunica, cómo se resuelven los conflictos, cómo se asumen los errores y cómo se reconoce el trabajo. Cuando existe coherencia entre los valores comunicados y las actuaciones reales, se refuerzan la confianza y el compromiso. Por el contrario, cuando se exige colaboración pero se fomenta la competencia interna, o se habla de transparencia mientras se oculta información relevante, aparece una distancia que deteriora la credibilidad de la dirección."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En definitiva, el liderazgo consciente consiste en mantener el rumbo sin perder de vista a las personas que hacen posible avanzar. Requiere autoconocimiento, capacidad de escucha, equilibrio emocional, claridad en las decisiones y responsabilidad sobre los resultados. No propone renunciar a la autoridad ni a la exigencia empresarial, sino ejercerlas con criterio y humanidad. Porque liderar no es solamente conseguir que las tareas se realicen, sino crear las condiciones para que las personas comprendan los objetivos, puedan aportar lo mejor de sí mismas y avancen juntas hacia un propósito compartido."
+    }
+  ]
+    },
+
+
+{
     "id": "preguntas-poderosas",
     "tematica": "coaching",
     "titulo": "El poder de hacer las preguntas adecuadas",
@@ -214,6 +1355,7 @@
         }
     ]
   },
+
   {
     "id": "gestion-del-cambio",
     "tematica": "coaching",
@@ -378,47 +1520,7 @@
         }
     ]
   },
-  {
-    "id": "liderazgo-consciente",
-    "tematica": "liderazgo",
-    "titulo": "Liderazgo consciente: liderar sin perder el norte",
-    "resumen": "Cómo desarrollar una forma de liderar más humana, clara y eficaz en equipos complejos.",
-    "categoria": "Liderazgo",
-    "fecha": "2026-11-05",
-    "tiempo_lectura": 6,
-    "imagen": "assets/img/articulos/estrategia.jpg",
-    "alt": "Persona facilitando una conversación de equipo",
-    "contenido": [
-        {
-            "tipo": "parrafo",
-            "texto": "El liderazgo constituye uno de los factores fundamentales para el desarrollo de cualquier organización..."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "La importancia de las personas"
-        },
-        {
-            "tipo": "parrafo",
-            "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos..."
-        },
-        {
-            "tipo": "cita",
-            "texto": "El verdadero liderazgo consiste en conseguir que las personas quieran avanzar juntas."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "Tres claves para mejorar"
-        },
-        {
-            "tipo": "lista",
-            "elementos": [
-                "Comunicación clara y transparente.",
-                "Objetivos compartidos.",
-                "Confianza y desarrollo profesional."
-            ]
-        }
-    ]
-  },
+  
   {
     "id": "delegar-con-confianza",
     "tematica": "liderazgo",
@@ -870,47 +1972,7 @@
         }
     ]
   },
-  {
-    "id": "estrategia-empresarial",
-    "tematica": "estrategia",
-    "titulo": "Estrategia empresarial: decidir qué camino seguir",
-    "resumen": "Define prioridades y alinea los recursos de tu organización con objetivos claros.",
-    "categoria": "Estrategia",
-    "fecha": "2026-11-02",
-    "tiempo_lectura": 7,
-    "imagen": "assets/img/articulos/estrategia.jpg",
-    "alt": "Equipo analizando un plan estratégico",
-    "contenido": [
-        {
-            "tipo": "parrafo",
-            "texto": "El liderazgo constituye uno de los factores fundamentales para el desarrollo de cualquier organización..."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "La importancia de las personas"
-        },
-        {
-            "tipo": "parrafo",
-            "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos..."
-        },
-        {
-            "tipo": "cita",
-            "texto": "El verdadero liderazgo consiste en conseguir que las personas quieran avanzar juntas."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "Tres claves para mejorar"
-        },
-        {
-            "tipo": "lista",
-            "elementos": [
-                "Comunicación clara y transparente.",
-                "Objetivos compartidos.",
-                "Confianza y desarrollo profesional."
-            ]
-        }
-    ]
-  },
+  
   {
     "id": "analisis-dafo",
     "tematica": "estrategia",

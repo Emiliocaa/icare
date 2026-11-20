@@ -19,11 +19,11 @@ require_once __DIR__ . '/controladores/registro.php';
     <main id="contenido">
         <section class="formulario-tarjeta tarjeta-registro" aria-labelledby="titulo-registro">
             <?php if ($registroCorrecto): ?>
-                <p class="note" role="status">Tu cuenta se ha creado correctamente.</p>
+                <p class="note" role="status">Tu contraseña se ha configurado correctamente. Ya puedes iniciar sesión.</p>
             <?php endif; ?>
 
             <h1 id="titulo-registro">Crear cuenta</h1>
-            <p>Completa tus datos para registrarte.</p>
+            <p>Proceder a registrar tras recibir correo de activación, en respuesta a su solicitud de información.</p>
 
             <?php if ($errores): ?>
                 <div role="alert" aria-labelledby="errores-registro">

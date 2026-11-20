@@ -236,6 +236,43 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                                             </figcaption>
                                         <?php endif; ?>
                                     </figure>
+
+                                <?php elseif ($tipo === 'tabla'): ?>
+                                    <?php
+                                    $encabezados = $bloque['encabezados'] ?? [];
+                                    $filas = $bloque['filas'] ?? [];
+                                    ?>
+                                    <?php if (is_array($encabezados) && $encabezados): ?>
+                                        <div
+                                            class="tabla-articulo-contenedor"
+                                            role="region"
+                                            tabindex="0"
+                                            aria-label="Tabla de datos del artículo: <?= $esc($tituloArticulo) ?>"
+                                        >
+                                            <table class="tabla-articulo">
+                                                <thead>
+                                                    <tr>
+                                                        <?php foreach ($encabezados as $encabezado): ?>
+                                                            <th scope="col"><?= $esc($encabezado) ?></th>
+                                                        <?php endforeach; ?>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (is_array($filas)): ?>
+                                                        <?php foreach ($filas as $fila): ?>
+                                                            <?php if (is_array($fila)): ?>
+                                                                <tr>
+                                                                    <?php foreach ($encabezados as $indice => $encabezado): ?>
+                                                                        <td><?= $esc($fila[$indice] ?? '') ?></td>
+                                                                    <?php endforeach; ?>
+                                                                </tr>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         <?php else: ?>

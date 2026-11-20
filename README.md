@@ -6,14 +6,15 @@ Sitio web de Icare Coaching, S. L., centrado en coaching, liderazgo, desarrollo 
 
 Presentar los servicios y la trayectoria de Icare Coaching, facilitar el contacto y publicar artículos sobre coaching, liderazgo, estrategia, mejora continua e inteligencia artificial.
 
-La página de contacto abre Gmail con un borrador para que el visitante lo revise y lo envíe desde allí. Es necesario iniciar sesión en Google; el sitio no envía los datos a un servidor.
+El formulario de contacto guarda sus datos en MySQL y abre Gmail con un borrador para que el visitante lo revise y lo envíe desde allí. El sitio no envía el correo automáticamente.
 
 ## Estado actual
 
 - La página principal y el área de Conocimiento están implementadas.
-- `registro.php` registra cuentas en MySQL y no permite reutilizar un correo electrónico.
+- `registro.php` permite configurar la contraseña de una cuenta activa previamente creada por un administrador.
+- `login.php` autentica la cuenta y permite seleccionar una empresa asociada y activa; `paneltablas/` muestra los datos propios autorizados.
 - Los artículos se leen desde `conocimiento/data/articulos.json`.
-- Las páginas `login.php` y `conocimiento/categoria.php` se mantienen como espacios reservados para trabajo futuro.
+- `conocimiento/categoria.php` se mantiene como espacio reservado para trabajo futuro.
 - `bdd/bdd.sql` define el esquema inicial; `bdd/conexion.php` configura la conexión local ignorada por Git.
 - No hay una integración de IA ejecutándose en el sitio. Copilot se utiliza como apoyo de desarrollo, no como dependencia de la aplicación.
 - El repositorio no incluye todavía una suite de pruebas automatizadas ni un gestor de dependencias.
@@ -46,7 +47,7 @@ El código usa `JSON_THROW_ON_ERROR`, disponible desde PHP 7.3. Se recomienda ut
    - Página principal: <http://localhost/proyectos/icare/>
    - Conocimiento: <http://localhost/proyectos/icare/conocimiento/>
 
-La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual. El registro requiere MySQL/MariaDB activo y la tabla `users`.
+La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual. El registro, el inicio de sesión y el panel requieren MySQL/MariaDB activo y las tablas definidas en `bdd/bdd.sql`.
 
 ### Base de datos
 
@@ -57,7 +58,7 @@ La base de datos es opcional para el sitio actual. Si se retoma esa funcionalida
 3. Revisa la configuración local de `bdd/conexion.php`.
 4. Si la tabla `users` ya existía, comprueba que no haya correos duplicados y ejecuta una sola vez `bdd/migrar-email-unico.sql` para añadir la restricción única.
 
-No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El inicio de sesión y el resto de páginas de usuario aún no están implementados.
+No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El acceso al panel requiere una cuenta activa en `users` y una relación con una empresa activa en `usuario_empresa`.
 
 `.gitignore` contiene reglas para `bdd/conexion.php` y `bdd/copia.mkd`.
 
@@ -69,8 +70,11 @@ icare/
 ├── README.md
 ├── index.php
 ├── header.php
-├── login.php                         # Reservado para desarrollo futuro
-├── registro.php                      # Reservado para desarrollo futuro
+├── login.php                         # Inicio de sesión y selección de empresa
+├── registro.php                      # Configuración de contraseña para cuentas invitadas
+├── paneltablas/
+│   ├── index.php                     # Dashboard y datos autorizados
+│   └── salir.php                     # Cierre de sesión
 ├── adocumentos/
 │   └── texto.md                      # Contenido y textos de referencia
 ├── assets/
@@ -143,7 +147,7 @@ La implementación se revisa con el objetivo de acercarse a WCAG 2.2 nivel AA; e
 
 La revisión actual incluyó comprobaciones DOM en la portada, el índice de Conocimiento y un artículo: un `h1` por página, imágenes con atributo `alt`, controles etiquetados, botones con nombre y ausencia de IDs duplicados. También se midieron combinaciones de color usadas en texto y foco. No hay un escáner automatizado como axe-core integrado en el proyecto.
 
-Se comprobó por teclado el menú móvil: apertura, recorrido circular con Tab y Mayús+Tab, cierre con Escape y restauración del foco. Antes de publicar, completar las pruebas de teclado del carrusel y de los errores del formulario, y probar con lector de pantalla, zoom/reflujo y dispositivos táctiles reales. Las páginas reservadas de inicio de sesión y registro no están implementadas; deben diseñarse y probarse accesiblemente antes de habilitarlas.
+Se comprobó por teclado el menú móvil: apertura, recorrido circular con Tab y Mayús+Tab, cierre con Escape y restauración del foco. Antes de publicar, completar las pruebas de teclado del carrusel, del formulario de registro y de las nuevas pantallas de inicio de sesión y panel; probar también con lector de pantalla, zoom/reflujo y dispositivos táctiles reales.
 
 ## Validación básica
 
@@ -157,6 +161,20 @@ C:\xampp\php\php.exe -l conocimiento\articulo.php
 
 También conviene abrir las páginas principal y de Conocimiento en el navegador y comprobar la navegación móvil después de cambiar cabeceras, rutas o estilos.
 
+### Comprobación funcional importante
+
+**Las pruebas de registro e inicio de sesión deben recorrer el flujo real de la aplicación servido por Apache, no sustituirse por cambios directos en la base de datos, generación manual de hashes ni pruebas aisladas de `password_hash`/`password_verify`.** Esas comprobaciones indirectas no detectan errores de integración, como variables del formulario sobrescritas al incluir la configuración de conexión.
+
+Para validar el cambio de contraseña:
+
+1. Utiliza una cuenta de prueba activa y asignada a una empresa activa.
+2. Abre `http://localhost/proyectos/icare/registro.php` en el navegador y configura la contraseña con el formulario.
+3. Confirma el mensaje de éxito del formulario.
+4. Sin modificar la base de datos manualmente, inicia sesión en `http://localhost/proyectos/icare/login.php` con el mismo correo y contraseña.
+5. Selecciona la empresa asignada y confirma que se abre el dashboard.
+
+La verificación directa del hash en la base de datos puede complementar la prueba, pero no reemplaza el recorrido completo por las páginas reales. No se deben imprimir ni registrar contraseñas o hashes durante la depuración.
+
 ## Mantenimiento de este README
 
 Actualiza este documento cuando cambien el stack, los requisitos, los pasos para ejecutar el sitio, el esquema de los artículos o la estructura principal de carpetas. Mantén el estado de las funciones y las páginas reservadas acorde con lo que realmente esté implementado.
@@ -165,8 +183,9 @@ Actualiza este documento cuando cambien el stack, los requisitos, los pasos para
 
 1.SUBMIT FUNCIONA PERO HAY QUE VERIFICAR EL CODIGO YA  QUE REDIRIGE A GMAIL???? VER SI ES ADECUADO
 2.ENLACE EN FORM , MISMA PROBLEMATICA QUE PUNTO 1
-4.PENDIENTE DE DAR CONTENIDO A LOGIN
+4.PENDIENTE DE DAR CONTENIDO A LOGIN. DEBE ESTAN VINCULADO  CON UNA EMPRESA PARA QUE  FILTRE LOS  DATOS, UN MISMO CORREO PUEDE ACCCEDER A DISTINTAS EMPRESAS Y VER LA INFORMACION CORRESPONDIENTE A SU ROL Y EMPRESA.
 7.MONTAR SISTEMA DE SEGURIDAD HAKERS
 8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR
-11.ENVIAR UN CORREO DE BIENVENIDA AL REGISTRARSE????
+9.PENDIENTE DE DESARROLLO PROCESO ACTIVACION USUARIO POR EL  ADMINISTRACION, POR EL  MOMENTO MANUEL , SI ESTA ACTIVO TRUE SE PUEDE REGISTRAR.
+10.PENDIENTE DESARROLLO , EN CASO DE OLVIDO CONTRASEÑA PODER CAMBIARLA
 
