@@ -1313,48 +1313,85 @@
   ]
     },
 
-
-{
-    "id": "preguntas-poderosas",
-    "tematica": "coaching",
-    "titulo": "El poder de hacer las preguntas adecuadas",
-    "resumen": "Cómo utilizar preguntas abiertas para generar reflexión, aprendizaje y nuevas perspectivas.",
-    "categoria": "Coaching",
-    "fecha": "2026-10-28",
-    "tiempo_lectura": 4,
-    "imagen": "assets/img/articulos/estrategia.jpg",
-    "alt": "Personas conversando durante una sesión de coaching",
-    "contenido": [
-        {
-            "tipo": "parrafo",
-            "texto": "El liderazgo constituye uno de los factores fundamentales para el desarrollo de cualquier organización..."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "La importancia de las personas"
-        },
-        {
-            "tipo": "parrafo",
-            "texto": "Las organizaciones necesitan profesionales comprometidos, capaces de colaborar y compartir objetivos..."
-        },
-        {
-            "tipo": "cita",
-            "texto": "El verdadero liderazgo consiste en conseguir que las personas quieran avanzar juntas."
-        },
-        {
-            "tipo": "titulo",
-            "texto": "Tres claves para mejorar"
-        },
-        {
-            "tipo": "lista",
-            "elementos": [
-                "Comunicación clara y transparente.",
-                "Objetivos compartidos.",
-                "Confianza y desarrollo profesional."
-            ]
-        }
-    ]
-  },
+    {
+  "id": "preguntas-poderosas",
+  "tematica": "coaching",
+  "titulo": "El poder de hacer las preguntas adecuadas",
+  "resumen": "Cómo utilizar preguntas abiertas para generar reflexión, aprendizaje y nuevas perspectivas.",
+  "categoria": "Coaching",
+  "fecha": "2026-10-28",
+  "tiempo_lectura": 4,
+  "imagen": "assets/img/articulos/preguntas-poderosas.jpg",
+  "alt": "Profesional facilitando una conversación de coaching en un entorno colaborativo",
+  "contenido": [
+    {
+      "tipo": "parrafo",
+      "texto": "En muchas ocasiones, ante un problema, nuestra primera reacción es buscar una respuesta o proponer una solución. Sin embargo, existe una herramienta mucho más poderosa para impulsar el aprendizaje y el cambio: hacer la pregunta adecuada. En el coaching, preguntar no consiste en dirigir a alguien hacia una respuesta predeterminada, sino en ayudarle a pensar, cuestionar sus propias conclusiones y descubrir nuevas posibilidades. Una buena pregunta puede cambiar la perspectiva desde la que observamos un problema y, con ello, transformar nuestra manera de actuar."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Preguntar para descubrir, no para dirigir"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La diferencia entre una pregunta convencional y una pregunta poderosa está en su capacidad para generar reflexión. Las preguntas cerradas suelen limitar las respuestas a un sí o un no. Las preguntas abiertas, en cambio, invitan a explorar ideas, reconocer dificultades y considerar alternativas. No buscan confirmar lo que ya sabemos, sino descubrir aquello que todavía no hemos considerado. En lugar de preguntar «¿Por qué no has conseguido el objetivo?», podemos plantear «¿Qué ha dificultado alcanzar el resultado que esperabas?». El cambio parece pequeño, pero desplaza la conversación desde el juicio hacia el análisis y el aprendizaje."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "La pregunta como herramienta de autoconocimiento"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Muchas de nuestras limitaciones no proceden exclusivamente de las circunstancias, sino también de las interpretaciones que hacemos de ellas. Las preguntas poderosas permiten examinar esas interpretaciones y distinguir entre hechos, suposiciones y creencias. Preguntas como «¿Qué estás dando por hecho?», «¿Qué otra explicación podría existir?» o «¿Qué depende realmente de ti?» ayudan a ampliar la mirada y recuperar capacidad de decisión. El objetivo no es ofrecer respuestas fáciles, sino facilitar que cada persona encuentre respuestas más conscientes y fundamentadas."
+    },
+    {
+      "tipo": "cita",
+      "texto": "Una respuesta puede cerrar una conversación. Una buena pregunta puede abrir un mundo de posibilidades."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Preguntas poderosas en el entorno empresarial"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En las organizaciones, preguntar adecuadamente puede mejorar la comunicación, fortalecer el liderazgo y desarrollar la autonomía de los equipos. Un responsable que responde siempre con instrucciones puede resolver problemas inmediatos, pero también generar dependencia. En cambio, cuando pregunta y escucha, ayuda a que sus colaboradores desarrollen criterio y asuman mayor responsabilidad. Ante una dificultad, en lugar de ofrecer directamente una solución, puede preguntar: «¿Qué alternativas has valorado?», «¿Qué necesitarías para avanzar?» o «¿Cuál sería el primer paso posible?». De esta manera, la conversación se convierte en una oportunidad para aprender y mejorar."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "Cinco preguntas que pueden cambiar una conversación"
+    },
+    {
+      "tipo": "lista",
+      "elementos": [
+        "¿Qué es lo que realmente quieres conseguir? Ayuda a concretar el objetivo y diferenciarlo de las expectativas.",
+        "¿Qué te está impidiendo avanzar? Permite identificar obstáculos, hábitos o creencias limitantes.",
+        "¿Qué otras posibilidades no has considerado? Invita a salir de los planteamientos habituales.",
+        "¿Qué depende de ti en esta situación? Devuelve la atención hacia la responsabilidad y el margen de actuación personal.",
+        "¿Qué primer paso estás dispuesto a dar? Convierte la reflexión en compromiso y acción."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "texto": "El arte de preguntar también exige saber escuchar"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "Una pregunta poderosa pierde su valor si no existe una escucha auténtica. Preguntar y escuchar forman parte de un mismo proceso. Es necesario dar espacio para pensar, evitar interrumpir y resistir la tentación de completar las respuestas de los demás. También conviene aceptar los silencios: a menudo, una persona necesita tiempo para ordenar sus ideas y encontrar una respuesta propia. El buen facilitador no compite por tener la última palabra; crea las condiciones para que la otra persona llegue a conclusiones que pueda comprender y asumir."
+    },
+    {
+      "tipo": "titulo",
+      "texto": "De la reflexión a la acción"
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "La finalidad de las preguntas poderosas no es mantener una conversación interesante, sino generar aprendizaje y movimiento. Una reflexión adquiere verdadero valor cuando permite identificar una decisión, modificar una conducta o iniciar una acción concreta. Por eso, una conversación de coaching debería terminar conectando lo descubierto con el siguiente paso: «¿Qué vas a hacer ahora?», «¿Cuándo empezarás?» o «¿Cómo sabrás que has avanzado?». La pregunta adecuada ayuda a transformar una intención en un compromiso."
+    },
+    {
+      "tipo": "parrafo",
+      "texto": "En definitiva, preguntar bien es una competencia esencial para quienes desean liderar, acompañar o desarrollar personas. Requiere curiosidad, respeto, escucha y la capacidad de dejar a un lado la necesidad de tener siempre la respuesta. Porque no siempre ayudamos más cuando explicamos lo que otros deben hacer. A veces, la mayor contribución consiste en formular una pregunta que les permita descubrir lo que son capaces de hacer por sí mismos."
+    }
+  ]
+    },
 
   {
     "id": "gestion-del-cambio",

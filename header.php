@@ -38,9 +38,7 @@ $paginaActiva = $paginaActiva ?? '';
             aria-label="Abrir menú"
             aria-expanded="false"
             aria-controls="menuLateral">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
         </button>
 
         <!-- FONDO OSCURO -->
@@ -61,7 +59,7 @@ $paginaActiva = $paginaActiva ?? '';
                 class="cerrar-menu"
                 id="cerrarMenu"
                 aria-label="Cerrar menú">
-                &times;
+                <span class="material-symbols-outlined" aria-hidden="true">close</span>
             </button>
 
             <a href="<?= $basePath ?>index.php" class="logoMenuLateral" style="text-decoration: none;">

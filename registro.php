@@ -9,6 +9,9 @@ require_once __DIR__ . '/controladores/registro.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Crea tu cuenta en Icare Coaching.">
     <title>Crear cuenta | Icare Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
 </head>
 
@@ -19,11 +22,11 @@ require_once __DIR__ . '/controladores/registro.php';
     <main id="contenido">
         <section class="formulario-tarjeta tarjeta-registro" aria-labelledby="titulo-registro">
             <?php if ($registroCorrecto): ?>
-                <p class="note" role="status">Tu contraseña se ha configurado correctamente. Ya puedes iniciar sesión.</p>
+                <p class="note" role="status">Registro realizado. Próximamente recibirá un correo de activación.</p>
             <?php endif; ?>
 
             <h1 id="titulo-registro">Crear cuenta</h1>
-            <p>Proceder a registrar tras recibir correo de activación, en respuesta a su solicitud de información.</p>
+            <p>Regístrate para crear tu cuenta. El acceso estará disponible cuando el administrador la active.</p>
 
             <?php if ($errores): ?>
                 <div role="alert" aria-labelledby="errores-registro">
@@ -45,8 +48,8 @@ require_once __DIR__ . '/controladores/registro.php';
                 </div>
 
                 <div class="campo">
-                    <label for="apellidos">Apellidos *</label>
-                    <input id="apellidos" name="apellidos" autocomplete="family-name" maxlength="40" required value="<?= htmlspecialchars($apellidos, ENT_QUOTES, 'UTF-8') ?>">
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos" name="apellidos" autocomplete="family-name" maxlength="40" value="<?= htmlspecialchars($apellidos, ENT_QUOTES, 'UTF-8') ?>">
                 </div>
 
                 <div class="campo campo-completo">

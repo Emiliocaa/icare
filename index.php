@@ -16,6 +16,9 @@ $anioActual = date('Y');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Coaching ejecutivo, liderazgo y motivación de equipos, consultoría de datos e inteligencia artificial para empresas y profesionales en Valencia y online.">
     <title>Coaching ejecutivo y consultoría en Valencia | Icare Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
     <meta name="keywords" content="liderazgo, personas, mejora continua, finanzas, estrategia, ia, productividad,">
     
@@ -29,7 +32,7 @@ $anioActual = date('Y');
     <main id="contenido">
         <section class="hero" id="inicio">
             <div class="container">
-                <p class="eyebrow">Liderazgo · Datos · Personas</p>
+                <p class="eyebrow">Personas · Liderazgo · Sistemas</p>
                 <h1>Motiva a tus equipos, impulsa tu liderazgo y optimiza tus sistemas y datos para escalar tu negocio.</h1>
                 <p class="lead">Coaching gerencial, evaluación de sistemas, consultoría de datos, adopción de Inteligencia Artificial y coordinación de equipos que ayuden a la motivación de las personas. Todo respaldado por la trayectoria de un ex-CEO, Economista y apasionado de la tecnología.</p>
                 <p class="pitch">En <strong>icare coaching </strong> unimos el coaching ejecutivo y personal con el pragmatismo del control de gestión, el análisis de datos y la transformación digital. Ayudamos a CEOs, gerentes, mandos intermedios y equipos a evolucionar hacia una cultura <em>data-driven</em>, adoptar nuevas tecnologías y trabajar con cohesión, motivación y alto rendimiento.</p>
@@ -39,12 +42,12 @@ $anioActual = date('Y');
         </section>
         <section class="section" id="enfoque">
             <div class="container">
-                <p class="eyebrow">Sobre mí · Mi enfoque</p>
+                <p class="eyebrow">Mi enfoque</p>
                 <h2>Liderazgo directivo, visión financiera, gestión humana y vanguardia tecnológica.</h2>
                 <div class="intro">
-                    <p>Hola, soy <strong>Emilio Casañ Arolas</strong>. A lo largo de más de 25 años de carrera profesional he liderado la dirección ejecutiva, financiera y operativa en entornos industriales competitivos, complementando la gestión empresarial con una formación continua en desarrollo humano, tecnología, ciencia de datos e Inteligencia Artificial.</p>
+                    <p>Hola, soy <strong>Emilio Casañ Arolas - Economista</strong>. A lo largo de más de 25 años de carrera profesional he liderado la dirección ejecutiva, financiera y operativa en entornos industriales competitivos, complementando la gestión empresarial con una formación continua en desarrollo humano, tecnología, ciencia de datos y actualmente, Inteligencia Artificial.</p>
                     <p>Sé por experiencia que los retos reales de las organizaciones no se limitan a las finanzas o la tecnología; abarcan de manera fundamental <strong>el compromiso del equipo, la comunicación interdepartamental y la motivación diaria</strong>. Ninguna tecnología o sistema ERP triunfa si el factor humano no está alineado e inspirado.</p>
-                    <p>A través de <strong>icare coaching, s.l.</strong>, pongo a tu disposición un acompañamiento integral 360°: la combinación de visión ejecutiva de alta dirección (C-Level), herramientas tecnológicas avanzadas y estrategias de motivación y liderazgo para potenciar a las personas y los resultados.</p>
+                    <p>A través de <strong>icare coaching, s.l.</strong>, pongo a tu disposición un acompañamiento integral 360°: la combinación de visión ejecutiva de alta dirección (C-Level), experiencia con herramientas tecnológicas avanzadas y estrategias de motivación y liderazgo para potenciar a las personas y con todo ello conseguir los objetivos marcados.</p>
                 </div>
                 <div class="grid section-heading">
                     <article class="card"><span class="number">01 / PERSONAS</span>
@@ -57,7 +60,7 @@ $anioActual = date('Y');
                     </article>
                     <article class="card"><span class="number">03 / DATOS</span>
                         <h3>Tecnología Útil y Aplicada Cultura Data-Driven &amp; Eficiente</h3>
-                        <p>Transformar datos dispersos en KPIs e información estratégica útil para decidir con seguridad.</p>
+                        <p>Transformar datos dispersos en KPIs e información estratégica útil para decidir con criterio.</p>
                     </article>
                 </div>
             </div>

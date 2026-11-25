@@ -134,12 +134,8 @@
     box-shadow: 0 0.5rem 1.25rem rgba(23, 50, 47, 0.35);
 }
 
-.control-flecha-izquierda .flecha-carrusel::before {
-    content: "<";
-}
-
-.control-flecha-derecha .flecha-carrusel::before {
-    content: ">";
+.flecha-carrusel .material-symbols-outlined {
+    font-size: inherit;
 }
 
 .flecha-carrusel:focus-visible {

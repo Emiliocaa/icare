@@ -11,8 +11,9 @@ El formulario de contacto guarda sus datos en MySQL y abre Gmail con un borrador
 ## Estado actual
 
 - La página principal y el área de Conocimiento están implementadas.
-- `registro.php` permite configurar la contraseña de una cuenta activa previamente creada por un administrador.
-- `login.php` autentica la cuenta y permite seleccionar una empresa asociada y activa; `paneltablas/` muestra los datos propios autorizados.
+- `registro.php` crea una cuenta con la contraseña hasheada; queda inactiva hasta que la active un administrador.
+- `login.php` autentica cuentas activas y abre el dashboard aunque no tengan empresas asignadas. En el selector, los usuarios solo ven sus empresas activas asignadas; los administradores pueden ver todas las empresas activas.
+- El menú Setting enumera las tablas de la base de datos. Los administradores pueden consultar sus registros; los usuarios ven solo las filas autorizadas para su cuenta. Las columnas `password` y `token_hash` se ocultan y las tablas se muestran con paginación.
 - Los artículos se leen desde `conocimiento/data/articulos.json`.
 - `conocimiento/categoria.php` se mantiene como espacio reservado para trabajo futuro.
 - `bdd/bdd.sql` define el esquema inicial; `bdd/conexion.php` configura la conexión local ignorada por Git.
@@ -57,8 +58,9 @@ La base de datos es opcional para el sitio actual. Si se retoma esa funcionalida
 2. Importa `bdd/bdd.sql`.
 3. Revisa la configuración local de `bdd/conexion.php`.
 4. Si la tabla `users` ya existía, comprueba que no haya correos duplicados y ejecuta una sola vez `bdd/migrar-email-unico.sql` para añadir la restricción única.
+5. Si `users` ya tenía la columna `role`, haz una copia de seguridad y ejecuta una sola vez `bdd/migrar-roles.sql` para crear el catálogo y conservar los roles actuales en `id_role`.
 
-No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El acceso al panel requiere una cuenta activa en `users` y una relación con una empresa activa en `usuario_empresa`.
+No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El acceso al panel requiere una cuenta activa en `users`. Los usuarios solo acceden a empresas vinculadas en `usuario_empresa`; los administradores pueden acceder a todas las empresas activas. En Setting todos pueden ver los nombres de las tablas, pero las filas se limitan según el rol y las relaciones de la cuenta. Las tablas sin una regla de acceso para usuarios no administradores no muestran filas. En el visor se omiten siempre las columnas `password` y `token_hash`.
 
 `.gitignore` contiene reglas para `bdd/conexion.php` y `bdd/copia.mkd`.
 
@@ -70,8 +72,8 @@ icare/
 ├── README.md
 ├── index.php
 ├── header.php
-├── login.php                         # Inicio de sesión y selección de empresa
-├── registro.php                      # Configuración de contraseña para cuentas invitadas
+├── login.php                         # Inicio de sesión y acceso directo al dashboard
+├── registro.php                      # Registro de cuentas pendientes de activación
 ├── paneltablas/
 │   ├── index.php                     # Dashboard y datos autorizados
 │   └── salir.php                     # Cierre de sesión
@@ -165,13 +167,13 @@ También conviene abrir las páginas principal y de Conocimiento en el navegador
 
 **Las pruebas de registro e inicio de sesión deben recorrer el flujo real de la aplicación servido por Apache, no sustituirse por cambios directos en la base de datos, generación manual de hashes ni pruebas aisladas de `password_hash`/`password_verify`.** Esas comprobaciones indirectas no detectan errores de integración, como variables del formulario sobrescritas al incluir la configuración de conexión.
 
-Para validar el cambio de contraseña:
+Para validar el registro y el inicio de sesión:
 
-1. Utiliza una cuenta de prueba activa y asignada a una empresa activa.
-2. Abre `http://localhost/proyectos/icare/registro.php` en el navegador y configura la contraseña con el formulario.
-3. Confirma el mensaje de éxito del formulario.
-4. Sin modificar la base de datos manualmente, inicia sesión en `http://localhost/proyectos/icare/login.php` con el mismo correo y contraseña.
-5. Selecciona la empresa asignada y confirma que se abre el dashboard.
+1. Abre `http://localhost/proyectos/icare/registro.php` y registra un correo que no exista todavía.
+2. Confirma el mensaje de éxito. La cuenta se crea inactiva y no puede iniciar sesión hasta que un administrador la active.
+3. La activación todavía no tiene interfaz en la aplicación y se realiza manualmente por administración.
+4. Cuando la cuenta esté activa, inicia sesión en `http://localhost/proyectos/icare/login.php` con el mismo correo y contraseña.
+5. Confirma que el acceso abre directamente el dashboard. Puede entrar aunque todavía no tenga empresas asignadas; el selector Empresa aparece en la cabecera, empieza por la primera empresa activa y aplica el cambio al seleccionarlo.
 
 La verificación directa del hash en la base de datos puede complementar la prueba, pero no reemplaza el recorrido completo por las páginas reales. No se deben imprimir ni registrar contraseñas o hashes durante la depuración.
 
@@ -181,11 +183,8 @@ Actualiza este documento cuando cambien el stack, los requisitos, los pasos para
 
 ## ERRORES VS FUNCIONALIDADES PENDIENTES POR CORREGIR
 
-1.SUBMIT FUNCIONA PERO HAY QUE VERIFICAR EL CODIGO YA  QUE REDIRIGE A GMAIL???? VER SI ES ADECUADO
-2.ENLACE EN FORM , MISMA PROBLEMATICA QUE PUNTO 1
-4.PENDIENTE DE DAR CONTENIDO A LOGIN. DEBE ESTAN VINCULADO  CON UNA EMPRESA PARA QUE  FILTRE LOS  DATOS, UN MISMO CORREO PUEDE ACCCEDER A DISTINTAS EMPRESAS Y VER LA INFORMACION CORRESPONDIENTE A SU ROL Y EMPRESA.
 7.MONTAR SISTEMA DE SEGURIDAD HAKERS
 8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR
-9.PENDIENTE DE DESARROLLO PROCESO ACTIVACION USUARIO POR EL  ADMINISTRACION, POR EL  MOMENTO MANUEL , SI ESTA ACTIVO TRUE SE PUEDE REGISTRAR.
-10.PENDIENTE DESARROLLO , EN CASO DE OLVIDO CONTRASEÑA PODER CAMBIARLA
-
+11.CREAR UN GMAU , FICHADAS PRESENCIA RRHH, TAREAS , PROYECTOS, PANTALLA INICIAL GENERAL(CALENDARIO, LISTA WASAP O MENSAJERIA INTERNA,..)
+13.EDITAR DESDE EL DASHBOARD LOS REGISTROS.
+14.BOTON RESTAURAR CONTRASEÑA Y ENVIr EMAIL. EN EL LOGIN.

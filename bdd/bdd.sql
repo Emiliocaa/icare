@@ -5,6 +5,17 @@ CREATE DATABASE IF NOT EXISTS icare
 
 USE icare;
 
+-- catalogo de roles de usuario
+CREATE TABLE IF NOT EXISTS `role`(
+    id_role INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `role` VARCHAR(50) NOT NULL,
+    UNIQUE KEY uq_role_name (`role`)
+) ENGINE=InnoDB
+DEFAULT COLLATE=utf8mb4_unicode_ci CHARSET=utf8mb4;
+
+INSERT IGNORE INTO `role` (`role`)
+VALUES ('usuario'), ('administrador');
+
 -- tabla para usuarios 
 CREATE TABLE IF NOT EXISTS users(
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -13,9 +24,12 @@ CREATE TABLE IF NOT EXISTS users(
     email VARCHAR(40) NOT NULL,
     password VARCHAR(100) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    role ENUM('administrador','usuario') NOT NULL DEFAULT 'usuario',
+    id_role INT UNSIGNED NOT NULL DEFAULT 1,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
-    UNIQUE KEY uq_users_email (email)
+    UNIQUE KEY uq_users_email (email),
+    INDEX idx_users_id_role (id_role),
+    CONSTRAINT fk_users_role
+        FOREIGN KEY (id_role) REFERENCES `role`(id_role)
 )  ENGINE=InnoDB
 
 DEFAULT COLLATE=utf8mb4_unicode_ci CHARSET=utf8mb4;

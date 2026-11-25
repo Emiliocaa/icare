@@ -45,9 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (mb_strlen($nombre, 'UTF-8') > 20) {
         $errores[] = 'El nombre no puede superar los 20 caracteres.';
     }
-    if ($apellidos === '') {
-        $errores[] = 'Los apellidos son obligatorios.';
-    } elseif (mb_strlen($apellidos, 'UTF-8') > 40) {
+    if (mb_strlen($apellidos, 'UTF-8') > 40) {
         $errores[] = 'Los apellidos no pueden superar los 40 caracteres.';
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email, 'UTF-8') > 40) {
@@ -68,40 +66,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $passwordHash = password_hash($passwordIntroducida, PASSWORD_DEFAULT);
             $consulta = $conn->prepare(
-                'UPDATE users
-                SET password = :password
-                WHERE email = :email AND activo = TRUE'
+                'INSERT INTO users (name, surnames, email, password, activo)
+                VALUES (:name, :surnames, :email, :password, FALSE)'
             );
             $consulta->execute([
-                'password' => $passwordHash,
+                'name' => $nombre,
+                'surnames' => $apellidos,
                 'email' => $email,
+                'password' => $passwordHash,
             ]);
 
-            $verificarConsulta = $conn->prepare(
-                'SELECT password
-                FROM users
-                WHERE email = :email AND activo = TRUE
-                LIMIT 1'
-            );
-            $verificarConsulta->execute(['email' => $email]);
-            $hashGuardado = $verificarConsulta->fetchColumn();
-            $passwordPersistidaCorrecta = is_string($hashGuardado)
-                && password_verify($passwordIntroducida, $hashGuardado);
-
-            if (
-                $consulta->rowCount() !== 1
-                || !$passwordPersistidaCorrecta
-            ) {
-                $errores[] = 'No se pudo completar el registro. Contacta con el administrador de Icare en ecarolas@gmail.com.';
-            } else {
-                $_SESSION['registro_correcto'] = true;
-                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-                header('Location: registro.php', true, 303);
-                exit;
-            }
+            $_SESSION['registro_correcto'] = true;
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+            header('Location: registro.php', true, 303);
+            exit;
         } catch (PDOException $error) {
             error_log('Error durante el registro: ' . $error->getMessage());
-            $errores[] = 'No se pudo completar el registro. Inténtalo más tarde.';
+            $codigoMysql = $error->errorInfo[1] ?? null;
+            $errores[] = (int) $codigoMysql === 1062
+                ? 'Ya existe una cuenta con ese correo electrónico.'
+                : 'No se pudo completar el registro. Inténtalo más tarde.';
         }
     }
 }

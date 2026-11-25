@@ -9,6 +9,9 @@ require_once __DIR__ . '/controladores/login.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Inicia sesión en el área privada de Icare Coaching.">
     <title>Iniciar sesión | Icare Coaching</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
 </head>
 
@@ -19,7 +22,7 @@ require_once __DIR__ . '/controladores/login.php';
     <main id="contenido">
         <section class="formulario-tarjeta tarjeta-login" aria-labelledby="titulo-login">
             <h1 id="titulo-login">Iniciar sesión</h1>
-            <p>Accede con la cuenta y la empresa que te ha asignado el administrador.</p>
+            <p>Accede con tu cuenta activa. Si tienes varias empresas asignadas, se abrirá la primera por nombre.</p>
 
             <?php if ($errores): ?>
                 <div role="alert" aria-labelledby="errores-login">
@@ -32,60 +35,34 @@ require_once __DIR__ . '/controladores/login.php';
                 </div>
             <?php endif; ?>
 
-            <?php if ($mostrarSelectorEmpresa || $empresasDisponibles): ?>
-                <form action="login.php" method="post">
-                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
-                    <input type="hidden" name="accion" value="seleccionar_empresa">
+            <form action="login.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
+                <input type="hidden" name="accion" value="iniciar_sesion">
 
-                    <div class="campo campo-completo">
-                        <label for="empresa">Empresa *</label>
-                        <select id="empresa" name="empresa_id" required<?= $empresasDisponibles ? '' : ' disabled' ?>>
-                            <?php if ($empresasDisponibles): ?>
-                                <option value="">Selecciona una empresa</option>
-                                <?php foreach ($empresasDisponibles as $empresa): ?>
-                                    <option value="<?= (int) $empresa['id'] ?>"><?= htmlspecialchars($empresa['nombre'], ENT_QUOTES, 'UTF-8') ?></option>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <option value="">No hay empresas activas asignadas</option>
-                            <?php endif; ?>
-                        </select>
+                <div class="campo campo-completo">
+                    <label for="email">Correo electrónico *</label>
+                    <input id="email" name="email" type="email" autocomplete="username" maxlength="40" required value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>">
+                </div>
+
+                <div class="campo campo-completo">
+                    <label for="password">Contraseña *</label>
+                    <div class="campo-password">
+                        <input id="password" name="password" type="password" autocomplete="current-password" required>
+                        <button class="boton-visibilidad" type="button" aria-label="Mostrar contraseña" aria-controls="password" data-visible="false" hidden>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
+                                <circle class="icono-ojo-centro" cx="12" cy="12" r="3"></circle>
+                                <path class="icono-ojo-cerrado" d="m3 3 18 18"></path>
+                            </svg>
+                        </button>
                     </div>
+                    <small>Por seguridad, tendrás que volver a escribirla si el acceso falla.</small>
+                </div>
 
-                    <?php if ($empresasDisponibles): ?>
-                        <button class="boton boton-principal" type="submit">Entrar en la empresa</button>
-                    <?php endif; ?>
-                </form>
-                <p class="formulario-enlace"><a href="login.php">Volver al inicio de sesión</a></p>
-            <?php else: ?>
-                <form action="login.php" method="post">
-                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
-                    <input type="hidden" name="accion" value="iniciar_sesion">
+                <button class="boton boton-principal" type="submit">Iniciar sesión</button>
+            </form>
 
-                    <div class="campo campo-completo">
-                        <label for="email">Correo electrónico *</label>
-                        <input id="email" name="email" type="email" autocomplete="username" maxlength="40" required value="<?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8') ?>">
-                    </div>
-
-                    <div class="campo campo-completo">
-                        <label for="password">Contraseña *</label>
-                        <div class="campo-password">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required>
-                            <button class="boton-visibilidad" type="button" aria-label="Mostrar contraseña" aria-controls="password" data-visible="false" hidden>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                                    <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
-                                    <circle class="icono-ojo-centro" cx="12" cy="12" r="3"></circle>
-                                    <path class="icono-ojo-cerrado" d="m3 3 18 18"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <small>Por seguridad, tendrás que volver a escribirla si el acceso falla.</small>
-                    </div>
-
-                    <button class="boton boton-principal" type="submit">Iniciar sesión</button>
-                </form>
-            <?php endif; ?>
-
-            <p class="formulario-enlace">¿Aún no has configurado tu contraseña? <a href="registro.php">Registrarse</a>.</p>
+            <p class="formulario-enlace">¿Todavía no tienes una cuenta? <a href="registro.php">Regístrate</a>.</p>
         </section>
     </main>
     <script>
