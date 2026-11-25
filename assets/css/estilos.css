@@ -1424,7 +1424,7 @@ footer a {
 
 .panel-logo {
     color: var(--texto);
-    font-size: 1.125rem;
+    font-size: 1.525rem;
     font-weight: 750;
     text-decoration: none;
 }
@@ -1462,6 +1462,7 @@ footer a {
 
 .panel-estructura {
     min-height: calc(100vh - 4.5rem);
+    font-size: 12px;
 }
 
 .panel-menu {
@@ -1470,8 +1471,9 @@ footer a {
     top: 4.5rem;
     bottom: 0;
     left: 0;
+    
     display: flex;
-    width: 16rem;
+    width: 12rem;
     flex-direction: column;
     gap: 0.5rem;
     overflow-x: hidden;
@@ -1503,14 +1505,14 @@ footer a {
 
 .panel-marca-icono {
     display: grid;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.50rem;
+    height: 2.0rem;
     flex: 0 0 2.5rem;
     place-items: center;
     border-radius: 0.75rem;
     background: var(--verde);
     color: var(--texto-blanco);
-    font-size: 1.375rem;
+    font-size: 1.175rem;
 }
 
 .panel-menu-toggle {
@@ -1540,10 +1542,11 @@ footer a {
 .panel-menu-enlace,
 .panel-menu-configuracion summary {
     display: flex;
-    min-height: 2.75rem;
+    min-height: 1.25rem;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.625rem 0.75rem;
+    gap: 0.25rem;
+    padding: 0.125rem 0.15rem;
+
     border-radius: var(--radio-pequeno);
     color: var(--texto);
     cursor: pointer;
@@ -1632,8 +1635,9 @@ footer a {
 
 .panel-contenido {
     min-width: 0;
-    width: calc(100% - 16rem);
-    margin-left: 16rem;
+    width: calc(100% - 13rem);
+    font-size: 130%;
+    margin-left: 13rem;
     padding: 2rem clamp(1rem, 3vw, 2.5rem);
     transition: width 0.2s ease, margin-left 0.2s ease;
 }
@@ -1692,17 +1696,18 @@ footer a {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+    font-size: 13px;
 }
 
 .tabla-panel caption {
-    padding: 0.875rem;
+    padding: 0.575rem;
     font-weight: 700;
     text-align: left;
 }
 
 .tabla-panel th,
 .tabla-panel td {
-    padding: 0.75rem;
+    padding: 0.45rem;
     border-top: 1px solid var(--borde);
     vertical-align: top;
     overflow-wrap: anywhere;
@@ -1715,9 +1720,10 @@ footer a {
 .tabla-paginacion {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    font-size: 14px;
 }
 
 .tabla-paginacion a {
@@ -1782,8 +1788,8 @@ footer a {
 
     .panel-menu-colapsado .panel-marca-icono,
     .panel-menu-colapsado .panel-menu-toggle {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     .panel-contenido,

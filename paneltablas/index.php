@@ -23,6 +23,7 @@ $tablasBdd = [];
 $paginaActual = 1;
 $totalPaginas = 1;
 $totalRegistros = 0;
+$tamanoPagina = 50;
 
 try {
     $tablasConsulta = $conn->query(
@@ -66,7 +67,6 @@ try {
                     http_response_code(400);
                     $errorPanel = 'El número de página no es válido.';
                 } else {
-                    $tamanoPagina = 50;
                     $where = '';
                     $parametros = [];
 
@@ -443,7 +443,7 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
             <div class="panel-menu-cabecera">
                 <a class="panel-marca" href="index.php" aria-label="Icare Coaching, dashboard">
                     <span class="panel-marca-icono" aria-hidden="true">i</span>
-                    <span class="panel-menu-texto">icare coaching</span>
+                    
                 </a>
                 <button class="panel-menu-toggle" id="panel-menu-toggle" type="button" aria-label="Contraer menú" aria-expanded="true" aria-controls="panel-menu" hidden>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">
@@ -489,13 +489,7 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
             <?php if (isset($errorPanel)): ?>
                 <p class="panel-mensaje-error" role="alert"><?= htmlspecialchars($errorPanel, ENT_QUOTES, 'UTF-8') ?></p>
             <?php elseif ($seccion === 'dashboard'): ?>
-                <p class="panel-eyebrow">Área privada</p>
-                <h1>Dashboard</h1>
-                <p><?= $panelEmpresa
-                    ? 'Resumen de la cuenta y la empresa seleccionada.'
-                    : ($panelEsAdministrador
-                        ? 'Resumen de la cuenta y todas las empresas activas.'
-                        : 'Resumen de la cuenta y las empresas asignadas.') ?></p>
+                
                 <div class="panel-tarjetas-resumen">
                     <section class="panel-tarjeta">
                         <h2>Usuario</h2>
@@ -546,20 +540,65 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
                     <?php endif; ?>
                 </section>
             <?php else: ?>
-                <p class="panel-eyebrow">Setting</p>
-                <h1><?= htmlspecialchars($titulo, ENT_QUOTES, 'UTF-8') ?></h1>
-                <?php if ($seccion === 'tabla'): ?>
-                    <p><?= number_format($totalRegistros, 0, ',', '.') ?> registros. Se muestran hasta 50 por página. Las columnas de contraseña y hash de token están ocultas.</p>
-                <?php endif; ?>
+                
+                
                 <?php $mostrarTabla($titulo, $columnas, $datos); ?>
-                <?php if ($seccion === 'tabla' && $totalPaginas > 1): ?>
+                <?php if ($seccion === 'tabla'): ?>
                     <nav class="tabla-paginacion" aria-label="Paginación de la tabla">
-                        <?php if ($paginaActual > 1): ?>
-                            <a href="?seccion=tabla&amp;tabla=<?= rawurlencode($tablaSeleccionada) ?>&amp;pagina=<?= $paginaActual - 1 ?>">Anterior</a>
+                        <?php if ($totalRegistros > 0): ?>
+                            <?php
+                            $inicioRango = ($paginaActual - 1) * $tamanoPagina + 1;
+                            $finRango = min($paginaActual * $tamanoPagina, $totalRegistros);
+                            ?>
+                            <p>Mostrando <?= number_format($inicioRango, 0, ',', '.') ?>&ndash;<?= number_format($finRango, 0, ',', '.') ?> de <?= number_format($totalRegistros, 0, ',', '.') ?> registros</p>
+                        <?php else: ?>
+                            <p>No hay registros para mostrar.</p>
                         <?php endif; ?>
-                        <span>Página <?= $paginaActual ?> de <?= $totalPaginas ?></span>
-                        <?php if ($paginaActual < $totalPaginas): ?>
-                            <a href="?seccion=tabla&amp;tabla=<?= rawurlencode($tablaSeleccionada) ?>&amp;pagina=<?= $paginaActual + 1 ?>">Siguiente</a>
+                        <?php if ($totalPaginas > 1): ?>
+                            <div class="tabla-paginacion-controles">
+                                <?php if ($paginaActual > 1): ?>
+                                    <a href="?seccion=tabla&amp;tabla=<?= rawurlencode($tablaSeleccionada) ?>&amp;pagina=<?= $paginaActual - 1 ?>">‹ Anterior</a>
+                                <?php endif; ?>
+
+                                <?php
+                                $numPaginasVisibles = 5;
+                                $inicioPaginas = max(
+                                    1,
+                                    min(
+                                        $paginaActual - (int) floor($numPaginasVisibles / 2),
+                                        $totalPaginas - $numPaginasVisibles + 1
+                                    )
+                                );
+                                $finPaginas = min($totalPaginas, $inicioPaginas + $numPaginasVisibles - 1);
+
+                                if ($inicioPaginas > 1) {
+                                    echo '<a href="?seccion=tabla&amp;tabla=' . rawurlencode($tablaSeleccionada) . '&amp;pagina=1">1</a>';
+                                    if ($inicioPaginas > 2) {
+                                        echo '<span aria-hidden="true">…</span>';
+                                    }
+                                }
+
+                                for ($i = $inicioPaginas; $i <= $finPaginas; $i++): ?>
+                                    <?php if ($i === $paginaActual): ?>
+                                        <span class="current-page" aria-current="page"><?= $i ?></span>
+                                    <?php else: ?>
+                                        <a href="?seccion=tabla&amp;tabla=<?= rawurlencode($tablaSeleccionada) ?>&amp;pagina=<?= $i ?>"><?= $i ?></a>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+
+                                <?php
+                                if ($finPaginas < $totalPaginas) {
+                                    if ($finPaginas < $totalPaginas - 1) {
+                                        echo '<span aria-hidden="true">…</span>';
+                                    }
+                                    echo '<a href="?seccion=tabla&amp;tabla=' . rawurlencode($tablaSeleccionada) . '&amp;pagina=' . $totalPaginas . '">' . $totalPaginas . '</a>';
+                                }
+                                ?>
+
+                                <?php if ($paginaActual < $totalPaginas): ?>
+                                    <a href="?seccion=tabla&amp;tabla=<?= rawurlencode($tablaSeleccionada) ?>&amp;pagina=<?= $paginaActual + 1 ?>">Siguiente ›</a>
+                                <?php endif; ?>
+                            </div>
                         <?php endif; ?>
                     </nav>
                 <?php endif; ?>
