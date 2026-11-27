@@ -58,7 +58,7 @@ $tokenHash = hash('sha256', $token);
 El correo contiene un enlace como este:
 
 ```text
-https://tu-dominio.es/restablecer-password.php?token=VALOR_ALEATORIO
+https://tu-dominio.es/general/restablecer-password.php?token=VALOR_ALEATORIO
 ```
 
 La dirección del sitio debe salir de una configuración de confianza del servidor, no de un dominio indicado por quien hace la petición. El enlace debe utilizar HTTPS. [cheatsheetseries.owasp](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet)
@@ -131,19 +131,10 @@ Lo organizaría así:
 
 ```text
 icare/
-│
-├── login.php
-│
-├── recuperar-password.php
-│   └── Formulario de correo y gestión de la solicitud
-│
-├── restablecer-password.php
-│   └── Validación del enlace y formulario de contraseña nueva
-│
-└── includes/
-    ├── conexion.php
-    ├── correo.php
-    └── autenticacion.php
+└── general/
+    ├── login.php
+    ├── recuperar-password.php
+    └── restablecer-password.php
 ```
 
 Es una propuesta de organización, no necesitas exactamente esos nombres.

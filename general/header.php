@@ -1,8 +1,8 @@
 <?php
 
 $basePath = $basePath ?? '';
+$conocimientoPath = $conocimientoPath ?? '../conocimiento/index.php';
 $paginaActiva = $paginaActiva ?? '';
-
 ?>
 <header class="cabecera">
     <nav class="contenedor navegacion" aria-label="Menú principal">
@@ -14,17 +14,11 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
             <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
             <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
-            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
+            <a href="<?= $conocimientoPath ?>"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
             <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
-
-            <?php if ($paginaActiva === 'conocimiento'): ?>
-                <hr>
-            <?php endif; ?>
-
             <a href="<?= $basePath ?>login.php" class="boton boton-secundario">
                 Iniciar sesión
             </a>
-
             <a href="<?= $basePath ?>registro.php" class="boton boton-principal">
                 Registrarse
             </a>
@@ -69,7 +63,7 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>
             <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
             <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
-            <a href="<?= $basePath ?>conocimiento/index.php"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
+            <a href="<?= $conocimientoPath ?>"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
             <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
 
             <hr>
@@ -77,11 +71,9 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>login.php" class="boton boton-secundario">
                 Iniciar sesión
             </a>
-
             <a href="<?= $basePath ?>registro.php" class="boton boton-principal">
                 Registrarse
             </a>
-
         </div>
     </nav>
 </header>

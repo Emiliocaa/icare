@@ -3,12 +3,12 @@
 session_start();
 
 if (empty($_SESSION['user_id'])) {
-    header('Location: ../login.php', true, 303);
+    header('Location: ../general/login.php', true, 303);
     exit;
 }
 
 try {
-    require_once dirname(__DIR__) . '/bdd/conexion.php';
+    require_once dirname(__DIR__) . '/general/bdd/conexion.php';
 
     $panelEmpresas = [];
     $panelEsAdministrador = false;
@@ -62,7 +62,7 @@ try {
 if (!$acceso) {
     $_SESSION = [];
     session_destroy();
-    header('Location: ../login.php', true, 303);
+    header('Location: ../general/login.php', true, 303);
     exit;
 }
 
@@ -121,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['empresa_id'] = $empresaId;
     }
+    $_SESSION['empresa_selector_inicializado'] = true;
 
     header('Location: index.php', true, 303);
     exit;
@@ -129,10 +130,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $empresaSeleccionadaId = $_SESSION['empresa_id'] ?? null;
 $panelEmpresa = null;
 
-if ($empresaSeleccionadaId === null) {
-    $empresaSeleccionadaId = $panelEmpresas
-        ? (int) $panelEmpresas[0]['id']
-        : 'todas';
+if (empty($_SESSION['empresa_selector_inicializado'])) {
+    $empresaSeleccionadaId = 'todas';
+    $_SESSION['empresa_id'] = $empresaSeleccionadaId;
+    $_SESSION['empresa_selector_inicializado'] = true;
+} elseif ($empresaSeleccionadaId === null) {
+    $empresaSeleccionadaId = 'todas';
     $_SESSION['empresa_id'] = $empresaSeleccionadaId;
 }
 

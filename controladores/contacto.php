@@ -72,7 +72,7 @@ if (
 }
 
 try {
-    require_once dirname(__DIR__) . '/bdd/conexion.php';
+    require_once dirname(__DIR__) . '/general/bdd/conexion.php';
 
     $usersId = $_SESSION['user_id'] ?? null;
     if (is_string($usersId) && ctype_digit($usersId)) {

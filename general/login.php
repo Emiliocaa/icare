@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/controladores/login.php';
+require_once __DIR__ . '/../controladores/login.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +22,7 @@ require_once __DIR__ . '/controladores/login.php';
     <main id="contenido">
         <section class="formulario-tarjeta tarjeta-login" aria-labelledby="titulo-login">
             <h1 id="titulo-login">Iniciar sesión</h1>
-            <p>Accede con tu cuenta activa. Si tienes varias empresas asignadas, se abrirá la primera por nombre.</p>
+            <p>Accede con tu cuenta activa. El panel comienza mostrando todas las empresas a las que tienes acceso.</p>
 
             <?php if ($errores): ?>
                 <div role="alert" aria-labelledby="errores-login">

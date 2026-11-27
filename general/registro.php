@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/controladores/registro.php';
+require_once __DIR__ . '/../controladores/registro.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">

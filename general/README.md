@@ -2,6 +2,8 @@
 
 Sitio web de Icare Coaching, S. L., centrado en coaching, liderazgo, desarrollo de equipos, consultoría de datos y transformación tecnológica.
 
+Las rutas de archivos de este documento se expresan desde la raíz del proyecto (`icare/`).
+
 ## Objetivo del sitio
 
 Presentar los servicios y la trayectoria de Icare Coaching, facilitar el contacto y publicar artículos sobre coaching, liderazgo, estrategia, mejora continua e inteligencia artificial.
@@ -11,12 +13,12 @@ El formulario de contacto guarda sus datos en MySQL y abre Gmail con un borrador
 ## Estado actual
 
 - La página principal y el área de Conocimiento están implementadas.
-- `registro.php` crea una cuenta con la contraseña hasheada; queda inactiva hasta que la active un administrador.
-- `login.php` autentica cuentas activas y abre el dashboard aunque no tengan empresas asignadas. En el selector, los usuarios solo ven sus empresas activas asignadas; los administradores pueden ver todas las empresas activas.
-- El menú Setting enumera las tablas de la base de datos. Los administradores pueden consultar sus registros; los usuarios ven solo las filas autorizadas para su cuenta. Las columnas `password` y `token_hash` se ocultan y las tablas se muestran con paginación.
+- `general/registro.php` crea una cuenta con la contraseña hasheada; queda inactiva hasta que la active un administrador.
+- `general/login.php` autentica cuentas activas y abre el dashboard aunque no tengan empresas asignadas. El selector de empresa empieza en «Todas las empresas»; los administradores pueden consultar todas las empresas activas y los demás usuarios solo las empresas activas asignadas a su cuenta. La selección manual se conserva en la sesión.
+- El menú Setting enumera las tablas de la base de datos. Los administradores pueden consultar sus registros; los usuarios ven solo las filas autorizadas para su cuenta. Las columnas `password` y `token_hash` se ocultan. Las tablas se muestran en páginas de hasta 50 registros, con el rango visible y controles de navegación cuando hay más de una página.
 - Los artículos se leen desde `conocimiento/data/articulos.json`.
 - `conocimiento/categoria.php` se mantiene como espacio reservado para trabajo futuro.
-- `bdd/bdd.sql` define el esquema inicial; `bdd/conexion.php` configura la conexión local ignorada por Git.
+- `general/bdd/bdd.sql` define el esquema inicial; `general/bdd/conexion.php` configura la conexión local ignorada por Git.
 - No hay una integración de IA ejecutándose en el sitio. Copilot se utiliza como apoyo de desarrollo, no como dependencia de la aplicación.
 - El repositorio no incluye todavía una suite de pruebas automatizadas ni un gestor de dependencias.
 
@@ -45,69 +47,72 @@ El código usa `JSON_THROW_ON_ERROR`, disponible desde PHP 7.3. Se recomienda ut
 1. Coloca el proyecto en `C:\xampp\htdocs\proyectos\icare` (o ajusta la ruta según tu instalación).
 2. Inicia Apache desde el panel de XAMPP.
 3. Abre:
-   - Página principal: <http://localhost/proyectos/icare/>
+   - Página principal: <http://localhost/proyectos/icare/general/>
    - Conocimiento: <http://localhost/proyectos/icare/conocimiento/>
 
-La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual. El registro, el inicio de sesión y el panel requieren MySQL/MariaDB activo y las tablas definidas en `bdd/bdd.sql`.
+La raíz del proyecto devuelve HTTP 404; la aplicación principal se sirve desde `general/`. La página principal y Conocimiento funcionan con archivos PHP y JSON; no necesitan la base de datos para mostrar el contenido actual. El registro, el inicio de sesión y el panel requieren MySQL/MariaDB activo y las tablas definidas en `general/bdd/bdd.sql`.
 
 ### Base de datos
 
 La base de datos es opcional para el sitio actual. Si se retoma esa funcionalidad:
 
 1. Inicia MySQL/MariaDB desde XAMPP.
-2. Importa `bdd/bdd.sql`.
-3. Revisa la configuración local de `bdd/conexion.php`.
-4. Si la tabla `users` ya existía, comprueba que no haya correos duplicados y ejecuta una sola vez `bdd/migrar-email-unico.sql` para añadir la restricción única.
-5. Si `users` ya tenía la columna `role`, haz una copia de seguridad y ejecuta una sola vez `bdd/migrar-roles.sql` para crear el catálogo y conservar los roles actuales en `id_role`.
+2. Importa `general/bdd/bdd.sql`.
+3. Revisa la configuración local de `general/bdd/conexion.php`.
+4. Si la tabla `users` ya existía, comprueba que no haya correos duplicados y ejecuta una sola vez `general/bdd/migrar-email-unico.sql` para añadir la restricción única.
+5. Si `users` ya tenía la columna `role`, haz una copia de seguridad y ejecuta una sola vez `general/bdd/migrar-roles.sql` para crear el catálogo y conservar los roles actuales en `id_role`.
 
 No despliegues credenciales locales ni la configuración de desarrollo en un servidor público. El acceso al panel requiere una cuenta activa en `users`. Los usuarios solo acceden a empresas vinculadas en `usuario_empresa`; los administradores pueden acceder a todas las empresas activas. En Setting todos pueden ver los nombres de las tablas, pero las filas se limitan según el rol y las relaciones de la cuenta. Las tablas sin una regla de acceso para usuarios no administradores no muestran filas. En el visor se omiten siempre las columnas `password` y `token_hash`.
 
-`.gitignore` contiene reglas para `bdd/conexion.php` y `bdd/copia.mkd`.
+`general/.gitignore` contiene reglas para `general/bdd/conexion.php` y `general/bdd/copia.mkd`.
 
 ## Estructura del proyecto
 
 ```text
 icare/
-├── .gitignore
-├── README.md
-├── index.php
-├── header.php
-├── login.php                         # Inicio de sesión y acceso directo al dashboard
-├── registro.php                      # Registro de cuentas pendientes de activación
-├── paneltablas/
-│   ├── index.php                     # Dashboard y datos autorizados
-│   └── salir.php                     # Cierre de sesión
-├── adocumentos/
-│   └── texto.md                      # Contenido y textos de referencia
-├── assets/
-│   └── css/
-│       └── estilos.css               # Estilos compartidos
-├── bdd/
-│   ├── bdd.sql                       # Esquema inicial de la base de datos
-│   ├── migrar-email-unico.sql        # Migración para bases ya existentes
-│   ├── conexion.php                  # Conexión local mediante PDO
-│   └── copia.mkd
-├── js/
-│   └── menu.js                       # Menú de navegación móvil
-└── conocimiento/
-    ├── articulo.php                 # Vista de un artículo
-    ├── categoria.php                # Reservado para desarrollo futuro
-    ├── cargador-articulos.php       # Carga y ordenación de artículos JSON
-    ├── configuracion-articulos.php  # Temáticas y tamaño de página
-    ├── estados-carrusel.php         # CSS dinámico de los carruseles
-    ├── header.php                   # Configura rutas y reutiliza la cabecera común
-    ├── index.php                    # Listado de artículos
-    ├── assets/
-    │   ├── css/
-    │   │   ├── articulo.css
-    │   │   └── conocimiento.css
-    │   └── img/
-    │       └── articulos/
-    │           ├── estrategia.jpg
-    │           ├── ia-equipos.jpg
-    │           └── liderezgo-consciente.jpg
-    └── data/
-        └── articulos.json           # Datos y contenido de los artículos
+├── index.php                       # Devuelve HTTP 404; la página principal está en general/
+├── conocimiento/
+│   ├── articulo.php                 # Vista de un artículo
+│   ├── categoria.php                # Reservado para desarrollo futuro
+│   ├── cargador-articulos.php       # Carga y ordenación de artículos JSON
+│   ├── configuracion-articulos.php  # Temáticas y tamaño de página
+│   ├── estados-carrusel.php         # CSS dinámico de los carruseles
+│   ├── header.php                   # Configura rutas y reutiliza la cabecera común
+│   ├── index.php                    # Listado de artículos
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── articulo.css
+│   │   │   └── conocimiento.css
+│   │   └── img/
+│   │       └── articulos/
+│   │           ├── estrategia.jpg
+│   │           ├── ia-equipos.jpg
+│   │           └── liderezgo-consciente.jpg
+│   └── data/
+│       └── articulos.json           # Datos y contenido de los artículos
+├── controladores/
+│   ├── contacto.php
+│   ├── login.php
+│   ├── panel.php                    # Sesión, permisos y selector de empresa
+│   └── registro.php
+├── general/
+│   ├── .gitignore
+│   ├── README.md
+│   ├── header.php
+│   ├── index.php                    # Página principal
+│   ├── login.php                    # Inicio de sesión
+│   ├── loginolvidado.md             # Propuesta para recuperación de contraseña
+│   ├── registro.php                 # Registro de cuentas pendientes de activación
+│   ├── assets/css/estilos.css
+│   ├── bdd/
+│   │   ├── bdd.sql                  # Esquema inicial
+│   │   ├── conexion.php             # Conexión local mediante PDO
+│   │   ├── migrar-email-unico.sql
+│   │   └── migrar-roles.sql
+│   └── js/menu.js                   # Menú de navegación móvil
+└── paneltablas/
+    ├── index.php                    # Dashboard y datos autorizados
+    └── salir.php                    # Cierre de sesión
 ```
 
 ## Edición de artículos
@@ -153,12 +158,15 @@ Se comprobó por teclado el menú móvil: apertura, recorrido circular con Tab y
 
 ## Validación básica
 
-No hay un runner de pruebas configurado. Tras modificar PHP, se puede comprobar su sintaxis desde PowerShell con:
+No hay un runner de pruebas configurado. Desde la raíz del proyecto, tras modificar PHP, se puede comprobar su sintaxis desde PowerShell con:
 
 ```powershell
-C:\xampp\php\php.exe -l index.php
+C:\xampp\php\php.exe -l general\index.php
+C:\xampp\php\php.exe -l general\login.php
+C:\xampp\php\php.exe -l general\registro.php
 C:\xampp\php\php.exe -l conocimiento\index.php
 C:\xampp\php\php.exe -l conocimiento\articulo.php
+C:\xampp\php\php.exe -l paneltablas\index.php
 ```
 
 También conviene abrir las páginas principal y de Conocimiento en el navegador y comprobar la navegación móvil después de cambiar cabeceras, rutas o estilos.
@@ -169,11 +177,11 @@ También conviene abrir las páginas principal y de Conocimiento en el navegador
 
 Para validar el registro y el inicio de sesión:
 
-1. Abre `http://localhost/proyectos/icare/registro.php` y registra un correo que no exista todavía.
+1. Abre `http://localhost/proyectos/icare/general/registro.php` y registra un correo que no exista todavía.
 2. Confirma el mensaje de éxito. La cuenta se crea inactiva y no puede iniciar sesión hasta que un administrador la active.
 3. La activación todavía no tiene interfaz en la aplicación y se realiza manualmente por administración.
-4. Cuando la cuenta esté activa, inicia sesión en `http://localhost/proyectos/icare/login.php` con el mismo correo y contraseña.
-5. Confirma que el acceso abre directamente el dashboard. Puede entrar aunque todavía no tenga empresas asignadas; el selector Empresa aparece en la cabecera, empieza por la primera empresa activa y aplica el cambio al seleccionarlo.
+4. Cuando la cuenta esté activa, inicia sesión en `http://localhost/proyectos/icare/general/login.php` con el mismo correo y contraseña.
+5. Confirma que el acceso abre directamente el dashboard. Puede entrar aunque todavía no tenga empresas asignadas; el selector Empresa aparece en la cabecera y comienza en «Todas las empresas». Al elegir otra opción, el panel actualiza los datos y conserva la selección durante la sesión.
 
 La verificación directa del hash en la base de datos puede complementar la prueba, pero no reemplaza el recorrido completo por las páginas reales. No se deben imprimir ni registrar contraseñas o hashes durante la depuración.
 
@@ -183,8 +191,9 @@ Actualiza este documento cuando cambien el stack, los requisitos, los pasos para
 
 ## ERRORES VS FUNCIONALIDADES PENDIENTES POR CORREGIR
 
-7.MONTAR SISTEMA DE SEGURIDAD HAKERS
-8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR
+7. Montar un sistema de seguridad para la aplicación.
+8.AÑADIR COOKIS , REQUERIMIENTO LEGAL, VER DE IMPLEMENTAR LOCALHOST SI FUESE NECESARIO, O AUNQUE SIRVA PARA PROBAR.
+14. Implementar recuperación de contraseña y envío de correo (propuesta en `general/loginolvidado.md`).
 11.CREAR UN GMAU , FICHADAS PRESENCIA RRHH, TAREAS , PROYECTOS, PANTALLA INICIAL GENERAL(CALENDARIO, LISTA WASAP O MENSAJERIA INTERNA,..)
 13.EDITAR DESDE EL DASHBOARD LOS REGISTROS.
-14.BOTON RESTAURAR CONTRASEÑA Y ENVIr EMAIL. EN EL LOGIN.PROBLEMA DE GESTION DE CORREO, ADJUNTO MD. LOGINOLVIDADO PARA RESTAURAR CONTRASEÑA
+

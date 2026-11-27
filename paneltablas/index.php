@@ -407,14 +407,17 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/estilos.css?v=<?= filemtime(dirname(__DIR__) . '/assets/css/estilos.css') ?>">
+    <link rel="stylesheet" href="../general/assets/css/estilos.css?v=<?= filemtime(dirname(__DIR__) . '/general/assets/css/estilos.css') ?>">
 </head>
 
 <body>
     <a class="skip" href="#contenido">Saltar al contenido</a>
     <header class="panel-cabecera">
         <div class="panel-contenedor panel-cabecera-interior">
-            <a class="panel-logo" href="index.php">icare coaching</a>
+            <a class="panel-logo" href="index.php" aria-label="Icare Coaching, dashboard">
+                <span class="panel-logo-texto">icare coaching</span>
+                <span class="panel-logo-icono panel-marca-icono" aria-hidden="true">i</span>
+            </a>
             <div class="panel-identidad">
                 <span><?= htmlspecialchars($panelUser['nombre'] . ' ' . $panelUser['apellidos'], ENT_QUOTES, 'UTF-8') ?></span>
             </div>
@@ -608,6 +611,23 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
     <script>
         const panelMenuToggle = document.getElementById('panel-menu-toggle');
         const empresaSelect = document.getElementById('empresa_id');
+        const panelCabecera = document.querySelector('.panel-cabecera');
+
+        if (panelCabecera) {
+            const actualizarAlturaCabecera = () => {
+                document.documentElement.style.setProperty(
+                    '--panel-cabecera-altura',
+                    `${panelCabecera.getBoundingClientRect().height}px`
+                );
+            };
+
+            actualizarAlturaCabecera();
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(actualizarAlturaCabecera).observe(panelCabecera);
+            } else {
+                window.addEventListener('resize', actualizarAlturaCabecera);
+            }
+        }
 
         if (empresaSelect) {
             empresaSelect.addEventListener('change', () => empresaSelect.form.submit());

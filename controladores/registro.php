@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$errores) {
         try {
             $passwordIntroducida = $password;
-            require_once dirname(__DIR__) . '/bdd/conexion.php';
+            require_once dirname(__DIR__) . '/general/bdd/conexion.php';
 
             $passwordHash = password_hash($passwordIntroducida, PASSWORD_DEFAULT);
             $consulta = $conn->prepare(

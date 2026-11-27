@@ -114,7 +114,7 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
     <link
         rel="stylesheet"
-        href="../assets/css/estilos.css"
+        href="../general/assets/css/estilos.css"
     >
     <link
         rel="stylesheet"
@@ -324,7 +324,7 @@ $tituloWeb = $tituloArticulo . ' | Icare Coaching';
                     </a>
 
                     <a
-                        href="../index.php"
+                        href="../general/index.php"
                         class="enlace-inicio"
                     >
                         Página principal

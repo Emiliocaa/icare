@@ -56,7 +56,7 @@ foreach ($articulos as $articulo) {
     <!-- CSS GENERAL -->
 
     <link rel="stylesheet"
-      href="../assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/../assets/css/estilos.css') ?>">
+      href="../general/assets/css/estilos.css?v=<?= filemtime(dirname(__DIR__) . '/general/assets/css/estilos.css') ?>">
 
     <!-- CSS ESPECÍFICO DE CONOCIMIENTO -->
 
@@ -336,6 +336,15 @@ foreach ($articulos as $articulo) {
             </div>
         </section>
     </main>
+    <footer>
+        <div class="container footer-inner">
+            <small>&copy; <?= date('Y') ?> icare coaching, s.l.</small>
+            <div>
+                <a href="#contenido">Volver al inicio</a>
+                <a href="../general/login.php">Área privada</a>
+            </div>
+        </div>
+    </footer>
     <script>
         const seccionesCarrusel = document.querySelectorAll('.seccion-carrusel');
 

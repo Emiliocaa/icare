@@ -3,7 +3,7 @@
 session_start();
 
 if (!empty($_SESSION['user_id'])) {
-    header('Location: paneltablas/index.php', true, 303);
+    header('Location: ../paneltablas/index.php', true, 303);
     exit;
 }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores[] = 'Introduce un correo electrónico válido y tu contraseña.';
         } else {
             try {
-                require_once dirname(__DIR__) . '/bdd/conexion.php';
+                require_once dirname(__DIR__) . '/general/bdd/conexion.php';
 
                 $consulta = $conn->prepare(
                     'SELECT id, password, activo, id_role
@@ -62,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     session_regenerate_id(true);
                     $_SESSION['user_id'] = (int) $usuario['id'];
-                    unset($_SESSION['empresa_id']);
+                    unset($_SESSION['empresa_id'], $_SESSION['empresa_selector_inicializado']);
                     $_SESSION['user_role_id'] = (int) $usuario['id_role'];
                     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-                    header('Location: paneltablas/index.php', true, 303);
+                    header('Location: ../paneltablas/index.php', true, 303);
                     exit;
                 }
             } catch (PDOException $error) {
