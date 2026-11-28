@@ -13,6 +13,7 @@ require_once __DIR__ . '/cargador-articulos.php';
 $configuracionArticulos = require __DIR__ . '/configuracion-articulos.php';
 $tematicas = $configuracionArticulos['tematicas'];
 $articulosPorPagina = $configuracionArticulos['articulosPorPagina'];
+$pasosCarrusel = [$articulosPorPagina, 3, 2, 1];
 $articulos = ordenarArticulosPorFecha(cargarArticulos());
 
 foreach ($tematicas as $clave => $tematica) {
@@ -26,27 +27,32 @@ foreach ($tematicas as $clave => $tematica) {
 
     foreach ($listaArticulos as $indice => $articulo) {
         $idTarjeta = 'articulo-' . $clave . '-' . $indice;
-        $pagina = intdiv($indice, $articulosPorPagina);
 
         echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
         echo ".estado-flechas[data-indice=\"{$indice}\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
-        echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
-        echo ".punto-carrusel[data-pagina=\"{$pagina}\"]::before {\n";
-        echo "    background: var(--verde);\n";
-        echo "    transform: scale(1.3);\n";
-        echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
-        echo "}\n";
+        foreach ($pasosCarrusel as $pasoCarrusel) {
+            $pagina = intdiv($indice, $pasoCarrusel);
+
+            echo ".seccion-carrusel:has(#{$idTarjeta}:target) ";
+            echo ".punto-carrusel[data-paso=\"{$pasoCarrusel}\"][data-pagina=\"{$pagina}\"]::before {\n";
+            echo "    background: var(--verde);\n";
+            echo "    transform: scale(1.3);\n";
+            echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
+            echo "}\n";
+        }
     }
 
     // Estado inicial: primera flecha y primer indicador activos.
     echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
     echo ".estado-flechas[data-indice=\"0\"] { display: flex !important; visibility: visible !important; pointer-events: auto !important; }\n";
 
-    echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
-    echo ".punto-carrusel[data-pagina=\"0\"]::before {\n";
-    echo "    background: var(--verde);\n";
-    echo "    transform: scale(1.3);\n";
-    echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
-    echo "}\n";
+    foreach ($pasosCarrusel as $pasoCarrusel) {
+        echo ".seccion-carrusel:not(:has(.tarjeta-articulo:target)) ";
+        echo ".punto-carrusel[data-paso=\"{$pasoCarrusel}\"][data-pagina=\"0\"]::before {\n";
+        echo "    background: var(--verde);\n";
+        echo "    transform: scale(1.3);\n";
+        echo "    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);\n";
+        echo "}\n";
+    }
 }

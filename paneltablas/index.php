@@ -416,7 +416,7 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
         <div class="panel-contenedor panel-cabecera-interior">
             <a class="panel-logo" href="index.php" aria-label="Icare Coaching, dashboard">
                 <span class="panel-logo-texto">icare coaching</span>
-                <span class="panel-logo-icono panel-marca-icono" aria-hidden="true">i</span>
+                <img class="panel-logo-icono panel-marca-icono" src="../general/assets/images/iconoicare.jpg" alt="">
             </a>
             <div class="panel-identidad">
                 <span><?= htmlspecialchars($panelUser['nombre'] . ' ' . $panelUser['apellidos'], ENT_QUOTES, 'UTF-8') ?></span>
@@ -445,8 +445,7 @@ $mostrarTabla = static function (string $caption, array $columnas, array $filas)
         <nav class="panel-menu" id="panel-menu" aria-label="Menú del área privada">
             <div class="panel-menu-cabecera">
                 <a class="panel-marca" href="index.php" aria-label="Icare Coaching, dashboard">
-                    <span class="panel-marca-icono" aria-hidden="true">i</span>
-                    
+                    <img class="panel-marca-icono" src="../general/assets/images/iconoicare.jpg" alt="">
                 </a>
                 <button class="panel-menu-toggle" id="panel-menu-toggle" type="button" aria-label="Contraer menú" aria-expanded="true" aria-controls="panel-menu" hidden>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false">

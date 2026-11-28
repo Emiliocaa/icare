@@ -12,6 +12,7 @@ $configuracionArticulos = require __DIR__ . '/configuracion-articulos.php';
 $titulo = 'Artículos sobre liderazgo, coaching e innovación | Icare Coaching';
 $tematicas = $configuracionArticulos['tematicas'];
 $articulosPorPagina = $configuracionArticulos['articulosPorPagina'];
+$pasosCarrusel = [$articulosPorPagina, 3, 2, 1];
 $articulos = ordenarArticulosPorFecha(cargarArticulos());
 
 // ==========================================
@@ -110,13 +111,6 @@ foreach ($articulos as $articulo) {
 
                     <?php
                     $listaArticulos = $articulosPorTematica[$clave];
-
-                    // Dividir los artículos en grupos de cinco.
-
-                    $paginasArticulos = array_chunk(
-                        $listaArticulos,
-                        $articulosPorPagina
-                    );
                     ?>
 
                     <?php if (!empty($listaArticulos)): ?>
@@ -158,15 +152,17 @@ foreach ($articulos as $articulo) {
                                             data-indice="<?= $indiceFlecha ?>"
                                         >
                                             <?php if ($indiceFlecha > 0): ?>
-                                                <?php $indiceDestino = max(0, $indiceFlecha - $articulosPorPagina); ?>
-                                                <a
-                                                    class="flecha-carrusel"
-                                                    href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
-                                                    aria-label="Grupo anterior de artículos"
-                                                    title="Grupo anterior de artículos"
-                                                >
-                                                    <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
-                                                </a>
+                                                <?php foreach ($pasosCarrusel as $pasoCarrusel): ?>
+                                                    <?php $indiceDestino = max(0, $indiceFlecha - $pasoCarrusel); ?>
+                                                    <a
+                                                        class="flecha-carrusel flecha-paso-<?= $pasoCarrusel ?>"
+                                                        href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
+                                                        aria-label="Artículos anteriores"
+                                                        title="Artículos anteriores"
+                                                    >
+                                                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+                                                    </a>
+                                                <?php endforeach; ?>
                                             <?php endif; ?>
                                         </div>
                                     <?php endforeach; ?>
@@ -281,19 +277,19 @@ foreach ($articulos as $articulo) {
                                             class="estado-flechas"
                                             data-indice="<?= $indiceFlecha ?>"
                                         >
-                                            <?php $indiceDestino = $indiceFlecha + $articulosPorPagina; ?>
-
-                                            <?php if ($indiceDestino < count($listaArticulos)): ?>
-
-                                                <a
-                                                    class="flecha-carrusel"
-                                                    href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
-                                                    aria-label="Grupo siguiente de artículos"
-                                                    title="Grupo siguiente de artículos"
-                                                >
-                                                    <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-                                                </a>
-                                            <?php endif; ?>
+                                            <?php foreach ($pasosCarrusel as $pasoCarrusel): ?>
+                                                <?php $indiceDestino = $indiceFlecha + $pasoCarrusel; ?>
+                                                <?php if ($indiceDestino < count($listaArticulos)): ?>
+                                                    <a
+                                                        class="flecha-carrusel flecha-paso-<?= $pasoCarrusel ?>"
+                                                        href="#articulo-<?= htmlspecialchars($clave, ENT_QUOTES, 'UTF-8') ?>-<?= $indiceDestino ?>"
+                                                        aria-label="Artículos siguientes"
+                                                        title="Artículos siguientes"
+                                                    >
+                                                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
+                                                    </a>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
                                         </div>
                                     <?php endforeach; ?>
                                 </nav>
@@ -303,30 +299,26 @@ foreach ($articulos as $articulo) {
                                  INDICADORES DE NAVEGACIÓN
                             ======================================= -->
 
-                            <?php if (count($paginasArticulos) > 1): ?>
+                            <?php if (count($listaArticulos) > 1): ?>
                                 <nav
                                     class="indicadores-carrusel"
                                     aria-label="Páginas de artículos de <?= htmlspecialchars($tematica['titulo'], ENT_QUOTES, 'UTF-8') ?>"
                                 >
-                                    <?php foreach ($paginasArticulos as $numeroPagina => $grupoArticulos): ?>
-                                        <?php
-
-                                        // El primer artículo de cada grupo
-                                        // será el destino del indicador.
-
-                                        $primerArticulo = $numeroPagina * $articulosPorPagina;
-                                        $idDestino = 'articulo-' . $clave . '-' . $primerArticulo;
-
-                                        ?>
-
-                                        <a
-                                            class="punto-carrusel"
-                                            data-pagina="<?= $numeroPagina ?>"
-                                            href="#<?= htmlspecialchars($idDestino, ENT_QUOTES, 'UTF-8') ?>"
-                                            aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
-                                            title="Grupo <?= $numeroPagina + 1 ?>"
-                                            <?= $numeroPagina === 0 ? 'aria-current="page"' : '' ?>
-                                        ></a>
+                                    <?php foreach ($pasosCarrusel as $pasoCarrusel): ?>
+                                        <?php $numeroPaginas = (int) ceil(count($listaArticulos) / $pasoCarrusel); ?>
+                                        <?php for ($numeroPagina = 0; $numeroPagina < $numeroPaginas; $numeroPagina++): ?>
+                                            <?php $indiceDestino = $numeroPagina * $pasoCarrusel; ?>
+                                            <?php $idDestino = 'articulo-' . $clave . '-' . $indiceDestino; ?>
+                                            <a
+                                                class="punto-carrusel punto-paso-<?= $pasoCarrusel ?>"
+                                                data-paso="<?= $pasoCarrusel ?>"
+                                                data-pagina="<?= $numeroPagina ?>"
+                                                href="#<?= htmlspecialchars($idDestino, ENT_QUOTES, 'UTF-8') ?>"
+                                                aria-label="Ir al grupo <?= $numeroPagina + 1 ?> de artículos"
+                                                title="Grupo <?= $numeroPagina + 1 ?>"
+                                                <?= $numeroPagina === 0 ? 'aria-current="page"' : '' ?>
+                                            ></a>
+                                        <?php endfor; ?>
                                     <?php endforeach; ?>
                                 </nav>
                             <?php endif; ?>
@@ -354,10 +346,18 @@ foreach ($articulos as $articulo) {
                 const indiceActual = articuloActual
                     ? Number(articuloActual.id.split('-').pop())
                     : 0;
-                const paginaActual = Math.floor(indiceActual / <?= (int) $articulosPorPagina ?>);
+                const puntos = Array.from(seccion.querySelectorAll('.punto-carrusel'));
+                const puntoVisible = puntos.find(punto => window.getComputedStyle(punto).display !== 'none');
+                const pasoActual = puntoVisible
+                    ? Number(puntoVisible.dataset.paso)
+                    : <?= (int) $articulosPorPagina ?>;
+                const paginaActual = Math.floor(indiceActual / pasoActual);
 
-                seccion.querySelectorAll('.punto-carrusel').forEach(punto => {
-                    if (Number(punto.dataset.pagina) === paginaActual) {
+                puntos.forEach(punto => {
+                    if (
+                        Number(punto.dataset.paso) === pasoActual
+                        && Number(punto.dataset.pagina) === paginaActual
+                    ) {
                         punto.setAttribute('aria-current', 'page');
                     } else {
                         punto.removeAttribute('aria-current');
@@ -366,8 +366,42 @@ foreach ($articulos as $articulo) {
             });
         }
 
-        window.addEventListener('hashchange', actualizarIndicadoresCarrusel);
+        function alinearArticuloObjetivo() {
+            const articuloActual = document.querySelector('.tarjeta-articulo:target');
+            if (!articuloActual) {
+                return;
+            }
+
+            const carrusel = articuloActual.closest('.carrusel-articulos');
+            if (!carrusel) {
+                return;
+            }
+
+            const desplazamiento =
+                articuloActual.getBoundingClientRect().left
+                - carrusel.getBoundingClientRect().left
+                + carrusel.scrollLeft;
+
+            carrusel.scrollTo({
+                left: desplazamiento,
+                behavior: 'smooth'
+            });
+        }
+
+        document.querySelectorAll('.flecha-carrusel, .punto-carrusel').forEach(control => {
+            control.addEventListener('click', () => {
+                window.requestAnimationFrame(alinearArticuloObjetivo);
+            });
+        });
+
+        window.addEventListener('hashchange', () => {
+            actualizarIndicadoresCarrusel();
+            window.requestAnimationFrame(alinearArticuloObjetivo);
+        });
+
+        window.addEventListener('resize', actualizarIndicadoresCarrusel);
         actualizarIndicadoresCarrusel();
+        window.requestAnimationFrame(alinearArticuloObjetivo);
     </script>
 </body>
 </html>

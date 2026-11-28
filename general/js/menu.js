@@ -29,7 +29,7 @@ function mostrarMenu() { // Define una función para mostrar el menú.
         return; // ... no hace nada y sale de la función.
     }
 
-    elementoApertura = document.activeElement; // Guarda el elemento que el usuario estaba usando justo antes de abrir el menú.
+    elementoApertura = document.activeElement; // Guarda el elemento que el usuario estaba usando justo antes de abrir el menú. El código cierra el menú y ejecuta elementoApertura?.focus(); para devolver el foco exactamente al botón que lo abrió.Es un standard de funcionamiento.
     menuLateral.classList.add("activo");     // Añade la clase "activo" al menú para que se vea (el CSS lo muestra).
     fondoMenu.classList.add("activo");       // Añade la clase "activo" al fondo para que se oscurezca.
     document.documentElement.classList.add("menu-abierto"); // Añade una clase al elemento principal de la página (<html>) para estilos globales.

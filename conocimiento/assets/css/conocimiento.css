@@ -4,7 +4,22 @@
 
 .seccion-articulos {
     padding: 2.4375rem 0 4.375rem;
-    background: var(--verde-suave);
+    background:
+    linear-gradient(
+    to top,
+    transparent 0%,
+    var(--verde-suave) 20%,
+    var(--verde-suave) 70%,
+    transparent 100%
+  ),
+
+  linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--verde-suave) 20%,
+    var(--verde-suave) 90%,
+    transparent 100%
+  );
 }
 
 .contenedor-articulos {
@@ -26,6 +41,9 @@
     margin: 0.625rem 0 0.9375rem;
     color: var(--texto);
     font-size: 1.875rem;
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+    text-wrap:balance;
 }
 
 .introduccion-articulos p {
@@ -345,6 +363,12 @@
         box-shadow var(--duracion) var(--curva);
 }
 
+.punto-carrusel[aria-current="page"]::before {
+    background: var(--verde);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 0.2rem rgba(23, 80, 69, 0.14);
+}
+
 .punto-carrusel:hover::before {
     transform: scale(1.35);
     background: var(--verde-oscuro);
@@ -393,6 +417,7 @@
 
     .introduccion-articulos {
         margin-bottom: 2.5rem;
+        padding: 1.25rem;
     }
 
     .introduccion-articulos h2 {
@@ -454,5 +479,85 @@
 
     .tarjeta-articulo {
         flex-basis: 100%;
+    }
+}
+
+.control-flecha .flecha-paso-5 {
+    display: inline-flex;
+}
+
+.control-flecha .flecha-paso-3,
+.control-flecha .flecha-paso-2,
+.control-flecha .flecha-paso-1 {
+    display: none;
+}
+
+@media (max-width: 1050px) {
+    .control-flecha .flecha-paso-5 {
+        display: none;
+    }
+
+    .control-flecha .flecha-paso-3 {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 650px) {
+    .control-flecha .flecha-paso-3 {
+        display: none;
+    }
+
+    .control-flecha .flecha-paso-2 {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 400px) {
+    .control-flecha .flecha-paso-2 {
+        display: none;
+    }
+
+    .control-flecha .flecha-paso-1 {
+        display: inline-flex;
+    }
+}
+
+.indicadores-carrusel .punto-paso-5 {
+    display: grid;
+}
+
+.indicadores-carrusel .punto-paso-3,
+.indicadores-carrusel .punto-paso-2,
+.indicadores-carrusel .punto-paso-1 {
+    display: none;
+}
+
+@media (max-width: 1050px) {
+    .indicadores-carrusel .punto-paso-5 {
+        display: none;
+    }
+
+    .indicadores-carrusel .punto-paso-3 {
+        display: grid;
+    }
+}
+
+@media (max-width: 650px) {
+    .indicadores-carrusel .punto-paso-3 {
+        display: none;
+    }
+
+    .indicadores-carrusel .punto-paso-2 {
+        display: grid;
+    }
+}
+
+@media (max-width: 400px) {
+    .indicadores-carrusel .punto-paso-2 {
+        display: none;
+    }
+
+    .indicadores-carrusel .punto-paso-1 {
+        display: grid;
     }
 }

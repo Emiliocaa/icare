@@ -21,6 +21,10 @@ return [
         'mejora' => [
             'titulo' => 'Mejora continua y optimización',
             'descripcion' => 'Procesos más eficientes, organizaciones más ágiles y mejores resultados.'
+        ],
+        'libros' => [
+            'titulo' => 'Libros',
+            'descripcion' => 'Reseñas y reflexiones sobre lecturas útiles para el desarrollo personal y profesional.'
         ]
     ],
     'articulosPorPagina' => 5

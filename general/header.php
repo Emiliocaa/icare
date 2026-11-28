@@ -1,5 +1,4 @@
 <?php
-
 $basePath = $basePath ?? '';
 $conocimientoPath = $conocimientoPath ?? '../conocimiento/index.php';
 $paginaActiva = $paginaActiva ?? '';
@@ -15,6 +14,8 @@ $paginaActiva = $paginaActiva ?? '';
             <a href="<?= $basePath ?>index.php#servicios">Servicios</a>
             <a href="<?= $basePath ?>index.php#experiencia">Trayectoria</a>
             <a href="<?= $conocimientoPath ?>"<?= $paginaActiva === 'conocimiento' ? ' class="activo" aria-current="page"' : '' ?>>Conocimiento</a>
+            <!--class="activo": Permite aplicar estilos CSS específicos al enlace activo (por ejemplo, color diferente, subrayado o indicador visual en el menú).
+            aria-current="page": Es un atributo ARIA de accesibilidad. Indica a lectores de pantalla y tecnologías asistivas que este enlace representa la página actual dentro de un conjunto de navegación (como un menú).-->
             <a href="<?= $basePath ?>index.php#contacto">Contacto</a>
             <a href="<?= $basePath ?>login.php" class="boton boton-secundario">
                 Iniciar sesión
@@ -57,7 +58,7 @@ $paginaActiva = $paginaActiva ?? '';
             </button>
 
             <a href="<?= $basePath ?>index.php" class="logoMenuLateral" style="text-decoration: none;">
-             icare coaching 
+                <img src="<?= $basePath ?>assets/images/iconoicare.jpg" alt="Icare Coaching">
             </a>
             
             <a href="<?= $basePath ?>index.php#enfoque">Mi enfoque</a>

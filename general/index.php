@@ -20,24 +20,24 @@ $anioActual = date('Y');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/estilos.css?v=<?= filemtime(__DIR__ . '/assets/css/estilos.css') ?>">
-    <meta name="keywords" content="liderazgo, personas, mejora continua, finanzas, estrategia, ia, productividad,">
-    
+    <meta name="keywords" content="rendimiento, liderazgo, personas, mejora continua, finanzas, estrategia, ia, productividad,">   
 </head>
 
 <body>
+     <!--Este enlace es un enlace de salto (skip link), una práctica estándar de accesibilidad web diseñada para que las personas que navegan con teclado o con lectores de pantalla puedan saltarse directamente bloques repetitivos (como el logotipo, el menú de navegación o los botones de cabecera) e ir directo al contenido principal de la página.-->
     <a class="skip" href="#contenido">Saltar al contenido</a>
     <!-- insertamos el menú de navegación -->
     <?php require __DIR__ . '/header.php'; ?>
 
     <main id="contenido">
         <section class="hero" id="inicio">
-            <div class="container">
-                <p class="eyebrow">Personas · Liderazgo · Sistemas</p>
-                <h1>Motiva a tus equipos, impulsa tu liderazgo y optimiza tus sistemas y datos para escalar tu negocio.</h1>
-                <p class="lead">Coaching gerencial, evaluación de sistemas, consultoría de datos, adopción de Inteligencia Artificial y coordinación de equipos que ayuden a la motivación de las personas. Todo respaldado por la trayectoria de un ex-CEO, Economista y apasionado de la tecnología.</p>
-                <p class="pitch">En <strong>icare coaching </strong> unimos el coaching ejecutivo y personal con el pragmatismo del control de gestión, el análisis de datos y la transformación digital. Ayudamos a CEOs, gerentes, mandos intermedios y equipos a evolucionar hacia una cultura <em>data-driven</em>, adoptar nuevas tecnologías y trabajar con cohesión, motivación y alto rendimiento.</p>
+            <div class="container"> 
+                <p class="eyebrow">Personas · Liderazgo · Sistemas · Rentabilidad </p>
+                <h1>Transformamos la complejidad operativa en rentabilidad mediante la alineación de personas, tecnología y datos.</h1>
+                <p class="lead">Impulsamos el crecimiento de PYMES y Grandes Organizaciones a través de consultoría estratégica 360º y herramientas de control de gestión. Una visión integral respaldada por más de 25 años de trayectoria como CEO, Economista y experto en IA.</p>
+                <p class="pitch">En <strong>icare coaching</strong> unimos el rigor del análisis financiero con la psicología del alto rendimiento. Le invitamos a <strong>registrarse en nuestra plataforma</strong> para descubrir un ecosistema de herramientas avanzadas diseñadas para optimizar su productividad y liderar la transformación digital de su negocio.</p>
                 <div class="actions"><a class="button" href="#contacto">Agendar una Sesión Diagnóstica Estratégica</a><a class="button secondary" href="#servicios">Explorar servicios</a></div>
-                <div class="tags"><span>Más de 25 años de trayectoria</span><span>Valencia y online</span><span>Empresas y profesionales</span></div>
+                <div class="tags"><span>Más de 25 años de trayectoria</span><span>Valencia y online</span><span>Empresas y Profesionales</span></div>
             </div>
         </section>
         <section class="section" id="enfoque">
@@ -45,11 +45,11 @@ $anioActual = date('Y');
                 <p class="eyebrow">Mi enfoque</p>
                 <h2>Liderazgo directivo, visión financiera, gestión humana y vanguardia tecnológica.</h2>
                 <div class="intro">
-                    <p>Hola, soy <strong>Emilio Casañ Arolas - Economista</strong>. A lo largo de más de 25 años de carrera profesional he liderado la dirección ejecutiva, financiera y operativa en entornos industriales competitivos, complementando la gestión empresarial con una formación continua en desarrollo humano, tecnología, ciencia de datos y actualmente, Inteligencia Artificial.</p>
-                    <p>Sé por experiencia que los retos reales de las organizaciones no se limitan a las finanzas o la tecnología; abarcan de manera fundamental <strong>el compromiso del equipo, la comunicación interdepartamental y la motivación diaria</strong>. Ninguna tecnología o sistema ERP triunfa si el factor humano no está alineado e inspirado.</p>
-                    <p>A través de <strong>icare coaching, s.l.</strong>, pongo a tu disposición un acompañamiento integral 360°: la combinación de visión ejecutiva de alta dirección (C-Level), experiencia con herramientas tecnológicas avanzadas y estrategias de motivación y liderazgo para potenciar a las personas y con todo ello conseguir los objetivos marcados.</p>
+                    <p>Hola, soy <strong>Emilio Casañ Arolas - Economista</strong>. A lo largo de más de 25 años de carrera profesional he liderado la dirección ejecutiva, financiera, operativa y personas en entornos industriales competitivos. Mi metodología une el rigor del análisis financiero con la psicología del alto rendimiento: un dato sin motivación es una cifra muerta, y una motivación sin datos es un esfuerzo sin rumbo.</p>
+                    <p>Sé por experiencia que los retos reales de las organizaciones no se limitan a las finanzas o la tecnología; abarcan de manera fundamental <strong>el compromiso del equipo y la eficiencia-eficacia de los sistemas</strong>. Ninguna tecnología o sistema ERP triunfa si el factor humano no está alineado y los procesos no están optimizados.</p>
+                    <p>A través de <strong>icare coaching, s.l.</strong>, le ofrecemos una ventaja competitiva única: la combinación de visión estratégica C-Level y el acceso a nuestra <strong>área privada de herramientas</strong>, donde podrá medir, analizar y escalar su negocio con precisión quirúrgica.</p>
                 </div>
-                <div class="grid section-heading">
+                <div class="grid one section-heading">
                     <article class="card"><span class="number">01 / PERSONAS</span>
                         <h3>Cohesión y Motivación del Factor Humano</h3>
                         <p>Desarrollar el potencial de los equipos reduciendo la resistencia al cambio y fomentando el compromiso.</p>
@@ -61,6 +61,10 @@ $anioActual = date('Y');
                     <article class="card"><span class="number">03 / DATOS</span>
                         <h3>Tecnología Útil y Aplicada Cultura Data-Driven &amp; Eficiente</h3>
                         <p>Transformar datos dispersos en KPIs e información estratégica útil para decidir con criterio.</p>
+                    </article>
+                    <article class="card"><span class="number">04 / RENTABILIDAD</span>
+                        <h3>La 4 / RENTABILIDAD es el resultado natural de tener a 1 / PERSONAS comprometidas, 2 / TECNOLOGIAS adecuadas y 3 / DATOS optimizados para la toma de decisiones.</h3>
+                        <p></p>
                     </article>
                 </div>
             </div>
@@ -95,18 +99,7 @@ $anioActual = date('Y');
                             <li><strong>Cultura Digital e IA sin Miedo:</strong> Capacitación amigable para sensibilizar a las plantillas sobre el uso positivo de nuevas tecnologías e IA en su trabajo diario.</li>
                         </ul>
                     </article>
-                    <article class="card"><span class="number">03 / DATOS</span>
-                        <h4>Consultoría de Datos, Reporting y Business Intelligence</h4>
-                        <p><strong>Para quién:</strong> Empresas que necesitan visibilidad clara y en tiempo real de su rendimiento operativo y financiero.</p>
-                        <p><strong>Objetivo:</strong> Convertir el dato operativo disperso en una ventaja competitiva para decisiones ágiles y rentables.</p>
-                        <p><strong>Qué trabajamos:</strong></p>
-                        <ul>
-                            <li>Diseño de cuadros de mando (Dashboards) ejecutivos y definición de KPIs clave por departamento.</li>
-                            <li>Análisis de rentabilidad avanzada por cliente, línea de producto, canal o mercado.</li>
-                            <li>Integración de datos de ERPs (como sistemas ABAS), CRMs y control de costes industriales/operativos.</li>
-                        </ul>
-                    </article>
-                    <article class="card"><span class="number">04 / INNOVACIÓN</span>
+                    <article class="card"><span class="number">03 / INNOVACIÓN</span>
                         <h4>Transformación Tecnológica e Inteligencia Artificial Aplicada</h4>
                         <p><strong>Para quién:</strong> Pymes y organizaciones que buscan optimizar procesos sin incurrir en estructuras de costes sobredimensionadas.</p>
                         <p><strong>Objetivo:</strong> Diagnosticar, simplificar e implantar herramientas tecnológicas de alto impacto.</p>
@@ -115,6 +108,17 @@ $anioActual = date('Y');
                             <li>Diagnóstico de cuellos de botella y diseño de automatizaciones de procesos operativos y administrativos.</li>
                             <li>Implementación práctica de Inteligencia Artificial (IA) para el análisis documental, aceleración de tareas recurrentes y generación de insights.</li>
                             <li>Asesoramiento directivo en la elección e implantación de software corporativo y conectividad de sistemas.</li>
+                        </ul>
+                    </article>
+                    <article class="card"><span class="number">04 / DATOS</span>
+                        <h4>Consultoría de Datos, Reporting y Business Intelligence</h4>
+                        <p><strong>Para quién:</strong> Empresas que necesitan visibilidad clara y en tiempo real de su rendimiento operativo y financiero.</p>
+                        <p><strong>Objetivo:</strong> Convertir el dato operativo disperso en una ventaja competitiva para decisiones ágiles y rentables.</p>
+                        <p><strong>Qué trabajamos:</strong></p>
+                        <ul>
+                            <li>Diseño de cuadros de mando (Dashboards) ejecutivos y definición de KPIs clave por departamento.</li>
+                            <li>Análisis de rentabilidad avanzada por cliente, línea de producto, canal o mercado.</li>
+                            <li>Integración de datos de ERPs (como sistemas ABAS), CRMs y control de costes industriales/operativos.</li>
                         </ul>
                     </article>
                 </div>
